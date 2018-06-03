@@ -4,7 +4,7 @@ import java.util.Iterator;
  * Beschreiben Sie hier die Klasse Nationen.
  * 
  * @author Tobias Haag | HfG | IoT3
- * @version 03.06.2018
+ * @version 04.06.2018
  */
 public class Nationen
 {
