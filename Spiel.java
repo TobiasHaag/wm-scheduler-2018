@@ -2,21 +2,24 @@
 /**
  * Beschreiben Sie hier die Klasse Spiel.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Tobias Haag | HfG | IoT3
+ * @version 02.06.2018
  */
 public class Spiel
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
+    private String landX;
+    private String landY;
+    private int torX;
+    private int torY;
+    private String beschreibung;
 
     /**
      * Konstruktor für Objekte der Klasse Spiel
      */
-    public Spiel()
+    public Spiel(String landX, String landY, int torX, int torY, String beschreibung)
     {
-        // Instanzvariable initialisieren
-        x = 0;
+        setzeDetails(landX, landY, torX, torY, beschreibung);
     }
 
     /**
@@ -25,9 +28,23 @@ public class Spiel
      * @param  y    ein Beispielparameter für eine Methode
      * @return        die Summe aus x und y
      */
-    public int beispielMethode(int y)
+    public void setzeDetails(String landX, String landY, int torX, int torY, String beschreibung)
     {
-        // tragen Sie hier den Code ein
-        return x + y;
+        this.landX = landX;
+        this.landY = landY;
+        this.torX = torX;
+        this.torY = torY;
+        this.beschreibung = beschreibung;
+    }
+
+    /**
+     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
+     * 
+     * @param  y    ein Beispielparameter für eine Methode
+     * @return        die Summe aus x und y
+     */
+    public String gibDetails()
+    {
+        return landX + " - " + torX + " : " + torY + " - " + landY;
     }
 }
