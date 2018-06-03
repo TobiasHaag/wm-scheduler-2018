@@ -9,7 +9,7 @@ import java.util.Iterator;
 public class Nationen
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private ArrayList<Land> länder;
+    private ArrayList<Land>länder;
 
     /**
      * Konstruktor für Objekte der Klasse Nationen.
@@ -34,7 +34,7 @@ public class Nationen
             System.out.println("Die Anzahl der Tore und Punkte müssen positiv sein!");
         }
     }
-
+    
     /**
      * 
      */
