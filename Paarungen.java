@@ -1,22 +1,23 @@
+import java.util.ArrayList;
 
 /**
  * Beschreiben Sie hier die Klasse Paarungen.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Tobias Haag | HfG | IoT3
+ * @version 02.06.2018
  */
 public class Paarungen
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
+    private ArrayList<Spiel> spiele;
 
     /**
-     * Konstruktor für Objekte der Klasse Paarungen
+     * Konstruktor für Objekte der Klasse Paarung
      */
     public Paarungen()
     {
         // Instanzvariable initialisieren
-        x = 0;
+        spiele = new ArrayList<>();
     }
 
     /**
@@ -25,9 +26,19 @@ public class Paarungen
      * @param  y    ein Beispielparameter für eine Methode
      * @return        die Summe aus x und y
      */
-    public int beispielMethode(int y)
+    public void spielHinzufügen(String landX, String landY, int torX, int torY, String beschreibung)
     {
-        // tragen Sie hier den Code ein
-        return x + y;
+        spiele.add(new Spiel(landX, landY, torX, torY, beschreibung));
+    }
+
+    public int gibAnzahlSpiele()
+    {
+        return spiele.size();
+    }
+
+    public String gibSpielDetails(int index)
+    {
+        Spiel spiel = spiele.get(index);
+        return spiel.gibDetails();
     }
 }
