@@ -3,7 +3,7 @@
  * Beschreiben Sie hier die Klasse Spiel.
  * 
  * @author Tobias Haag | HfG | IoT3
- * @version 02.06.2018
+ * @version 03.06.2018
  */
 public class Spiel
 {
