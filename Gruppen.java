@@ -19,4 +19,15 @@ public class Gruppen
         // Instanzvariable initialisieren
         gruppe = new ArrayList<>();
     }
+    
+    /**
+     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
+     * 
+     * @param  y    ein Beispielparameter für eine Methode
+     * @return        die Summe aus x und y
+     */
+    public void landHinzufügen(Land name)
+    {
+        gruppe.add(name);
+    }
 }
