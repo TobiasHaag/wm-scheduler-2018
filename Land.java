@@ -1,33 +1,76 @@
 
 /**
- * Beschreiben Sie hier die Klasse Land.
- * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
- */
+* Beschreiben Sie hier die Klasse Land.
+* 
+* @author Tobias Haag | HfG | IoT3
+* @version 03.06.2018
+*/
 public class Land
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
+    // Name des Landes.
+    private String name;
+    // Die geschossenen Tore.
+    private int tore;
+    // Die erreichten Punkte.
+    private int punkte;
 
     /**
-     * Konstruktor für Objekte der Klasse Land
+     * Konstruktor für Objekte der Klasse Land.
+     * @param name der Name der Nation.
+     * @param tore die Anzahl der geschossenen Tore.
+     * @param punkte die Anzahl der erreichten Punkte.
      */
-    public Land()
+    public Land(String name, int tore, int punkte)
     {
-        // Instanzvariable initialisieren
-        x = 0;
+        setzeDetails(name, tore, punkte);
     }
 
     /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
-     * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
+     * Lege die Details des Landes fest.
+     * @param name der Name der Nation.
+     * @param tore die Anzahl der Tore eines Landes.
+     * @param punkte die Anzahl der Punkte eines Landes. 
      */
-    public int beispielMethode(int y)
+    private void setzeDetails(String name, int tore, int punkte)
     {
-        // tragen Sie hier den Code ein
-        return x + y;
+        this.name = name;
+        this.tore = tore;
+        this.punkte = punkte;
+    }
+
+    /**
+     * Liefere den Namen.
+     * @return der Name.
+     */
+    public String gibName()
+    {
+        return name;
+    }
+
+    /**
+     * Liefere die Anzahl der Tore.
+     * @return die Tore.
+     */
+    public int gibTore()
+    {
+        return tore;
+    }
+
+    /**
+     * Liefere die Anzahl der punkte.
+     * @return die Punkte.
+     */
+    public int gibPunkte()
+    {
+        return punkte;
+    }
+
+    /**
+     * Liefere Details über das Land: Name, Tore und Punkte.
+     * @return die Länder-Details.
+     */
+    public String gibDetails()
+    {
+        return "Name: " + name + " Tore: " + tore + " Punkte: " + punkte;
     }
 }
