@@ -10,13 +10,13 @@ public class Nationen
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private ArrayList<Land>länder;
-
+    
     /**
      * Konstruktor für Objekte der Klasse Nationen.
      */
     public Nationen()
     {
-        länder = new ArrayList<>();
+        länder = new ArrayList<Land>();
     }
 
     /**
@@ -38,12 +38,48 @@ public class Nationen
     /**
      * 
      */
-    public void erstelleTestLand()
+    public void erstelleTestLänder()
     {
-        String name = "Russland";
-        int tore = 0;
-        int punkte = 0;
-        länder.add(new Land(name, tore, punkte));
+        //GruppeA
+        länder.add(new Land("Russland", 0, 0));
+        länder.add(new Land("Saudi-Arabien", 0, 0));
+        länder.add(new Land("Ägypten", 0, 0));
+        länder.add(new Land("Uruguay", 0, 0));
+        //GruppeB
+        länder.add(new Land("Marokko", 0, 0));
+        länder.add(new Land("Iran", 0, 0));
+        länder.add(new Land("Portugal", 0, 0));
+        länder.add(new Land("Spanien", 0, 0));
+        //GruppeC
+        länder.add(new Land("Frankreich", 0, 0));
+        länder.add(new Land("Australien", 0, 0));
+        länder.add(new Land("Peru", 0, 0));
+        länder.add(new Land("Dänemark", 0, 0));
+        //GruppeD
+        länder.add(new Land("Argentien", 0, 0));
+        länder.add(new Land("Island", 0, 0));
+        länder.add(new Land("Kroatien", 0, 0));
+        länder.add(new Land("Nigeria", 0, 0));
+        //GruppeE
+        länder.add(new Land("Costa Rica", 0, 0));
+        länder.add(new Land("Serbien", 0, 0));
+        länder.add(new Land("Brasilien", 0, 0));
+        länder.add(new Land("Schweiz", 0, 0));
+        //GruppeF
+        länder.add(new Land("Deutschland", 0, 0));
+        länder.add(new Land("Mexiko", 0, 0));
+        länder.add(new Land("Schweden", 0, 0));
+        länder.add(new Land("Südkorea", 0, 0));
+        //GruppeG
+        länder.add(new Land("Belgien", 0, 0));
+        länder.add(new Land("Panama", 0, 0));
+        länder.add(new Land("Tunesien", 0, 0));
+        länder.add(new Land("England", 0, 0));
+        //GruppeH
+        länder.add(new Land("Polen", 0, 0));
+        länder.add(new Land("Senegal", 0, 0));
+        länder.add(new Land("Kolumbien", 0, 0));
+        länder.add(new Land("Japan", 0, 0));
     }
 
     /**

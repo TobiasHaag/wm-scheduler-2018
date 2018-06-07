@@ -1,3 +1,4 @@
+import java.util.HashSet;
 /**
  * Beschreiben Sie hier die Klasse Spielplan.
  * 
@@ -6,9 +7,9 @@
  */
 public class Spielplan
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private Nationen nation;
     private Paarungen paarung;
+    private Eingabe leser;
 
     /**
      * Konstruktor für Objekte der Klasse Spielplan
@@ -17,8 +18,38 @@ public class Spielplan
     {
         nation = new Nationen();
         paarung = new Paarungen();
+        leser = new Eingabe();
+        systemStart();
     }
+    
+    /**
+     * Starte das System für den WM Scheduler 2018.
+     * Über die Konsole können verschiedene Informationen zu Nationen, Gruppen, Spiele aufgerufen werden.
+     * Außerdem können auch Änderungen im Spielplan gemacht und danach gespeichert werden.
+     * Das System kann ebenfalls beendet werden.
+     */
+    public void systemStart()
+    {
+        System.out.println("WM Scheduler 2018 ****");
+        System.out.println("Ihr persönlicher, digitaler WM Planer der Fußball WM 2018.");
+        System.out.println();
+        System.out.println("Sie können ...");
+        System.out.println("Bitte tippen Sie 'close, um das System zu verlassen.");  
+        System.out.println();
+        System.out.print("> ");   // Eingabebereitschaft anzeigen
+        boolean fertig = false;
 
+        while(!fertig) {
+            HashSet<String> eingabe = leser.gibEingabe();
+            if(eingabe.contains("close")) {
+                fertig = true;
+            }
+            else {
+                System.out.println("Bitte wiederholen Sie die Eingabe 'close' um das System zu beenden!");
+            }
+        }
+        beendenAusgeben();
+    }
     /**
      * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
      * 
@@ -43,7 +74,7 @@ public class Spielplan
      */
     public void leseLänderEin()
     {
-        nation.erstelleTestLand();
+        nation.erstelleTestLänder();
     }
 
     public void gibLänderDetails()
@@ -61,6 +92,15 @@ public class Spielplan
         for(int i = 0; i < paarung.gibAnzahlSpiele(); i++) {
             System.out.println(paarung.gibSpielDetails(i));
         }
+        System.out.println();
+    }
+    
+    /**
+     * Information für den Benutzer beim Beenden des Programms.
+     */
+    private void beendenAusgeben()
+    {
+        System.out.println("Das Programm wird beendet.");
         System.out.println();
     }
 }
