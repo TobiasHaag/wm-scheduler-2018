@@ -1,10 +1,10 @@
 
 /**
-* Beschreiben Sie hier die Klasse Land.
-* 
-* @author Tobias Haag | HfG | IoT3
-* @version 04.06.2018
-*/
+ * Beschreiben Sie hier die Klasse Land.
+ * 
+ * @author Tobias Haag | HfG | IoT3
+ * @version 04.06.2018
+ */
 public class Land
 {
     // Name des Landes.
