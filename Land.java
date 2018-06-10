@@ -71,6 +71,6 @@ public class Land
      */
     public String gibDetails()
     {
-        return "Name: " + name + " Tore: " + tore + " Punkte: " + punkte;
+        return name + "|" + String.valueOf(tore) + "|" + String.valueOf(punkte);
     }
 }
