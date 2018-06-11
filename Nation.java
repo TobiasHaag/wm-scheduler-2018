@@ -1,12 +1,12 @@
 /**
- * Beschreiben Sie hier die Klasse Land.
+ * Beschreiben Sie hier die Klasse Nation.
  * 
  * @author Tobias Haag | HfG | IoT3
- * @version 04.06.2018
+ * @version 11.06.2018
  */
-public class Land
+public class Nation
 {
-    // Name des Landes.
+    // Name der Nation.
     private String name;
     // Die geschossenen Tore.
     private int tore;
@@ -14,21 +14,21 @@ public class Land
     private int punkte;
 
     /**
-     * Konstruktor für Objekte der Klasse Land.
+     * Konstruktor für Objekte der Klasse Nation.
      * @param name der Name der Nation.
      * @param tore die Anzahl der geschossenen Tore.
      * @param punkte die Anzahl der erreichten Punkte.
      */
-    public Land(String name, int tore, int punkte)
+    public Nation(String name, int tore, int punkte)
     {
         setzeDetails(name, tore, punkte);
     }
 
     /**
-     * Lege die Details des Landes fest.
+     * Lege die Details der Nation fest.
      * @param name der Name der Nation.
-     * @param tore die Anzahl der Tore eines Landes.
-     * @param punkte die Anzahl der Punkte eines Landes. 
+     * @param tore die Anzahl der Tore einer Nation.
+     * @param punkte die Anzahl der Punkte einer Nation. 
      */
     private void setzeDetails(String name, int tore, int punkte)
     {
@@ -56,7 +56,7 @@ public class Land
     }
 
     /**
-     * Liefere die Anzahl der punkte.
+     * Liefere die Anzahl der Punkte.
      * @return die Punkte.
      */
     public int gibPunkte()
@@ -65,8 +65,8 @@ public class Land
     }
 
     /**
-     * Liefere Details über das Land: Name, Tore und Punkte.
-     * @return die Länder-Details.
+     * Liefere Details über die Nation: Name, Tore und Punkte.
+     * @return die Nationen-Details.
      */
     public String gibDetails()
     {

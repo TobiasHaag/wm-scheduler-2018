@@ -1,22 +1,23 @@
 import java.io.*;
+import java.lang.*;
 /**
  * 
  */
-public class EA
+public class RW
 {
     /**
      * 
      */
-    public EA()
+    public RW()
     {
-     
+        
     }
 
     public String ladeDatei(String ordner, String dateiname) throws IOException
     {
         String datei = ordner + "|" + dateiname + ".txt";
-        FileReader fr = new FileReader(datei);
-        BufferedReader br = new BufferedReader(fr);
+        FileReader fr = new FileReader(datei); // Übergabe des Dateinamens als String 
+        BufferedReader br = new BufferedReader(fr); //Liest und puffert ganze Zeilen 
 
         String daten = "";
 
@@ -36,11 +37,11 @@ public class EA
     /**
      * 
      */
-    public  void speichereLand(String daten) throws IOException
+    public  void speichereNation(String daten) throws IOException
     {
         String[] teil = daten.split("|");
         
-        String datei = "Länder/" + teil[0] + ".txt";
+        String datei = "Nationen|" + teil[0] + ".txt";
         FileWriter fw = new FileWriter(datei);
         BufferedWriter bw = new BufferedWriter(fw);
 
@@ -57,21 +58,19 @@ public class EA
     /**
      * 
      */
-    public  void appendGruppe(String daten) throws IOException
+    public  void appendGruppe(String dateiName, String daten) throws IOException
     {
         //hier brauche ich die Info welche Gruppe es ist
         
-        String[] teile = daten.split("|");
+        String datenAlt = ladeDatei("Gruppen", dateiName);
         
-        String datei = "Gruppe|" + teile[0] + ".txt";
-        FileWriter fw = new FileWriter(datei);
+        String datei = "Gruppe|" + dateiName + ".txt";
+        FileWriter fw = new FileWriter(datei, true);
         BufferedWriter bw = new BufferedWriter(fw);
 
-        
-
-        for (int x = 0; x < teile.length; x++) {
-            bw.write(teile[x]);
-            if(x<teile.length){bw.newLine();};
+        if(datenAlt.contains(daten) == false){
+            bw.newLine();
+            bw.write(daten);
         }
         
         bw.close();
