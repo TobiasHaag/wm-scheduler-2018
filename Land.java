@@ -1,4 +1,3 @@
-
 /**
  * Beschreiben Sie hier die Klasse Land.
  * 
@@ -71,6 +70,13 @@ public class Land
      */
     public String gibDetails()
     {
+        return name + "|" + String.valueOf(tore) + "|" + String.valueOf(punkte);
+    }
+    
+    public String gibInfo (int tore, int punkte)
+    {
+        this.tore = tore;
+        this.punkte = punkte;
         return name + "|" + String.valueOf(tore) + "|" + String.valueOf(punkte);
     }
 }

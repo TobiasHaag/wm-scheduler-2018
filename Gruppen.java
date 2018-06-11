@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 /**
  * Beschreiben Sie hier die Klasse Gruppen.
  * 
@@ -9,159 +8,100 @@ import java.util.Iterator;
 public class Gruppen
 {
     // Sammlung der Länder.
-    private ArrayList<Land>länder;
-
+    private HashMap<String, Land> länder;
+    private HashMap<String, String> spiele;
+    private int gruppenGroesse;
+    private EA ea;
     /**
      * Konstruktor für Objekte der Klasse Gruppen.
      */
-    public Gruppen()
+    public Gruppen(String identifikation)
     {
-        länder = new ArrayList<>();
+        länder = new HashMap<>();
+        spiele = new HashMap<>();
+        ea = new EA();
+        ladeGruppeninfo(identifikation);
     }
     
     /**
-     * Füge der Sammlung ein Land hinzu.
-     * @param name der Name der Nation.
-     * @param tore die Anzahl der Tore eines Landes.
-     * @param punkte die Anzahl der Punkte eines Landes. 
+     * 
      */
-    public void landHinzufügen(String name, int tore, int punkte)
+    public void erstelleLand(String name)
     {
-        if (tore >=0 & punkte >=0) {
-            länder.add(new Land(name, tore, punkte));
+        Land land = new Land(name, 0, 0);
+        länder.put(name, land);
+        gruppenGroesse += 1;
+    }
+    
+    public void ladeLand(String name)
+    {
+        String daten = "";
+        try{
+            daten = ea.ladeDatei("Länder", name);
         }
-        else {
-            System.out.println("Die Anzahl der Tore und Punkte müssen positiv sein!");
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        String[] teil = daten.split("|");
+        String nameLand = teil[0];
+        int tore = Integer.valueOf(teil[1]);
+        int punkte = Integer.valueOf(teil[2]);
+        
+        länder.put(nameLand, new Land(nameLand, tore, punkte));
+    }
+    
+    /**
+     * 
+     */
+    public void ladeGruppeninfo(String identifikation)
+    {
+        String daten = "";
+        try{
+            daten = ea.ladeDatei("Gruppen", identifikation);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        String[] teil = daten.split("|");
+        gruppenGroesse = Integer.valueOf(teil[0]);
+        for (int i = 1; i < teil.length; i++) {
+            ladeLand(teil[i]);
         }
     }
-
+    
     /**
-     * 
+     *
      */
-    public void erstelleGruppeA()
+    public boolean prüfeLand(String name)
     {
-        länder.add(new Land("Russland", 0, 0));
-        länder.add(new Land("Saudi-Arabien", 0, 0));
-        länder.add(new Land("Ägypten", 0, 0));
-        länder.add(new Land("Uruguay", 0, 0));
-    }
-
-    /**
-     * 
-     */
-    public void erstelleGruppeB()
-    {
-        länder.add(new Land("Marokko", 0, 0));
-        länder.add(new Land("Iran", 0, 0));
-        länder.add(new Land("Portugal", 0, 0));
-        länder.add(new Land("Spanien", 0, 0));
-    }
-
-    /**
-     * 
-     */
-    public void erstelleGruppeC()
-    {
-        länder.add(new Land("Frankreich", 0, 0));
-        länder.add(new Land("Australien", 0, 0));
-        länder.add(new Land("Peru", 0, 0));
-        länder.add(new Land("Dänemark", 0, 0));
-    }
-
-    /**
-     * 
-     */
-    public void erstelleGruppeD()
-    {
-        länder.add(new Land("Argentien", 0, 0));
-        länder.add(new Land("Island", 0, 0));
-        länder.add(new Land("Kroatien", 0, 0));
-        länder.add(new Land("Nigeria", 0, 0));
-    }
-
-    /**
-     * 
-     */
-    public void erstelleGruppeE()
-    {
-        länder.add(new Land("Costa Rica", 0, 0));
-        länder.add(new Land("Serbien", 0, 0));
-        länder.add(new Land("Brasilien", 0, 0));
-        länder.add(new Land("Schweiz", 0, 0));
-    }
-
-    /**
-     * 
-     */
-    public void erstelleGruppeF()
-    {
-        länder.add(new Land("Deutschland", 0, 0));
-        länder.add(new Land("Mexiko", 0, 0));
-        länder.add(new Land("Schweden", 0, 0));
-        länder.add(new Land("Südkorea", 0, 0));
-    }
-
-    /**
-     * 
-     */
-    public void erstelleGruppeG()
-    {
-        länder.add(new Land("Belgien", 0, 0));
-        länder.add(new Land("Panama", 0, 0));
-        länder.add(new Land("Tunesien", 0, 0));
-        länder.add(new Land("England", 0, 0));
-    }
-
-    /**
-     * 
-     */
-    public void erstelleGruppeH()
-    {
-        länder.add(new Land("Polen", 0, 0));
-        länder.add(new Land("Senegal", 0, 0));
-        länder.add(new Land("Kolumbien", 0, 0));
-        länder.add(new Land("Japan", 0, 0));
-    }
-
-    /**
-     * Liefere die Anzahl der Länder in dieser Sammlung.
-     * @return die Anzahl der länder in dieser Sammlung.
-     */
-    public int gibAnzahlLänder()
-    {
-        return länder.size();
-    }
-
-    public String gibLandDetails(int index)
-    {
-        Land land = länder.get(index);
-        return land.gibDetails();
-    }
-
-    /**
-     * Gib eine Liste aller Länder in der Sammlung aus.
-     */
-    public void alleLänderAusgeben()
-    {
-        System.out.println("Länder-Liste: ");
-
-        for (Land land : länder) {
-            System.out.println(land.gibDetails());
+        if(länder.containsKey(name)){
+            return true;
         }
-        System.out.println();
-    }
-
-    /**
-     * Entferne ein Land aus der Sammlung.
-     */
-    public void entferneLand (String name)
-    {
-        Iterator<Land> it = länder.iterator();
-        while (it.hasNext()) {
-            Land l = it.next();
-            if (l.gibName().contains(name)) {
-                it.remove();
-            }
+        else{
+            return false;
         }
+    }
+    
+    /**
+     *
+     */
+    public String gibInfoLand(String name, int tore, int punkte)
+    {
+        Land land = länder.get(name);
+        return land.gibInfo(tore, punkte);
+    }
+    
+    /**
+     *
+     */
+    public String speichereErgebnis(String landX, String landY, int toreX, int toreY)
+    {
+        String spieler = landX + ":" + landY;
+        String ergebnis = toreX + ":" + toreY;
+        spiele.put(spieler, ergebnis);
+        String daten = spieler + "|" + ergebnis;
+        return daten;
     }
 }

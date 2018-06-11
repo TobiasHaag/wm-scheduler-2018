@@ -51,6 +51,7 @@ public class Spielplan
         }
         startAusgeben();
     }
+    
     /**
      * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
      * 
