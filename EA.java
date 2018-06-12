@@ -1,7 +1,8 @@
 import java.io.*;
 import java.lang.*;
 /**
- * 
+ * Klasse EA:
+ * Die Klasse Ein-&Ausgabe beinhaltet 
  */
 public class EA
 {

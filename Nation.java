@@ -1,8 +1,10 @@
 /**
- * Beschreiben Sie hier die Klasse Nation.
+ * Klasse Nation:
+ * Die Klasse Nation enthält die Variablen name, tore & punkte um eine Nation zu implementieren.
+ * Die Getter-Methoden lieferen die Details aus den initalisierten Nationen-Variablen zurück.
  * 
  * @author Tobias Haag | HfG | IoT3
- * @version 11.06.2018
+ * @version 12.06.2018
  */
 public class Nation
 {
@@ -64,8 +66,14 @@ public class Nation
         return punkte;
     }
 
-     public String verändereDetails(int tore, int punkte)
+    /**
+     * Verändere die Variablen Tore und Punkte der Nation.
+     * Keine void Methode verwendet, da sonst keine Rückgabeparameter.
+     * @return rufe die Methode gibDetails() auf um die veränderten Nationen-Details zurückzugeben.
+     */
+    public String verändereDetails(int tore, int punkte)
     {
+        // this - Schlüsselwort wird als Übergabeparameter verwendet um die Details zu überschreiben.
         this.tore = tore;
         this.punkte = punkte;
         return gibDetails();
@@ -73,10 +81,12 @@ public class Nation
     
     /**
      * Liefere Details über die Nation: Name, Tore und Punkte.
-     * @return die Nationen-Details.
+     * Tore und Punkte werden in Stings umgewandelt.
+     * @return die Nationen-Details mit String-Trennung
      */
     public String gibDetails()
     {
+        // String.valueOf - Gibt die Zeichenfolgendarstellung des int-Arguments von tore & punkte zurück.
         return name + "|" + String.valueOf(tore) + "|" + String.valueOf(punkte);
     }
     

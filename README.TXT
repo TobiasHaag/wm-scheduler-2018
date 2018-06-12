@@ -1,14 +1,12 @@
 ------------------------------------------------------------------------
-Dies ist die README-Datei des Projekts. Hier sollten Sie Ihr Projekt
-beschreiben.
-Erzählen Sie dem Leser (jemand, der nichts über dieses Projekt weiss),
-alles, was er/sie wissen muss. Üblicherweise sollte der Kommentar 
-zumindest die folgenden Angaben umfassen:
+WM-Scheduler-2018 by Tobias Haag
 ------------------------------------------------------------------------
 
-PROJEKTBEZEICHNUNG:
-PROJEKTZWECK:
-VERSION oder DATUM:
+PROJEKTBEZEICHNUNG: WM-Scheduler-2018
+PROJEKTZWECK: Semesterprojekt im Fach Programmiersprachen 2 der HS Aalen|
+HfG Schwäbisch Gmünd bei Prof. Reiner Hönle
+DATUM: 12.06.2018
+AUTOR: Tobias Haag|IoT3|HfG
+LINK: https://github.com/TobiasHaag/wm-scheduler-2018
+ZIEL: Ausführbares Projekt in BlueJ als Spielplan zur Fußball-WM 2018
 WIE IST DAS PROJEKT ZU STARTEN:
-AUTOR(EN):
-BENUTZERHINWEISE:
