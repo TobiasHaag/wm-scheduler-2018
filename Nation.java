@@ -30,7 +30,7 @@ public class Nation
      * @param tore die Anzahl der Tore einer Nation.
      * @param punkte die Anzahl der Punkte einer Nation. 
      */
-    private void setzeDetails(String name, int tore, int punkte)
+    public void setzeDetails(String name, int tore, int punkte)
     {
         this.name = name;
         this.tore = tore;
@@ -64,6 +64,13 @@ public class Nation
         return punkte;
     }
 
+     public String verändereDetails(int tore, int punkte)
+    {
+        this.tore = tore;
+        this.punkte = punkte;
+        return gibDetails();
+    }
+    
     /**
      * Liefere Details über die Nation: Name, Tore und Punkte.
      * @return die Nationen-Details.
@@ -73,10 +80,4 @@ public class Nation
         return name + "|" + String.valueOf(tore) + "|" + String.valueOf(punkte);
     }
     
-    public String gibInfo (int tore, int punkte)
-    {
-        this.tore = tore;
-        this.punkte = punkte;
-        return name + "|" + String.valueOf(tore) + "|" + String.valueOf(punkte);
-    }
 }

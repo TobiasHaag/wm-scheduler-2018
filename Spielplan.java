@@ -7,7 +7,6 @@ import java.util.HashSet;
  */
 public class Spielplan
 {
-    private Paarungen paarung;
     private Eingabe leser;
 
     /**
@@ -15,7 +14,6 @@ public class Spielplan
      */
     public Spielplan()
     {
-        paarung = new Paarungen();
         leser = new Eingabe();
         systemStart();
     }
@@ -46,20 +44,6 @@ public class Spielplan
             }
         }
         startAusgeben();
-    }
-    
-    public void fügeSpielHinzu(String landX, String landY, int torX, int torY, String beschreibung)
-    {
-        paarung.spielHinzufügen(landX, landY, torX, torY, beschreibung);
-    }
-    
-    public void gibSpieleDetails()
-    {
-        System.out.println("Liste der Spiele: ");
-        for(int i = 0; i < paarung.gibAnzahlSpiele(); i++) {
-            System.out.println(paarung.gibSpielDetails(i));
-        }
-        System.out.println();
     }
     
     /**

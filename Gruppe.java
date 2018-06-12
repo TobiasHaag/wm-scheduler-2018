@@ -8,9 +8,9 @@ import java.util.HashMap;
 public class Gruppe
 {
     private HashMap<String, Nation> nationen;
+    private int anzahlGruppen;
+    private EA ea;
     private HashMap<String, String> spiele;
-    private int gruppenGroesse;
-    private RW rw;
     /**
      * Konstruktor für Objekte der Klasse Gruppe.
      */
@@ -18,8 +18,21 @@ public class Gruppe
     {
         nationen = new HashMap<>();
         spiele = new HashMap<>();
-        rw = new RW();
+        ea = new EA();
         ladeGruppeninfo(name);
+    }
+    
+    /**
+     *
+     */
+    public boolean nationenPrüfen(String name)
+    {
+        if(nationen.containsKey(name)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
     /**
@@ -29,16 +42,33 @@ public class Gruppe
     {
         Nation nation = new Nation(name, 0, 0);
         nationen.put(name, nation);
-        gruppenGroesse += 1;
+        anzahlGruppen +=1;
+    }
+    
+    /**
+     *
+     */
+    public int gibNationenAnzahl()
+    {
+        return nationen.size();
+    }
+    
+    /**
+     *
+     */
+    public String verändereDetailsNation(String name, int tore, int punkte)
+    {
+        Nation nation = nationen.get(name);
+        return nation.verändereDetails(tore, punkte);
     }
     
     public void ladeNation(String name)
     {
-        String[] teil = gibDatenTeil("Nationen", name);
+        String[] teilung = gibDatenTeilung("Nationen", name);
         
-        String nameNation = teil[0];
-        int tore = Integer.valueOf(teil[1]);
-        int punkte = Integer.valueOf(teil[2]);
+        String nameNation = teilung[0];
+        int tore = Integer.valueOf(teilung[1]);
+        int punkte = Integer.valueOf(teilung[2]);
         
         nationen.put(nameNation, new Nation(nameNation, tore, punkte));
     }
@@ -48,16 +78,16 @@ public class Gruppe
      */
     public void ladeGruppeninfo(String name)
     {
-        String[] teil = gibDatenTeil("Gruppen", name);
+        String[] teilung = gibDatenTeilung("Gruppen", name);
 
-        gruppenGroesse = Integer.valueOf(teil[0]);
-        for (int i = 1; i <= gruppenGroesse; i++) {
-            ladeNation(teil[i]);
+        anzahlGruppen = Integer.valueOf(teilung[0]);
+        for (int i = 1; i <= anzahlGruppen; i++) {
+            ladeNation(teilung[i]);
         }
 
-        if(teil.length >= gruppenGroesse+2){
-            for (int i = gruppenGroesse+1; i < teil.length; i++) {
-                String[] daten = teil[i].split("-");
+        if(teilung.length >= anzahlGruppen+2){
+            for (int i = anzahlGruppen+1; i < teilung.length; i++) {
+                String[] daten = teilung[i].split("-");
                 spiele.put(daten[0], daten[1]);
             }
         }
@@ -66,49 +96,30 @@ public class Gruppe
     /**
      * 
      */
-    public String[] gibDatenTeil(String ordner, String datei)
+    public String[] gibDatenTeilung(String ordner, String datei)
     {
         String daten = "";
         try{
-            daten = rw.ladeDatei(ordner, datei);
+            daten = ea.ladeDatei(ordner, datei);
         }
         catch (Exception e) {
             e.printStackTrace();
         }
 
-        String[] teil = daten.split("|");
-        return teil;
+        String[] teilung = daten.split("|");
+        return teilung;
     }
     
     public String gibDaten(String ordner, String datei)
     {
         String daten = "";
         try{
-            daten = rw.ladeDatei(ordner, datei);
+            daten = ea.ladeDatei(ordner, datei);
         }
         catch (Exception e) {
             e.printStackTrace();
         }
         return daten; 
     }
-
-    /**
-     *
-     */
-    public boolean prüfeNation(String name)
-    {
-        if(nationen.containsKey(name)){
-            return true;
-        }
-        else{return false;}
-    }
-
-    /**
-     *
-     */
-    public String gibInfoNation(String name, int tore, int punkte)
-    {
-        Nation nation = nationen.get(name);
-        return nation.gibInfo(tore, punkte);
-    }
+    
 }

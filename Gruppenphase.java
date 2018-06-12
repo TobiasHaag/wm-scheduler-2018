@@ -9,19 +9,17 @@ import java.io.*;
  */
 public class Gruppenphase
 {
-    private HashMap<String, Gruppe> gruppenHash; // das muss zur Hashmap gemacht werden oder in die txt geschrieben werden
-    private RW rw;
+    private HashMap<String, Gruppe> gruppenSpieler; // das muss zur Hashmap gemacht werden oder in die txt geschrieben werden
+    private EA ea;
+    
     /**
-     * Konstruktor für Objekte der Klasse Land.
-     * @param name der Name der Nation.
-     * @param tore die Anzahl der geschossenen Tore.
-     * @param punkte die Anzahl der erreichten Punkte.
+     * 
      */
     public Gruppenphase()
     {
-        gruppenHash = new HashMap<>();
+        gruppenSpieler = new HashMap<>();
         ladeGruppen();
-        rw = new RW();
+        ea = new EA();
     }
     
     /**
@@ -29,14 +27,14 @@ public class Gruppenphase
      */
     public void ladeGruppen()
     {
-        gruppenHash.put("A", new Gruppe("A"));
-        gruppenHash.put("B", new Gruppe("B"));
-        gruppenHash.put("C", new Gruppe("C"));
-        gruppenHash.put("D", new Gruppe("D"));
-        gruppenHash.put("E", new Gruppe("E"));
-        gruppenHash.put("F", new Gruppe("F"));
-        gruppenHash.put("G", new Gruppe("G"));
-        gruppenHash.put("H", new Gruppe("H"));
+        gruppenSpieler.put("A", new Gruppe("A"));
+        gruppenSpieler.put("B", new Gruppe("B"));
+        gruppenSpieler.put("C", new Gruppe("C"));
+        gruppenSpieler.put("D", new Gruppe("D"));
+        gruppenSpieler.put("E", new Gruppe("E"));
+        gruppenSpieler.put("F", new Gruppe("F"));
+        gruppenSpieler.put("G", new Gruppe("G"));
+        gruppenSpieler.put("H", new Gruppe("H"));
     }
     
     /**
@@ -46,10 +44,10 @@ public class Gruppenphase
     {
         String daten = "";
 
-        for (String key : gruppenHash.keySet()) {
-            Gruppe gruppe = gruppenHash.get(key);
+        for (String key : gruppenSpieler.keySet()) {
+            Gruppe gruppe = gruppenSpieler.get(key);
 
-            if(gruppe.prüfeNation(nation) == true){
+            if(gruppe.nationenPrüfen(nation) == true){
                 return gruppe;
             }
         }
@@ -60,7 +58,7 @@ public class Gruppenphase
     private String gibDatenSpielergebnis(String nation, int tore, int punkte)
     {
         Gruppe gruppe = gibGruppeWennNation(nation);
-        String daten = gruppe.gibInfoNation(nation, tore, punkte);
+        String daten = gruppe.verändereDetailsNation(nation, tore, punkte);
         return daten;
     }
     
@@ -72,13 +70,13 @@ public class Gruppenphase
         String gruppeX = "";
         String gruppeY = "";
         
-        for (String key : gruppenHash.keySet()) {
-            Gruppe gruppe = gruppenHash.get(key);
+        for (String key : gruppenSpieler.keySet()) {
+            Gruppe gruppe = gruppenSpieler.get(key);
 
-            if(gruppe.prüfeNation(nationX) == true){
+            if(gruppe.nationenPrüfen(nationX) == true){
                 gruppeX = key;
             }
-            if(gruppe.prüfeNation(nationY) == true){
+            if(gruppe.nationenPrüfen(nationY) == true){
                 gruppeY = key;
             }
         }
@@ -107,13 +105,13 @@ public class Gruppenphase
         String gruppe = prüfeLänderInGruppe(nationX, nationY);
 
         if(prüfeLänderInGruppe(nationX, nationY) != null){
-            Gruppe gruppeEins = gruppenHash.get(gruppe);
+            Gruppe gruppeEins = gruppenSpieler.get(gruppe);
             if(gruppeEins.gibDaten("Gruppen", gruppe).contains(datenSpieler) == false
                 && gruppeEins.gibDaten("Gruppen", gruppe).contains(datenSpielerRück) == false){
                 
                 if(speichereNation(nationX, toreX, punkteX) && speichereNation(nationY, toreY, punkteY)== true){
                     try{
-                        rw.appendGruppe(gruppe, daten);
+                        ea.speichereGruppe2(gruppe, daten);
                     }
                     catch (Exception e) {
                         e.printStackTrace();
@@ -137,7 +135,7 @@ public class Gruppenphase
         }
         else{
             try{
-                rw.speichereNation(gibDatenSpielergebnis(nation, tore, punkte));
+                ea.speichereNation(gibDatenSpielergebnis(nation, tore, punkte));
             }
             catch (Exception e) {
                 e.printStackTrace();
