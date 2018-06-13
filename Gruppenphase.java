@@ -2,116 +2,114 @@ import java.util.HashMap;
 import java.lang.*;
 import java.io.*;
 /**
- * Beschreiben Sie hier die Klasse Gruppenphase.
  * 
- * @author Tobias Haag | HfG | IoT3
- * @version 11.06.2018
  */
 public class Gruppenphase
 {
-    private HashMap<String, Gruppe> gruppenSpieler; // das muss zur Hashmap gemacht werden oder in die txt geschrieben werden
-    private EA ea;
-    
+    private HashMap<String, Gruppe> gruppenHash; // das muss zur Hashmap gemacht werden oder in die txt geschrieben werden
+    private IO io;
+
     /**
-     * 
+     * Constructor for objects of class Gruppen
      */
     public Gruppenphase()
     {
-        gruppenSpieler = new HashMap<>();
+        gruppenHash = new HashMap<>();
         ladeGruppen();
-        ea = new EA();
+        io = new IO();
     }
-    
+
     /**
      * 
      */
     public void ladeGruppen()
     {
-        gruppenSpieler.put("A", new Gruppe("A"));
-        gruppenSpieler.put("B", new Gruppe("B"));
-        gruppenSpieler.put("C", new Gruppe("C"));
-        gruppenSpieler.put("D", new Gruppe("D"));
-        gruppenSpieler.put("E", new Gruppe("E"));
-        gruppenSpieler.put("F", new Gruppe("F"));
-        gruppenSpieler.put("G", new Gruppe("G"));
-        gruppenSpieler.put("H", new Gruppe("H"));
+        gruppenHash.put("A", new Gruppe("A"));
+        gruppenHash.put("B", new Gruppe("B"));
+        gruppenHash.put("C", new Gruppe("C"));
+        gruppenHash.put("D", new Gruppe("D"));
+        gruppenHash.put("E", new Gruppe("E"));
+        gruppenHash.put("F", new Gruppe("F"));
+        gruppenHash.put("G", new Gruppe("G"));
+        gruppenHash.put("H", new Gruppe("H"));
     }
-    
+
     /**
      * 
      */
-    private Gruppe gibGruppeWennNation(String nation)
+    private Gruppe gibGruppeWennLand(String land)
     {
         String daten = "";
 
-        for (String key : gruppenSpieler.keySet()) {
-            Gruppe gruppe = gruppenSpieler.get(key);
+        for (String key : gruppenHash.keySet()) {
+            Gruppe gruppe = gruppenHash.get(key);
 
-            if(gruppe.nationenPrüfen(nation) == true){
+            if(gruppe.prüfeLand(land) == true){
                 return gruppe;
             }
         }
 
         return null;
     }
-
-    private String gibDatenSpielergebnis(String nation, int tore, int punkte)
+    
+    private String gibDatenSpielergebnis(String land, int tore, int punkte)
     {
-        Gruppe gruppe = gibGruppeWennNation(nation);
-        String daten = gruppe.verändereDetailsNation(nation, tore, punkte);
+        Gruppe gruppe = gibGruppeWennLand(land);
+        String daten = gruppe.gibUpdatedInfoLand(land, tore, punkte);
         return daten;
     }
     
     /**
      * 
      */
-    private String prüfeLänderInGruppe(String nationX, String nationY)
+    private String prüfeLänderInGruppe(String land1, String land2)
     {
-        String gruppeX = "";
-        String gruppeY = "";
+        String gruppe1 = "";
+        String gruppe2 = "";
         
-        for (String key : gruppenSpieler.keySet()) {
-            Gruppe gruppe = gruppenSpieler.get(key);
+        for (String key : gruppenHash.keySet()) {
+            Gruppe gruppe = gruppenHash.get(key);
 
-            if(gruppe.nationenPrüfen(nationX) == true){
-                gruppeX = key;
+            if(gruppe.prüfeLand(land1) == true){
+                gruppe1 = key;
             }
-            if(gruppe.nationenPrüfen(nationY) == true){
-                gruppeY = key;
+            if(gruppe.prüfeLand(land2) == true){
+                gruppe2 = key;
             }
         }
         
-        if(gruppeX == gruppeY){
-            return gruppeX;
+        if(gruppe1 == gruppe2){
+            return gruppe1;
         }
         else{return null;}
         
     }
 
-    public void updateSpielergebnis(String nationXklein, int toreX, String nationYklein, int toreY)
+
+    public void updateSpielergebnis(String land1klein, int tore1, String land2klein, int tore2)
     {
-        int punkteX = 0;
-        int punkteY = 0;
-        String nationX = schreibeGroß(nationXklein);
-        String nationY = schreibeGroß(nationYklein);
+        int punkte1 = 0;
+        int punkte2 = 0;
+        String land1 = schreibeGroß(land1klein);
+        String land2 = schreibeGroß(land2klein);
         
-        if(toreX > toreY){punkteX = 3;}
-        if(toreX < toreY){punkteY = 3;}
-        if(toreX == toreY){punkteX = 1; punkteY = 1;}
+        if(tore1 > tore2){punkte1 = 3;}
+        if(tore1 < tore2){punkte2 = 3;}
+        if(tore1 == tore2){punkte1 = 1; punkte2 = 1;}
 
-        String daten = nationX + ":" + nationY + "-" + toreX + ":" + toreY;
-        String datenSpieler = nationX + ":" + nationY;
-        String datenSpielerRück = nationY + ":" + nationX;
-        String gruppe = prüfeLänderInGruppe(nationX, nationY);
+        String daten = land1 + ":" + land2 + "-" + tore1 + ":" + tore2;
+        String datenSpieler = land1 + ":" + land2;
+        String datenSpielerRück = land2 + ":" + land1;
+        String gruppe = prüfeLänderInGruppe(land1, land2);
 
-        if(prüfeLänderInGruppe(nationX, nationY) != null){
-            Gruppe gruppeEins = gruppenSpieler.get(gruppe);
+        if(prüfeLänderInGruppe(land1, land2) != null){
+            Gruppe gruppeEins = gruppenHash.get(gruppe);
             if(gruppeEins.gibDaten("Gruppen", gruppe).contains(datenSpieler) == false
                 && gruppeEins.gibDaten("Gruppen", gruppe).contains(datenSpielerRück) == false){
                 
-                if(speichereNation(nationX, toreX, punkteX) && speichereNation(nationY, toreY, punkteY)== true){
+                if(speichereLand(land1, tore1, punkte1) && speichereLand(land2, tore2, punkte2)== true){
                     try{
-                        ea.speichereGruppe2(gruppe, daten);
+                        io.appendGruppe(gruppe, daten);
                     }
                     catch (Exception e) {
                         e.printStackTrace();
@@ -123,19 +121,19 @@ public class Gruppenphase
         }
         else{System.out.println("Die Länder sind nicht in einer Gruppe!");}
     }
-    
+
     /**
      * 
      */
-    public boolean speichereNation(String nation, int tore, int punkte)
+    public boolean speichereLand(String land, int tore, int punkte)
     {
-        if(gibGruppeWennNation(nation) == null){
-            System.out.println("Die Nation " + nation + " existiert nicht");
+        if(gibGruppeWennLand(land) == null){
+            System.out.println("Das Land " + land + " existiert nicht");
             return false;
         }
         else{
             try{
-                ea.speichereNation(gibDatenSpielergebnis(nation, tore, punkte));
+                io.speichereLand(gibDatenSpielergebnis(land, tore, punkte));
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -152,5 +150,5 @@ public class Gruppenphase
         String ausgabe = eingabe.substring(0, 1).toUpperCase() + eingabe.substring(1);
         return ausgabe;
     }
-    
+
 }

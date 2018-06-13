@@ -87,7 +87,7 @@ public class Nation
     public String gibDetails()
     {
         // String.valueOf - Gibt die Zeichenfolgendarstellung des int-Arguments von tore & punkte zurück.
-        return name + "|" + String.valueOf(tore) + "|" + String.valueOf(punkte);
+        return name + "/" + String.valueOf(this.tore) + "/" + String.valueOf(this.punkte);
     }
     
 }
