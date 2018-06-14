@@ -1,43 +1,49 @@
 import java.util.HashMap;
 /**
- *
+ * Beschreiben Sie hier die Klasse Gruppe.
+ * 
+ * @author Tobias Haag | HfG | IoT3
+ * @version 11.06.2018
  */
 public class Gruppe
 {
-    private HashMap<String, Land> länder;
-    private int gruppenGroesse;
-    private IO io;
+    private HashMap<String, Nation> nationen;
+    private int anzahlNationen;
+    private EA ea;
     private HashMap<String, String> spiele;
     /**
-     * Konstructor
+     *
      */
     public Gruppe(String name)
     {
-        länder = new HashMap<>();
+        nationen = new HashMap<>();
         spiele = new HashMap<>();
-        io = new IO();
+        ea = new EA();
         ladeGruppeninfo(name);
     }
 
     /**
      * 
      */
-    public void erstelleLand(String name)
+    public void erstelleNation(String name)
     {
-        Land land = new Land(name, 0, 0);
-        länder.put(name, land);
-        gruppenGroesse += 1;
+        Nation nation = new Nation(name, 0, 0);
+        nationen.put(name, nation);
+        anzahlNationen += 1;
     }
 
-    public void ladeLand(String name)
+    /**
+     * 
+     */
+    public void ladeNation(String name)
     {
-        String[] teile = gibDatenTeile("Länder", name);
+        String[] teile = gibDatenTeile("Nationen", name);
 
-        String nameLand = teile[0];
+        String nameNation = teile[0];
         int tore = Integer.valueOf(teile[1]);
         int punkte = Integer.valueOf(teile[2]);
 
-        länder.put(nameLand, new Land(nameLand, tore, punkte));
+        nationen.put(nameNation, new Nation(nameNation, tore, punkte));
 
     }
 
@@ -48,13 +54,13 @@ public class Gruppe
     {
         String[] teile = gibDatenTeile("Gruppen", name);
 
-        gruppenGroesse = Integer.valueOf(teile[0]);
-        for (int i = 1; i <= gruppenGroesse; i++) {
-            ladeLand(teile[i]);
+        anzahlNationen = Integer.valueOf(teile[0]);
+        for (int i = 1; i <= anzahlNationen; i++) {
+            ladeNation(teile[i]);
         }
 
-        if(teile.length >= gruppenGroesse+2){
-            for (int i = gruppenGroesse+1; i < teile.length; i++) {
+        if(teile.length >= anzahlNationen+2){
+            for (int i = anzahlNationen+1; i < teile.length; i++) {
                 String[] daten = teile[i].split("-");
                 spiele.put(daten[0], daten[1]);
             }
@@ -68,21 +74,24 @@ public class Gruppe
     {
         String daten = "";
         try{
-            daten = io.ladeDatei(ordner, datei);
+            daten = ea.ladeDatei(ordner, datei);
         }
         catch (Exception e) {
             e.printStackTrace();
         }
 
-        String[] teile = daten.split("/");
+        String[] teile = daten.split("|");
         return teile;
     }
-    
+
+    /**
+     * 
+     */
     public String gibDaten(String ordner, String datei)
     {
         String daten = "";
         try{
-            daten = io.ladeDatei(ordner, datei);
+            daten = ea.ladeDatei(ordner, datei);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -93,20 +102,22 @@ public class Gruppe
     /**
      *
      */
-    public boolean prüfeLand(String name)
+    public boolean nationenPrüfen(String name)
     {
-        if(länder.containsKey(name)){
+        if(nationen.containsKey(name)){
             return true;
         }
-        else{return false;}
+        else{
+            return false;
+        }
     }
 
     /**
      *
      */
-    public String gibUpdatedInfoLand(String name, int tore, int punkte)
+    public String verändereDetailsNation(String name, int tore, int punkte)
     {
-        Land land = länder.get(name);
-        return land.gibUpdatedInfo(tore, punkte);
+        Nation nation = nationen.get(name);
+        return nation.verändereDetails(tore, punkte);
     }
 }

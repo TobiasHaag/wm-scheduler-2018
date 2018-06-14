@@ -23,7 +23,7 @@ public class Nation
      */
     public Nation(String name, int tore, int punkte)
     {
-        setzeDetails(name, tore, punkte);
+        setDetails(name, tore, punkte);
     }
 
     /**
@@ -32,7 +32,7 @@ public class Nation
      * @param tore die Anzahl der Tore einer Nation.
      * @param punkte die Anzahl der Punkte einer Nation. 
      */
-    public void setzeDetails(String name, int tore, int punkte)
+    public void setDetails(String name, int tore, int punkte)
     {
         this.name = name;
         this.tore = tore;
@@ -74,9 +74,9 @@ public class Nation
     public String verändereDetails(int tore, int punkte)
     {
         // this - Schlüsselwort wird als Übergabeparameter verwendet um die Details zu überschreiben.
-        this.tore = tore;
-        this.punkte = punkte;
-        return gibDetails();
+        this.tore += tore;
+        this.punkte += punkte;
+        return name + "/" + String.valueOf(this.tore) + "/" + String.valueOf(this.punkte);
     }
     
     /**
@@ -87,7 +87,7 @@ public class Nation
     public String gibDetails()
     {
         // String.valueOf - Gibt die Zeichenfolgendarstellung des int-Arguments von tore & punkte zurück.
-        return name + "/" + String.valueOf(this.tore) + "/" + String.valueOf(this.punkte);
+        return name + "/" + String.valueOf(tore) + "/" + String.valueOf(punkte);
     }
     
 }

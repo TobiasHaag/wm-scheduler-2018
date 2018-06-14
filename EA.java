@@ -31,7 +31,7 @@ public class EA
         while( (zeile = br.readLine()) != null )
         {
             daten += zeile;
-            daten += "|";
+            daten += "/";
         }
 
         br.close(); // InputStreams und Reader schließen
