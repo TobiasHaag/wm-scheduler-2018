@@ -2,7 +2,7 @@
  * Klasse Nation:
  * Die Klasse Nation enthält die Variablen name, tore & punkte um eine Nation zu implementieren.
  * Die Getter-Methoden lieferen die Details aus den initalisierten Nationen-Variablen zurück.
- * 
+ *
  * @author Tobias Haag | HfG | IoT3
  * @version 12.06.2018
  */
@@ -14,7 +14,6 @@ public class Nation
     private int tore;
     // Die erreichten Punkte.
     private int punkte;
-
     /**
      * Konstruktor für Objekte der Klasse Nation.
      * @param name der Name der Nation.
@@ -23,16 +22,16 @@ public class Nation
      */
     public Nation(String name, int tore, int punkte)
     {
-        setDetails(name, tore, punkte);
+        setWerte(name, tore, punkte);
     }
 
     /**
      * Lege die Details der Nation fest.
      * @param name der Name der Nation.
      * @param tore die Anzahl der Tore einer Nation.
-     * @param punkte die Anzahl der Punkte einer Nation. 
+     * @param punkte die Anzahl der Punkte einer Nation.
      */
-    public void setDetails(String name, int tore, int punkte)
+    public void setWerte (String name, int tore, int punkte)
     {
         this.name = name;
         this.tore = tore;
@@ -43,7 +42,7 @@ public class Nation
      * Liefere den Namen.
      * @return der Name.
      */
-    public String gibName()
+    public String getName ()
     {
         return name;
     }
@@ -67,27 +66,27 @@ public class Nation
     }
 
     /**
+     * Liefere Details über die Nation: Name, Tore und Punkte.
+     * Tore und Punkte werden in Stings umgewandelt.
+     * @return die Nationen-Details mit String-Trennung
+     */
+    public String gibInfo ()
+    {
+        // String.valueOf - Gibt die Zeichenfolgendarstellung des int-Arguments von tore & punkte zurück.
+        return name + "/" + String.valueOf(tore) + "/" + String.valueOf(punkte);
+    }
+
+    /**
      * Verändere die Variablen Tore und Punkte der Nation.
      * Keine void Methode verwendet, da sonst keine Rückgabeparameter.
      * @return rufe die Methode gibDetails() auf um die veränderten Nationen-Details zurückzugeben.
      */
-    public String verändereDetails(int tore, int punkte)
+    public String gibUpdatedInfo (int tore, int punkte)
     {
         // this - Schlüsselwort wird als Übergabeparameter verwendet um die Details zu überschreiben.
         this.tore += tore;
         this.punkte += punkte;
         return name + "/" + String.valueOf(this.tore) + "/" + String.valueOf(this.punkte);
     }
-    
-    /**
-     * Liefere Details über die Nation: Name, Tore und Punkte.
-     * Tore und Punkte werden in Stings umgewandelt.
-     * @return die Nationen-Details mit String-Trennung
-     */
-    public String gibDetails()
-    {
-        // String.valueOf - Gibt die Zeichenfolgendarstellung des int-Arguments von tore & punkte zurück.
-        return name + "/" + String.valueOf(tore) + "/" + String.valueOf(punkte);
-    }
-    
+
 }
