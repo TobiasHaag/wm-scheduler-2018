@@ -2,7 +2,6 @@ import java.io.*; //java.io - Das Package enthält eine Sammlung von Klassen, di
 /**
  * Klasse EA:
  * Die Klasse Ein&Ausgabe ...
- * 
  * @author Tobias Haag | HfG | IoT3
  * @version 12.06.2018
  */
