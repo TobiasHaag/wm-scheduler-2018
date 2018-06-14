@@ -8,14 +8,14 @@ public class Gruppe
     private HashMap<String, Nation> nationen;
     private int anzahlGruppen;
     private RW rw;
-    private HashMap<String, String> spiele;
+    private HashMap<String, String> spielpartien;
     /**
      * Konstructor
      */
     public Gruppe(String name)
     {
         nationen = new HashMap<>();
-        spiele = new HashMap<>();
+        spielpartien = new HashMap<>();
         rw = new RW();
         ladeGruppeninfo(name);
     }
@@ -57,7 +57,7 @@ public class Gruppe
         if(element.length >= anzahlGruppen+2){
             for (int i = anzahlGruppen+1; i < element.length; i++) {
                 String[] daten = element[i].split("-");
-                spiele.put(daten[0], daten[1]);
+                spielpartien.put(daten[0], daten[1]);
             }
         }
     }

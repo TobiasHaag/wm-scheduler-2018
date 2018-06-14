@@ -62,7 +62,7 @@ public class RW
     /**
      *
      */
-    public  void appendGruppe(String dateiName, String daten) throws IOException
+    public  void hinzufügenGruppe(String dateiName, String daten) throws IOException
     {
         String datei = "Gruppen/" + dateiName + ".txt";
         FileWriter fw = new FileWriter(datei, true);

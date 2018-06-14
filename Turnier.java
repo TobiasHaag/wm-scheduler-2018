@@ -110,7 +110,7 @@ public class Turnier
 
                 if(speichereNation(nation1, tore1, punkte1) && speichereNation(nation2, tore2, punkte2)== true){
                     try{
-                        rw.appendGruppe(gruppe, daten);
+                        rw.hinzufügenGruppe(gruppe, daten);
                     }
                     catch (Exception e) {
                         e.printStackTrace();
