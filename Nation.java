@@ -4,7 +4,7 @@
  * Die Getter-Methoden lieferen die Details aus den initalisierten Nationen-Variablen zurück.
  *
  * @author Tobias Haag | HfG | IoT3
- * @version 12.06.2018
+ * @version 14.06.2018
  */
 public class Nation
 {
@@ -22,7 +22,7 @@ public class Nation
      */
     public Nation(String name, int tore, int punkte)
     {
-        setWerte(name, tore, punkte);
+        setzeDetails(name, tore, punkte);
     }
 
     /**
@@ -31,7 +31,7 @@ public class Nation
      * @param tore die Anzahl der Tore einer Nation.
      * @param punkte die Anzahl der Punkte einer Nation.
      */
-    public void setWerte (String name, int tore, int punkte)
+    public void setzeDetails (String name, int tore, int punkte)
     {
         this.name = name;
         this.tore = tore;
@@ -42,7 +42,7 @@ public class Nation
      * Liefere den Namen.
      * @return der Name.
      */
-    public String getName ()
+    public String gibName ()
     {
         return name;
     }
@@ -70,7 +70,7 @@ public class Nation
      * Tore und Punkte werden in Stings umgewandelt.
      * @return die Nationen-Details mit String-Trennung
      */
-    public String gibInfo ()
+    public String gibDetails ()
     {
         // String.valueOf - Gibt die Zeichenfolgendarstellung des int-Arguments von tore & punkte zurück.
         return name + "/" + String.valueOf(tore) + "/" + String.valueOf(punkte);
@@ -81,7 +81,7 @@ public class Nation
      * Keine void Methode verwendet, da sonst keine Rückgabeparameter.
      * @return rufe die Methode gibDetails() auf um die veränderten Nationen-Details zurückzugeben.
      */
-    public String gibUpdatedInfo (int tore, int punkte)
+    public String gibVeränderteDetails (int tore, int punkte)
     {
         // this - Schlüsselwort wird als Übergabeparameter verwendet um die Details zu überschreiben.
         this.tore += tore;

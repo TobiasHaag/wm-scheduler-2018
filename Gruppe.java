@@ -105,9 +105,9 @@ public class Gruppe
     /**
      *
      */
-    public String gibUpdatedInfoNation(String name, int tore, int punkte)
+    public String gibVeränderteDetailsNation(String name, int tore, int punkte)
     {
         Nation nation = nationen.get(name);
-        return nation.gibUpdatedInfo(tore, punkte);
+        return nation.gibVeränderteDetails(tore, punkte);
     }
 }

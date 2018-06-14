@@ -56,7 +56,7 @@ public class Turnier
     private String gibDatenSpielergebnis(String nation, int tore, int punkte)
     {
         Gruppe gruppe = gibGruppeWennNation(nation);
-        String daten = gruppe.gibUpdatedInfoNation(nation, tore, punkte);
+        String daten = gruppe.gibVeränderteDetailsNation(nation, tore, punkte);
         return daten;
     }
 
