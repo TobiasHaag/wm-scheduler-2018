@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class Gruppe
 {
     private HashMap<String, Nation> nationen;
-    private int gruppenGroesse;
+    private int anzahlGruppen;
     private RW rw;
     private HashMap<String, String> spiele;
     /**
@@ -27,7 +27,7 @@ public class Gruppe
     {
         Nation nation = new Nation(name, 0, 0);
         nationen.put(name, nation);
-        gruppenGroesse += 1;
+        anzahlGruppen += 1;
     }
 
     public void ladeNation(String name)
@@ -49,13 +49,13 @@ public class Gruppe
     {
         String[] teile = gibDatenTeile("Gruppen", name);
 
-        gruppenGroesse = Integer.valueOf(teile[0]);
-        for (int i = 1; i <= gruppenGroesse; i++) {
+        anzahlGruppen = Integer.valueOf(teile[0]);
+        for (int i = 1; i <= anzahlGruppen; i++) {
             ladeNation(teile[i]);
         }
 
-        if(teile.length >= gruppenGroesse+2){
-            for (int i = gruppenGroesse+1; i < teile.length; i++) {
+        if(teile.length >= anzahlGruppen+2){
+            for (int i = anzahlGruppen+1; i < teile.length; i++) {
                 String[] daten = teile[i].split("-");
                 spiele.put(daten[0], daten[1]);
             }
