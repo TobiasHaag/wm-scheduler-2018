@@ -44,16 +44,16 @@ public class RW
      */
     public  void speichereNation(String daten) throws IOException
     {
-        String[] teile = daten.split("/");
+        String[] element = daten.split("/");
 
-        String datei = "Nationen/" + teile[0] + ".txt";
+        String datei = "Nationen/" + element[0] + ".txt";
         FileWriter fw = new FileWriter(datei);
         BufferedWriter bw = new BufferedWriter(fw);
 
 
-        for (int x = 0; x < teile.length; x++) {
-            bw.write(teile[x]);
-            if(x<teile.length){bw.newLine();};
+        for (int x = 0; x < element.length; x++) {
+            bw.write(element[x]);
+            if(x<element.length){bw.newLine();};
         }
 
         bw.close();
