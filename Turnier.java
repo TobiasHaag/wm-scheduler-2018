@@ -7,7 +7,7 @@ import java.io.*;
  */
 public class Turnier
 {
-    private HashMap<String, Gruppe> gruppenHash; // das muss zur Hashmap gemacht werden oder in die txt geschrieben werden
+    private HashMap<String, Gruppe> turnierGruppen; // das muss zur Hashmap gemacht werden oder in die txt geschrieben werden
     private RW rw;
 
     /**
@@ -15,7 +15,7 @@ public class Turnier
      */
     public Turnier()
     {
-        gruppenHash = new HashMap<>();
+        turnierGruppen = new HashMap<>();
         ladeGruppen();
         rw = new RW();
     }
@@ -25,14 +25,14 @@ public class Turnier
      */
     public void ladeGruppen()
     {
-        gruppenHash.put("A", new Gruppe("A"));
-        gruppenHash.put("B", new Gruppe("B"));
-        gruppenHash.put("C", new Gruppe("C"));
-        gruppenHash.put("D", new Gruppe("D"));
-        gruppenHash.put("E", new Gruppe("E"));
-        gruppenHash.put("F", new Gruppe("F"));
-        gruppenHash.put("G", new Gruppe("G"));
-        gruppenHash.put("H", new Gruppe("H"));
+        turnierGruppen.put("A", new Gruppe("A"));
+        turnierGruppen.put("B", new Gruppe("B"));
+        turnierGruppen.put("C", new Gruppe("C"));
+        turnierGruppen.put("D", new Gruppe("D"));
+        turnierGruppen.put("E", new Gruppe("E"));
+        turnierGruppen.put("F", new Gruppe("F"));
+        turnierGruppen.put("G", new Gruppe("G"));
+        turnierGruppen.put("H", new Gruppe("H"));
     }
 
     /**
@@ -42,8 +42,8 @@ public class Turnier
     {
         String daten = "";
 
-        for (String key : gruppenHash.keySet()) {
-            Gruppe gruppe = gruppenHash.get(key);
+        for (String key : turnierGruppen.keySet()) {
+            Gruppe gruppe = turnierGruppen.get(key);
 
             if(gruppe.prüfeNation(nation) == true){
                 return gruppe;
@@ -68,8 +68,8 @@ public class Turnier
         String gruppe1 = "";
         String gruppe2 = "";
 
-        for (String key : gruppenHash.keySet()) {
-            Gruppe gruppe = gruppenHash.get(key);
+        for (String key : turnierGruppen.keySet()) {
+            Gruppe gruppe = turnierGruppen.get(key);
 
             if(gruppe.prüfeNation(nation1) == true){
                 gruppe1 = key;
@@ -104,7 +104,7 @@ public class Turnier
         String gruppe = prüfeNationenInGruppe(nation1, nation2);
 
         if(prüfeNationenInGruppe(nation1, nation2) != null){
-            Gruppe gruppeEins = gruppenHash.get(gruppe);
+            Gruppe gruppeEins = turnierGruppen.get(gruppe);
             if(gruppeEins.gibDaten("Gruppen", gruppe).contains(datenSpieler) == false
                 && gruppeEins.gibDaten("Gruppen", gruppe).contains(datenSpielerRück) == false){
 
