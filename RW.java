@@ -1,5 +1,4 @@
 import java.io.*; //java.io - Das Package enthält eine Sammlung von Klassen, die die Ein- und Ausgabe sowie Dateiverwaltung unterstützen.
-import java.lang.*;
 /**
  * Klasse RW:
  * Die Klasse Read&Write ...

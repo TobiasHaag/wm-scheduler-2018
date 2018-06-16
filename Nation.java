@@ -4,7 +4,7 @@
  * Die Getter-Methoden lieferen die Details aus den initalisierten Nationen-Variablen zurück.
  *
  * @author Tobias Haag | HfG | IoT3
- * @version 14.06.2018
+ * @version 16.06.2018
  */
 public class Nation
 {
@@ -73,7 +73,7 @@ public class Nation
     public String gibDetails ()
     {
         // String.valueOf - Gibt die Zeichenfolgendarstellung des int-Arguments von tore & punkte zurück.
-        return name + "/" + String.valueOf(tore) + "/" + String.valueOf(punkte);
+        return name + "/" + String.valueOf(this.tore) + "/" + String.valueOf(this.punkte);
     }
 
     /**
@@ -86,7 +86,7 @@ public class Nation
         // this - Schlüsselwort wird als Übergabeparameter verwendet um die Details zu überschreiben.
         this.tore += tore;
         this.punkte += punkte;
-        return name + "/" + String.valueOf(this.tore) + "/" + String.valueOf(this.punkte);
+        return gibDetails();
     }
 
 }

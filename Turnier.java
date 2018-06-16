@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.lang.*;
 import java.io.*;
 /**
  * @author Tobias Haag | HfG | IoT3
@@ -9,6 +8,7 @@ public class Turnier
 {
     private HashMap<String, Gruppe> turnierGruppen; // das muss zur Hashmap gemacht werden oder in die txt geschrieben werden
     private RW rw;
+    private Spiele spiele;
 
     /**
      * Constructor for objects of class Gruppen
@@ -18,6 +18,7 @@ public class Turnier
         turnierGruppen = new HashMap<>();
         ladeGruppen();
         rw = new RW();
+        spiele = new Spiele();
     }
 
     /**
@@ -86,13 +87,10 @@ public class Turnier
 
     }
 
-
-    public void updateSpielergebnis(String nation1klein, int tore1, String nation2klein, int tore2)
+    public void updateSpielergebnis(String nation1, int tore1, String nation2, int tore2)
     {
         int punkte1 = 0;
         int punkte2 = 0;
-        String nation1 = schreibeGroß(nation1klein);
-        String nation2 = schreibeGroß(nation2klein);
 
         if(tore1 > tore2){punkte1 = 3;}
         if(tore1 < tore2){punkte2 = 3;}
@@ -141,15 +139,6 @@ public class Turnier
             }
             return true;
         }
-    }
-
-    /**
-     *
-     */
-    private String schreibeGroß(String eingabe)
-    {
-        String ausgabe = eingabe.substring(0, 1).toUpperCase() + eingabe.substring(1);
-        return ausgabe;
     }
 
 }

@@ -1,7 +1,8 @@
 import java.util.HashMap;
 /**
  * @author Tobias Haag | HfG | IoT3
- * @version 14.06.2018
+ * @version 14
+ * 16.06.2018
  */
 public class Gruppe
 {
@@ -18,16 +19,6 @@ public class Gruppe
         spielpartien = new HashMap<>();
         rw = new RW();
         ladeGruppeninfo(name);
-    }
-
-    /**
-     *
-     */
-    public void erstelleNation(String name)
-    {
-        Nation nation = new Nation(name, 0, 0);
-        nationen.put(name, nation);
-        anzahlGruppen += 1;
     }
 
     public void ladeNation(String name)
@@ -99,7 +90,9 @@ public class Gruppe
         if(nationen.containsKey(name)){
             return true;
         }
-        else{return false;}
+        else{
+            return false;
+        }
     }
 
     /**
