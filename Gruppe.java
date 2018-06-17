@@ -1,26 +1,47 @@
 import java.util.HashMap;
 /**
+ * Klasse Gruppe:
+ *
  * @author Tobias Haag | HfG | IoT3
- * @version 14
- * 16.06.2018
+ * @version 17.06.2018
  */
 public class Gruppe
 {
+    private String name;
     private HashMap<String, Nation> nationen;
-    private int anzahlGruppen;
     private RW rw;
-    private HashMap<String, String> spielpartien;
+    private int anzahlNationen;
     /**
-     * Konstructor
+     * 
      */
     public Gruppe(String name)
     {
+        this.name = name;
         nationen = new HashMap<>();
-        spielpartien = new HashMap<>();
         rw = new RW();
-        ladeGruppeninfo(name);
     }
-
+    
+    /**
+     * 
+     */
+    public void erstelleNation(String name)
+    {
+        Nation nation = new Nation(name, 0, 0);
+        nationen.put(name, nation);
+        anzahlNationen = nationen.size();
+    }
+    
+    /**
+     * 
+     */
+    public int gibAnzahlNationen()
+    {
+        return anzahlNationen;
+    }
+    
+    /**
+     * 
+     */
     public void ladeNation(String name)
     {
         String[] element = gibDatenElemente("Nationen", name);
@@ -30,31 +51,11 @@ public class Gruppe
         int punkte = Integer.valueOf(element[2]);
 
         nationen.put(nameNation, new Nation(nameNation, tore, punkte));
-
+        anzahlNationen = nationen.size();
     }
-
+    
     /**
-     *
-     */
-    public void ladeGruppeninfo(String name)
-    {
-        String[] element = gibDatenElemente("Gruppen", name);
-
-        anzahlGruppen = Integer.valueOf(element[0]);
-        for (int i = 1; i <= anzahlGruppen; i++) {
-            ladeNation(element[i]);
-        }
-
-        if(element.length >= anzahlGruppen+2){
-            for (int i = anzahlGruppen+1; i < element.length; i++) {
-                String[] daten = element[i].split("-");
-                spielpartien.put(daten[0], daten[1]);
-            }
-        }
-    }
-
-    /**
-     *
+     * 
      */
     public String[] gibDatenElemente(String ordner, String datei)
     {
@@ -69,7 +70,10 @@ public class Gruppe
         String[] element = daten.split("/");
         return element;
     }
-
+    
+    /**
+     * 
+     */
     public String gibDaten(String ordner, String datei)
     {
         String daten = "";
@@ -81,7 +85,7 @@ public class Gruppe
         }
         return daten;
     }
-
+    
     /**
      *
      */

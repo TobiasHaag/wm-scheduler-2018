@@ -38,39 +38,4 @@ public class RW
         return daten;
     }
 
-    /**
-     *
-     */
-    public  void speichereNation(String daten) throws IOException
-    {
-        String[] element = daten.split("/");
-
-        String datei = "Nationen/" + element[0] + ".txt";
-        FileWriter fw = new FileWriter(datei);
-        BufferedWriter bw = new BufferedWriter(fw);
-
-
-        for (int x = 0; x < element.length; x++) {
-            bw.write(element[x]);
-            if(x<element.length){bw.newLine();};
-        }
-
-        bw.close();
-    }
-
-    /**
-     *
-     */
-    public  void hinzufügenGruppe(String dateiName, String daten) throws IOException
-    {
-        String datei = "Gruppen/" + dateiName + ".txt";
-        FileWriter fw = new FileWriter(datei, true);
-        BufferedWriter bw = new BufferedWriter(fw);
-
-        bw.newLine();
-        bw.write(daten);
-
-
-        bw.close();
-    }
 }
