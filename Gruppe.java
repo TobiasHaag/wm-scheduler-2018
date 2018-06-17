@@ -12,6 +12,7 @@ public class Gruppe
     private HashMap<String, Nation> nationen;
     private RW rw;
     private int anzahlNationen;
+    private HashMap<String, String> spiele;
     /**
      * 
      */
@@ -20,6 +21,7 @@ public class Gruppe
         this.name = name;
         nationen = new HashMap<>();
         rw = new RW();
+        ladeGruppeninfo(name);
     }
     
     /**
@@ -54,11 +56,9 @@ public class Gruppe
     public void ladeNation(String name)
     {
         String[] element = gibDatenElemente("Nationen", name);
-
         String nameNation = element[0];
         int tore = Integer.valueOf(element[1]);
         int punkte = Integer.valueOf(element[2]);
-
         nationen.put(nameNation, new Nation(nameNation, tore, punkte));
         anzahlNationen = nationen.size();
     }
@@ -75,7 +75,6 @@ public class Gruppe
         catch (Exception e) {
             e.printStackTrace();
         }
-
         String[] element = daten.split("/");
         return element;
     }
@@ -107,7 +106,7 @@ public class Gruppe
             return false;
         }
     }
-
+    
     /**
      *
      */
@@ -123,7 +122,6 @@ public class Gruppe
     public void entferneNation (String name)
     {
         Iterator<String> iterator = nationen.keySet().iterator();
-        
         while(iterator.hasNext()){
             String nation = iterator.next();
             if(nation.contains(name)){

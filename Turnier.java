@@ -8,7 +8,6 @@ public class Turnier
 {
     private HashMap<String, Gruppe> turnierGruppen; // das muss zur Hashmap gemacht werden oder in die txt geschrieben werden
     private RW rw;
-    private Spiele spiele;
 
     /**
      * Constructor for objects of class Gruppen
@@ -18,7 +17,6 @@ public class Turnier
         turnierGruppen = new HashMap<>();
         ladeGruppen();
         rw = new RW();
-        spiele = new Spiele();
     }
 
     /**
@@ -127,7 +125,7 @@ public class Turnier
     public boolean speichereNation(String nation, int tore, int punkte)
     {
         if(gibGruppeWennNation(nation) == null){
-            System.out.println("Das Nation " + nation + " existiert nicht");
+            System.out.println("Die Nation " + nation + " existiert nicht");
             return false;
         }
         else{
