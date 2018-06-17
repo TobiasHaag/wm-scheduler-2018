@@ -4,7 +4,7 @@ import java.io.*; //java.io - Das Package enthält eine Sammlung von Klassen, di
  * Die Klasse Read&Write ...
  *
  * @author Tobias Haag | HfG | IoT3
- * @version 12.06.2018
+ * @version 18.06.2018
  */
 public class RW
 {
@@ -39,7 +39,7 @@ public class RW
     public  void speichereNation(String daten) throws IOException
     {
         String[] element = daten.split("/");
-        String datei = "Länder/" + element[0] + ".txt";
+        String datei = "Nationen/" + element[0] + ".txt";
         FileWriter fw = new FileWriter(datei);
         BufferedWriter bw = new BufferedWriter(fw);
         bw.close();

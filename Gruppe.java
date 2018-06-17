@@ -31,7 +31,7 @@ public class Gruppe
     {
         Nation nation = new Nation(name, 0, 0);
         nationen.put(name, nation);
-        anzahlNationen = nationen.size();
+        anzahlNationen += 1;
     }
     
     /**
@@ -60,7 +60,7 @@ public class Gruppe
         int tore = Integer.valueOf(element[1]);
         int punkte = Integer.valueOf(element[2]);
         nationen.put(nameNation, new Nation(nameNation, tore, punkte));
-        anzahlNationen = nationen.size();
+        anzahlNationen +=1;
     }
     
     /**
@@ -68,16 +68,16 @@ public class Gruppe
      */
     public void ladeGruppeninfo(String name)
     {
-        String[] teile = gibDatenElemente("Gruppen", name);
+        String[] element = gibDatenElemente("Gruppen", name);
 
-        gruppenGroesse = Integer.valueOf(teile[0]);
-        for (int i = 1; i <= gruppenGroesse; i++) {
-            ladeLand(teile[i]);
+        anzahlNationen = Integer.valueOf(element[0]);
+        for (int i = 1; i <= anzahlNationen; i++) {
+            ladeNation(element[i]);
         }
 
-        if(teile.length >= gruppenGroesse+2){
-            for (int i = gruppenGroesse+1; i < teile.length; i++) {
-                String[] daten = teile[i].split("-");
+        if(element.length >= anzahlNationen+2){
+            for (int i = anzahlNationen+1; i < element.length; i++) {
+                String[] daten = element[i].split("-");
                 spiele.put(daten[0], daten[1]);
             }
         }
