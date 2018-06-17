@@ -1,89 +1,69 @@
 import java.util.HashMap;
-import java.util.Iterator;
 /**
- * Klasse Gruppe:
- *
  * @author Tobias Haag | HfG | IoT3
- * @version 17.06.2018
+ * @version 14.06.2018
  */
 public class Gruppe
 {
-    private String name;
     private HashMap<String, Nation> nationen;
+    private int anzahlGruppen;
     private RW rw;
-    private int anzahlNationen;
-    private HashMap<String, String> spiele;
+    private HashMap<String, String> spielpartien;
     /**
-     * 
+     * Konstructor
      */
     public Gruppe(String name)
     {
-        this.name = name;
         nationen = new HashMap<>();
+        spielpartien = new HashMap<>();
         rw = new RW();
         ladeGruppeninfo(name);
     }
-    
+
     /**
-     * 
+     *
      */
     public void erstelleNation(String name)
     {
         Nation nation = new Nation(name, 0, 0);
         nationen.put(name, nation);
-        anzahlNationen += 1;
+        anzahlGruppen += 1;
     }
-    
-    /**
-     * 
-     */
-    public int gibAnzahlNationen()
-    {
-        return anzahlNationen;
-    }
-    
-    /**
-     * 
-     */
-    public String gibName()
-    {
-        return name;
-    }
-    
-    /**
-     * 
-     */
+
     public void ladeNation(String name)
     {
         String[] element = gibDatenElemente("Nationen", name);
+
         String nameNation = element[0];
         int tore = Integer.valueOf(element[1]);
         int punkte = Integer.valueOf(element[2]);
+
         nationen.put(nameNation, new Nation(nameNation, tore, punkte));
+
     }
-    
+
     /**
-     * 
+     *
      */
     public void ladeGruppeninfo(String name)
     {
         String[] element = gibDatenElemente("Gruppen", name);
 
-        anzahlNationen = Integer.valueOf(element[0]);
-        for (int i = 1; i <= anzahlNationen; i++) {
+        anzahlGruppen = Integer.valueOf(element[0]);
+        for (int i = 1; i <= anzahlGruppen; i++) {
             ladeNation(element[i]);
         }
 
-        if(element.length >= anzahlNationen+2){
-            for (int i = anzahlNationen+1; i < element.length; i++) {
+        if(element.length >= anzahlGruppen+2){
+            for (int i = anzahlGruppen+1; i < element.length; i++) {
                 String[] daten = element[i].split("-");
-                spiele.put(daten[0], daten[1]);
+                spielpartien.put(daten[0], daten[1]);
             }
         }
     }
-    
+
     /**
-     * 
+     *
      */
     public String[] gibDatenElemente(String ordner, String datei)
     {
@@ -94,13 +74,11 @@ public class Gruppe
         catch (Exception e) {
             e.printStackTrace();
         }
+
         String[] element = daten.split("/");
         return element;
     }
-    
-    /**
-     * 
-     */
+
     public String gibDaten(String ordner, String datei)
     {
         String daten = "";
@@ -112,7 +90,7 @@ public class Gruppe
         }
         return daten;
     }
-    
+
     /**
      *
      */
@@ -121,11 +99,9 @@ public class Gruppe
         if(nationen.containsKey(name)){
             return true;
         }
-        else{
-            return false;
-        }
+        else{return false;}
     }
-    
+
     /**
      *
      */
@@ -134,5 +110,4 @@ public class Gruppe
         Nation nation = nationen.get(name);
         return nation.gibVeränderteDetails(tore, punkte);
     }
-    
 }
