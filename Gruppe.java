@@ -66,6 +66,26 @@ public class Gruppe
     /**
      * 
      */
+    public void ladeGruppeninfo(String name)
+    {
+        String[] teile = gibDatenElemente("Gruppen", name);
+
+        gruppenGroesse = Integer.valueOf(teile[0]);
+        for (int i = 1; i <= gruppenGroesse; i++) {
+            ladeLand(teile[i]);
+        }
+
+        if(teile.length >= gruppenGroesse+2){
+            for (int i = gruppenGroesse+1; i < teile.length; i++) {
+                String[] daten = teile[i].split("-");
+                spiele.put(daten[0], daten[1]);
+            }
+        }
+    }
+    
+    /**
+     * 
+     */
     public String[] gibDatenElemente(String ordner, String datei)
     {
         String daten = "";
