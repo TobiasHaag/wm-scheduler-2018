@@ -85,14 +85,22 @@ public class Turnier
 
     }
 
-    public void updateSpielergebnis(String nation1, int tore1, String nation2, int tore2)
+    public void updateSpielergebnis(String nationeingabe1, int tore1, String nationeingabe2, int tore2)
     {
         int punkte1 = 0;
         int punkte2 = 0;
-
-        if(tore1 > tore2){punkte1 = 3;}
-        if(tore1 < tore2){punkte2 = 3;}
-        if(tore1 == tore2){punkte1 = 1; punkte2 = 1;}
+        String nation1 = nationeingabe1;
+        String nation2 = nationeingabe2;
+        
+        if(tore1 > tore2){
+            punkte1 = 3;
+        }
+        if(tore1 < tore2){
+            punkte2 = 3;
+        }
+        if(tore1 == tore2){
+            punkte1 = 1; punkte2 = 1;
+        }
 
         String daten = nation1 + ":" + nation2 + "-" + tore1 + ":" + tore2;
         String datenSpieler = nation1 + ":" + nation2;

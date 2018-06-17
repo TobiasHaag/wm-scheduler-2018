@@ -60,7 +60,6 @@ public class Gruppe
         int tore = Integer.valueOf(element[1]);
         int punkte = Integer.valueOf(element[2]);
         nationen.put(nameNation, new Nation(nameNation, tore, punkte));
-        anzahlNationen +=1;
     }
     
     /**
@@ -136,17 +135,4 @@ public class Gruppe
         return nation.gibVeränderteDetails(tore, punkte);
     }
     
-    /**
-     * Entferne ein Land aus der Sammlung.
-     */
-    public void entferneNation (String name)
-    {
-        Iterator<String> iterator = nationen.keySet().iterator();
-        while(iterator.hasNext()){
-            String nation = iterator.next();
-            if(nation.contains(name)){
-                iterator.remove();
-            }
-        }
-    }
 }
