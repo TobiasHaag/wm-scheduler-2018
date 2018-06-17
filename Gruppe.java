@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Iterator;
 /**
  * Klasse Gruppe:
  *
@@ -37,6 +38,14 @@ public class Gruppe
     public int gibAnzahlNationen()
     {
         return anzahlNationen;
+    }
+    
+    /**
+     * 
+     */
+    public String gibName()
+    {
+        return name;
     }
     
     /**
@@ -106,5 +115,20 @@ public class Gruppe
     {
         Nation nation = nationen.get(name);
         return nation.gibVeränderteDetails(tore, punkte);
+    }
+    
+    /**
+     * Entferne ein Land aus der Sammlung.
+     */
+    public void entferneNation (String name)
+    {
+        Iterator<String> iterator = nationen.keySet().iterator();
+        
+        while(iterator.hasNext()){
+            String nation = iterator.next();
+            if(nation.contains(name)){
+                iterator.remove();
+            }
+        }
     }
 }
