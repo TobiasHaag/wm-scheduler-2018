@@ -30,12 +30,24 @@ public class Turnier
         turnierGruppen.put("H", new Gruppe("H"));
     }
     
+    
+    private Gruppe gibGruppeWennNation(String nation)
+    {
+        for (String key : gruppen.keySet()) {
+            Gruppe gruppe = gruppen.get(key);
+            if(gruppe.prüfeNation(nation) == true){
+                return gruppe;
+            }
+        }
+        return null;
+    }
+    
     /**
      *
      */
-    public void gibPaarungen(String nation1, int tor1, String nation2, int tor2)
+    public void (String nation1, int tore1, String nation2, int tore2)
     {
-        for ()
-        }
+        
+    }
     }
 }

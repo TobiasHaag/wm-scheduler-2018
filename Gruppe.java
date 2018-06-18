@@ -116,6 +116,20 @@ public class Gruppe
     /**
      *
      */
+    public void paarungenNationen()
+    {
+        //Array mit Strings wie public String [] gibLänder()
+        for (int i = 0; i < anzahlNationen; i++) {
+            for (int j = i+1; j < anzahlNationen; j++) {
+                nationen[i] + ":" + nationen[j];
+                //speichern in ArrayList oder HashMap
+            }
+        }
+    }
+
+    /**
+     *
+     */
     public String gibVeränderteDetailsNation(String name, int tore, int punkte)
     {
         Nation nation = nationenliste.get(name);
