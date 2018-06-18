@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Arrays;
 /**
  * @author Tobias Haag | HfG | IoT3
  * @version 18.06.2018
@@ -118,15 +120,27 @@ public class Gruppe
      */
     public void paarungenNationen()
     {
-        //Array mit Strings wie public String [] gibLänder()
+        ArrayList elemente = new ArrayList<String>();
+        String[] nationen = gibNationen();
         for (int i = 0; i < anzahlNationen; i++) {
             for (int j = i+1; j < anzahlNationen; j++) {
-                nationen[i] + ":" + nationen[j];
+                elemente.add(nationen[i] + ":" + nationen[j]);
                 //speichern in ArrayList oder HashMap
             }
         }
     }
 
+    /**
+     * 
+     */
+    public String[] gibNationen()
+    {
+        for (String key : nationen.keySet()) {
+            String daten;
+        }
+        return elemente;
+    }
+    
     /**
      *
      */

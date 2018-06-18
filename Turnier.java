@@ -30,7 +30,6 @@ public class Turnier
         turnierGruppen.put("H", new Gruppe("H"));
     }
     
-    
     private Gruppe gibGruppeWennNation(String nation)
     {
         for (String key : gruppen.keySet()) {
