@@ -1,5 +1,4 @@
 import java.io.*; //java.io - Das Package enthält eine Sammlung von Klassen, die die Ein- und Ausgabe sowie Dateiverwaltung unterstützen.
-import java.lang.*;
 /**
  * Klasse RW:
  * Die Klasse Read&Write ...
@@ -50,12 +49,6 @@ public class RW
         FileWriter fw = new FileWriter(datei);
         BufferedWriter bw = new BufferedWriter(fw);
 
-
-        for (int x = 0; x < element.length; x++) {
-            bw.write(element[x]);
-            if(x<element.length){bw.newLine();};
-        }
-
         bw.close();
     }
 
@@ -70,7 +63,6 @@ public class RW
 
         bw.newLine();
         bw.write(daten);
-
 
         bw.close();
     }

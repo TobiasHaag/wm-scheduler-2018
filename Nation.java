@@ -73,7 +73,7 @@ public class Nation
     public String gibDetails ()
     {
         // String.valueOf - Gibt die Zeichenfolgendarstellung des int-Arguments von tore & punkte zurück.
-        return name + "/" + String.valueOf(tore) + "/" + String.valueOf(punkte);
+        return name + "|" + String.valueOf(this.tore) + "|" + String.valueOf(this.punkte);
     }
 
     /**
@@ -84,9 +84,9 @@ public class Nation
     public String gibVeränderteDetails (int tore, int punkte)
     {
         // this - Schlüsselwort wird als Übergabeparameter verwendet um die Details zu überschreiben.
-        this.tore += tore;
-        this.punkte += punkte;
-        return name + "/" + String.valueOf(this.tore) + "/" + String.valueOf(this.punkte);
+        this.tore = tore;
+        this.punkte = punkte;
+        return gibDetails();
     }
 
 }

@@ -5,19 +5,56 @@ import java.util.HashMap;
  */
 public class Gruppe
 {
-    private HashMap<String, Nation> nationen;
-    private int anzahlGruppen;
-    private RW rw;
-    private HashMap<String, String> spielpartien;
+    private int anzahlNationen;
+    private String name;
+    private HashMap<String, Nation>nationenliste;
     /**
-     * Konstructor
+     * 
      */
     public Gruppe(String name)
     {
-        nationen = new HashMap<>();
-        spielpartien = new HashMap<>();
-        rw = new RW();
-        ladeGruppeninfo(name);
+        this.name = name;
+        nationenliste = new HashMap<String, Nation>();
+        erstelleNationenListe();
+    }
+
+    /**
+     * 
+     */
+    public void erstelleNationenListe()
+    {
+        nationenliste.put("Russland",new Nation("Russland", 0, 0));
+        nationenliste.put("Saudi-Arabien", new Nation("Saudi-Arabien", 0, 0));
+        nationenliste.put("Ägypten", new Nation("Ägypten", 0, 0));
+        nationenliste.put("Uruguay", new Nation("Uruguay", 0, 0));
+        nationenliste.put("Marokko",new Nation("Marokko", 0, 0));
+        nationenliste.put("Iran", new Nation("Iran", 0, 0));
+        nationenliste.put("Portugal", new Nation("Portugal", 0, 0));
+        nationenliste.put("Spanien", new Nation("Spanien", 0, 0));
+        nationenliste.put("Frankreich",new Nation("Frankreich", 0, 0));
+        nationenliste.put("Australien", new Nation("Australien", 0, 0));
+        nationenliste.put("Peru", new Nation("Peru", 0, 0));
+        nationenliste.put("Dänemark", new Nation("Dänemark", 0, 0));
+        nationenliste.put("Argentinien",new Nation("Argentinien", 0, 0));
+        nationenliste.put("Island", new Nation("Island", 0, 0));
+        nationenliste.put("Kroatien", new Nation("Kroatien", 0, 0));
+        nationenliste.put("Nigeria", new Nation("Nigeria", 0, 0));
+        nationenliste.put("Costa Rica",new Nation("Costa Rica", 0, 0));
+        nationenliste.put("Serbien", new Nation("Serbien", 0, 0));
+        nationenliste.put("Brasilien", new Nation("Brasilien", 0, 0));
+        nationenliste.put("Schweiz", new Nation("Schweiz", 0, 0));
+        nationenliste.put("Deutschland",new Nation("Deutschland", 0, 0));
+        nationenliste.put("Mexiko", new Nation("Mexiko", 0, 0));
+        nationenliste.put("Schweden", new Nation("Schweden", 0, 0));
+        nationenliste.put("Südkorea", new Nation("Südkorea", 0, 0));
+        nationenliste.put("Belgien",new Nation("Belgien", 0, 0));
+        nationenliste.put("Panama", new Nation("Panama", 0, 0));
+        nationenliste.put("Tunesien", new Nation("Tunesien", 0, 0));
+        nationenliste.put("England", new Nation("England", 0, 0));
+        nationenliste.put("Polen",new Nation("Polen", 0, 0));
+        nationenliste.put("Senegal", new Nation("Senegal", 0, 0));
+        nationenliste.put("Kolumbien", new Nation("Kolumbien", 0, 0));
+        nationenliste.put("Japan", new Nation("Japan", 0, 0));
     }
 
     /**
@@ -26,80 +63,30 @@ public class Gruppe
     public void erstelleNation(String name)
     {
         Nation nation = new Nation(name, 0, 0);
-        nationen.put(name, nation);
-        anzahlGruppen += 1;
-    }
-
-    public void ladeNation(String name)
-    {
-        String[] element = gibDatenElemente("Nationen", name);
-
-        String nameNation = element[0];
-        int tore = Integer.valueOf(element[1]);
-        int punkte = Integer.valueOf(element[2]);
-
-        nationen.put(nameNation, new Nation(nameNation, tore, punkte));
-
+        nationenliste.put(name, nation);
+        anzahlNationen();
     }
 
     /**
      *
      */
-    public void ladeGruppeninfo(String name)
+    public int anzahlNationen()
     {
-        String[] element = gibDatenElemente("Gruppen", name);
-
-        anzahlGruppen = Integer.valueOf(element[0]);
-        for (int i = 1; i <= anzahlGruppen; i++) {
-            ladeNation(element[i]);
-        }
-
-        if(element.length >= anzahlGruppen+2){
-            for (int i = anzahlGruppen+1; i < element.length; i++) {
-                String[] daten = element[i].split("-");
-                spielpartien.put(daten[0], daten[1]);
-            }
-        }
+        anzahlNationen = nationenliste.size();
+        return anzahlNationen;
     }
-
-    /**
-     *
-     */
-    public String[] gibDatenElemente(String ordner, String datei)
-    {
-        String daten = "";
-        try{
-            daten = rw.ladeDatei(ordner, datei);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        String[] element = daten.split("/");
-        return element;
-    }
-
-    public String gibDaten(String ordner, String datei)
-    {
-        String daten = "";
-        try{
-            daten = rw.ladeDatei(ordner, datei);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        return daten;
-    }
-
+    
     /**
      *
      */
     public boolean prüfeNation(String name)
     {
-        if(nationen.containsKey(name)){
+        if(nationenliste.containsKey(name)){
             return true;
         }
-        else{return false;}
+        else{
+            return false;
+        }
     }
 
     /**
@@ -107,7 +94,7 @@ public class Gruppe
      */
     public String gibVeränderteDetailsNation(String name, int tore, int punkte)
     {
-        Nation nation = nationen.get(name);
+        Nation nation = nationenliste.get(name);
         return nation.gibVeränderteDetails(tore, punkte);
     }
 }
