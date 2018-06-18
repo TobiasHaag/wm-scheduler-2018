@@ -120,7 +120,7 @@ public class Gruppe
     /**
      *
      */
-    public void paarungenBerechnen()
+    public void paarungenAusgeben()
     {
         ArrayList elemente = new ArrayList<String>();
         String[] nationenArray = gibNationen();
@@ -134,13 +134,13 @@ public class Gruppe
     /**
      * 
      */
-    public String gibNationen()
+    public String[] gibNationen()
     {
+        String nationenvalues = "";
         for (String key : nationen.keySet()) {
             Nation nation = nationen.get(key);
-            nation.toArray(
-            return nation;
         }
+        return nationenvalues;
     }
     
     /**
@@ -159,5 +159,21 @@ public class Gruppe
     {
         Nation nation = nationen.get(name);
         return nation.gibVeränderteDetails(tore, punkte);
+    }
+    
+    /**
+     * 
+     */
+    public void entferneSpielphasen()
+    {
+        spielphasen.clear();
+    }
+    
+    /**
+     * 
+     */
+    public void entferneNationen()
+    {
+        nationen.clear();
     }
 }
