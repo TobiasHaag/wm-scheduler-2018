@@ -4,7 +4,7 @@
  * Die Getter-Methoden lieferen die Details aus den initalisierten Nationen-Variablen zurück.
  *
  * @author Tobias Haag | HfG | IoT3
- * @version 14.06.2018
+ * @version 19.06.2018
  */
 public class Nation
 {

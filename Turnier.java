@@ -1,33 +1,33 @@
 import java.util.HashMap;
 /**
  * @author Tobias Haag | HfG | IoT3
- * @version 18.06.2018
+ * @version 19.06.2018
  */
 public class Turnier
 {
-    private HashMap<String, Gruppe> turnierGruppen;
+    private HashMap<String, Gruppe> gruppen;
     /**
      * 
      */
     public Turnier()
     {
-        turnierGruppen = new HashMap<>();
-        ladeGruppen();
+        gruppen = new HashMap<>();
+        erstelleGruppenMap();
     }
 
     /**
      *
      */
-    public void ladeGruppen()
+    public void erstelleGruppenMap()
     {
-        turnierGruppen.put("A", new Gruppe("A"));
-        turnierGruppen.put("B", new Gruppe("B"));
-        turnierGruppen.put("C", new Gruppe("C"));
-        turnierGruppen.put("D", new Gruppe("D"));
-        turnierGruppen.put("E", new Gruppe("E"));
-        turnierGruppen.put("F", new Gruppe("F"));
-        turnierGruppen.put("G", new Gruppe("G"));
-        turnierGruppen.put("H", new Gruppe("H"));
+        gruppen.put("A", new Gruppe("A"));
+        gruppen.put("B", new Gruppe("B"));
+        gruppen.put("C", new Gruppe("C"));
+        gruppen.put("D", new Gruppe("D"));
+        gruppen.put("E", new Gruppe("E"));
+        gruppen.put("F", new Gruppe("F"));
+        gruppen.put("G", new Gruppe("G"));
+        gruppen.put("H", new Gruppe("H"));
     }
     
     private Gruppe gibGruppeWennNation(String nation)
@@ -47,6 +47,5 @@ public class Turnier
     public void (String nation1, int tore1, String nation2, int tore2)
     {
         
-    }
     }
 }
