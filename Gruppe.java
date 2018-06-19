@@ -136,11 +136,12 @@ public class Gruppe
      */
     public String[] gibNationen()
     {
-        String nationenvalues = "";
+        String nationendaten = "";
+        nationendaten = Nation.gibDetails();
         for (String key : nationen.keySet()) {
             Nation nation = nationen.get(key);
         }
-        return nationenvalues;
+        return nationendaten;
     }
     
     /**
