@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.ArrayList;
 /**
  * @author Tobias Haag | HfG | IoT3
  * @version 19.06.2018
@@ -6,12 +7,14 @@ import java.util.HashMap;
 public class Turnier
 {
     private HashMap<String, Gruppe> gruppen;
+    private ArrayList<Gruppe> alleGruppen;
     /**
      * 
      */
     public Turnier()
     {
         gruppen = new HashMap<>();
+        alleGruppen = new ArrayList<>();
         erstelleGruppenMap();
     }
 
@@ -30,7 +33,19 @@ public class Turnier
         gruppen.put("H", new Gruppe("H"));
     }
     
-    public Gruppe gibGruppe(String nation)
+    /**
+     * 
+     */
+    public ArrayList<String> gibGruppen()
+    {
+        ArrayList <String> daten = new ArrayList<>();
+        for (String key : gruppen.keySet()) {
+            daten.add(key);
+        }
+        return daten;
+    }
+    
+    public Gruppe gibGruppe (String nation)
     {
         for (String key : gruppen.keySet()) {
             Gruppe gruppe = gruppen.get(key);
@@ -66,7 +81,8 @@ public class Turnier
         }
     }
     
-    public void updateSpielergebnis(String nation1, int tore1, String nation2, int tore2)
+    
+    /*public void updateSpielergebnis(String nation1, int tore1, String nation2, int tore2)
     {
         int punkte1 = 0;
         int punkte2 = 0;
@@ -105,5 +121,5 @@ public class Turnier
             else{System.out.println("Das Ergebnis wurde bereits eingegeben!");}
         }
         else{System.out.println("Die Nationen sind nicht in einer Gruppe!");}
-    }
+    }*/
 }

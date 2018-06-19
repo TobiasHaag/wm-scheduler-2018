@@ -21,7 +21,7 @@ public class Gruppe
         nationen = new HashMap<>();
         spielphasen = new HashMap<>();
         erstelleNationenMap();
-        elemente = new ArrayList<String>();
+        elemente = new ArrayList<>();
         anzahlNationen = 4;
     }
 
@@ -107,6 +107,11 @@ public class Gruppe
         anzahlNationen();
     }
 
+    public void fügeNationInGruppe(String name, int tore, int punkte)
+    {
+        nationen.put(name, new Nation(name, tore, punkte));
+    }
+    
     /**
      *
      */
@@ -119,33 +124,32 @@ public class Gruppe
             return false;
         }
     }
-
-    /**
-     *
-     */
-    public void paarungenAusgeben()
-    {
-        String[] nationenArray = gibNationen();
-        for (int i = 0; i < anzahlNationen; i++) {
-            for (int j = i+1; j < anzahlNationen; j++) {
-                elemente.add(nationenArray[i] + ":" + nationenArray[j]); //speichern in HashMap
-            }
-        }
-    }
-
+    
     /**
      * 
      */
-    public String[] gibNationen()
+    public ArrayList<String> gibNationen()
     {
-        String [] daten = {"0", "0", "0", "0"};
-        int iterator = 0;
+        ArrayList <String> daten = new ArrayList<>();
         for (String key : nationen.keySet()) {
-            daten [iterator] = key;
-            iterator ++;
+            daten.add(key);
         }
-        System.out.println(Arrays.toString(daten));
         return daten;
+    }
+    
+    /**
+     *
+     */
+    public void paarungen()
+    {
+        ArrayList <String> schlüssel = gibNationen();
+        ArrayList <String> elemente =new ArrayList<String>();
+        for (int i = 0; i < anzahlNationen; i++) {
+            for (int j = i+1; j < anzahlNationen; j++) {
+                elemente.add((schlüssel.get(i)) + " gegen " + (schlüssel.get(j)));
+            }
+        }
+        System.out.println(elemente);
     }
     
     /**
