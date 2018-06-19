@@ -11,6 +11,7 @@ public class Gruppe
     private int anzahlNationen;
     private String gruppenname;
     private HashMap<String, String>spielphasen;
+    private ArrayList <String> elemente;
     /**
      * 
      */
@@ -20,6 +21,8 @@ public class Gruppe
         nationen = new HashMap<>();
         spielphasen = new HashMap<>();
         erstelleNationenMap();
+        elemente = new ArrayList<String>();
+        anzahlNationen = 4;
     }
 
     /**
@@ -122,11 +125,10 @@ public class Gruppe
      */
     public void paarungenAusgeben()
     {
-        ArrayList elemente = new ArrayList<String>();
         String[] nationenArray = gibNationen();
         for (int i = 0; i < anzahlNationen; i++) {
             for (int j = i+1; j < anzahlNationen; j++) {
-                elemente.add(nationen[i] + ":" + nationen[j]); //speichern in HashMap
+                elemente.add(nationenArray[i] + ":" + nationenArray[j]); //speichern in HashMap
             }
         }
     }
@@ -136,12 +138,14 @@ public class Gruppe
      */
     public String[] gibNationen()
     {
-        String nationendaten = "";
-        nationendaten = Nation.gibDetails();
+        String [] daten = {"0", "0", "0", "0"};
+        int iterator = 0;
         for (String key : nationen.keySet()) {
-            Nation nation = nationen.get(key);
+            daten [iterator] = key;
+            iterator ++;
         }
-        return nationendaten;
+        System.out.println(Arrays.toString(daten));
+        return daten;
     }
     
     /**
