@@ -12,6 +12,7 @@ public class Gruppe
     private String gruppenname;
     private HashMap<String, String>spielphasen;
     private ArrayList <String> elemente;
+    private ArrayList <String> alleNationen;
     /**
      * 
      */
@@ -22,13 +23,14 @@ public class Gruppe
         spielphasen = new HashMap<>();
         erstelleNationenMap();
         elemente = new ArrayList<>();
+        alleNationen = new ArrayList<>();
         anzahlNationen = 4;
     }
 
     /**
      * 
      */
-    public void erstelleNationenMap()
+    private void erstelleNationenMap()
     {
         //GruppeA
         if (gruppenname == "A"){
@@ -143,13 +145,25 @@ public class Gruppe
     public void paarungen()
     {
         ArrayList <String> schlüssel = gibNationen();
-        ArrayList <String> elemente =new ArrayList<String>();
+        ArrayList <String> elemente = new ArrayList<String>();
         for (int i = 0; i < anzahlNationen; i++) {
             for (int j = i+1; j < anzahlNationen; j++) {
                 elemente.add((schlüssel.get(i)) + " gegen " + (schlüssel.get(j)));
             }
         }
         System.out.println(elemente);
+    }
+    
+    /**
+     *
+     */
+    public ArrayList<String> gibAlleNationen()
+    {
+        for (String key : nationen.keySet())
+        {
+            alleNationen.add(key);
+        }
+        return alleNationen;
     }
     
     /**

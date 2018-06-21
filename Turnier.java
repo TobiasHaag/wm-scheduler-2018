@@ -7,7 +7,9 @@ import java.util.ArrayList;
 public class Turnier
 {
     private HashMap<String, Gruppe> gruppen;
+    private HashMap<String, Nation> nationen;
     private ArrayList<Gruppe> alleGruppen;
+    private ArrayList<Nation> alleNationen;
     /**
      * 
      */
@@ -15,13 +17,14 @@ public class Turnier
     {
         gruppen = new HashMap<>();
         alleGruppen = new ArrayList<>();
+        alleNationen = new ArrayList<>();
         erstelleGruppenMap();
     }
 
     /**
      *
      */
-    public void erstelleGruppenMap()
+    private void erstelleGruppenMap()
     {
         gruppen.put("A", new Gruppe("A"));
         gruppen.put("B", new Gruppe("B"));
@@ -45,6 +48,9 @@ public class Turnier
         return daten;
     }
     
+    /**
+     * 
+     */
     public Gruppe gibGruppe (String nation)
     {
         for (String key : gruppen.keySet()) {
@@ -59,7 +65,7 @@ public class Turnier
     /**
      * 
      */
-    private String prüfeNationenInGruppe(String nation1, String nation2)
+    public String prüfeNationenInGruppe(String nation1, String nation2)
     {
         String gruppe1 = "";
         String gruppe2 = "";
@@ -81,7 +87,35 @@ public class Turnier
         }
     }
     
+    /**
+     * 
+     */
+    public ArrayList<String> gibAlleNationenSchlüssel (String name)
+    {
+        Gruppe gruppe = gruppen.get(name);
+        return gruppe.gibAlleNationen();
+    }
     
+    /**
+     * 
+     *
+    private ArrayList<String> gibAlleNationenWerte (String name)
+    {
+        Gruppe gruppe = gruppen.get(name);
+        return gruppe.gibAlleNationen();
+        gruppe.get
+    }
+    */
+    
+    /**
+     * 
+     */
+    private String[] gibDatenSpielergebnis(String nation, int tore, int punkte)
+    {
+        Gruppe gruppe = gibGruppeWennLand(land);
+        return gruppe.gibUpdatedInfoLand(land, tore, punkte);
+    }
+       
     /*public void updateSpielergebnis(String nation1, int tore1, String nation2, int tore2)
     {
         int punkte1 = 0;
