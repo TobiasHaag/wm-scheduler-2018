@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Arrays;
 /**
  * @author Tobias Haag | HfG | IoT3
  * @version 19.06.2018
@@ -109,29 +110,38 @@ public class Turnier
     
     /**
      * 
-     */
-    private String[] gibDatenSpielergebnis(String nation, int tore, int punkte)
+    public String[] gibDatenSpielergebnis(String nation, int tore, int punkte)
     {
-        Gruppe gruppe = gibGruppeWennLand(land);
-        return gruppe.gibUpdatedInfoLand(land, tore, punkte);
+        Gruppe gruppe = gibGruppe(nation);
+        return gruppe.gibVeränderteDetailsNation(nation, tore, punkte);
     }
-       
-    /*public void updateSpielergebnis(String nation1, int tore1, String nation2, int tore2)
+    */
+    
+    /**
+     * 
+     */
+    public int[] berechnePunkte(int tore1, int tore2)
     {
-        int punkte1 = 0;
-        int punkte2 = 0;
-
+        int[] punkte = {0, 0};
         if(tore1 > tore2){
-            punkte1 = 3;
+            punkte[0] = 3;
         }
         if(tore1 < tore2){
-            punkte2 = 3;
+            punkte[1] = 3;
         }
         if(tore1 == tore2){
-            punkte1 = 1;
-            punkte2 = 1;
+            punkte[0] = 1; punkte[1] = 1;
         }
-
+        return punkte; // muss noch fertig
+    }
+    
+    /**
+     * 
+     */
+    public void updateSpielergebnis(String nation1, int tore1, String nation2, int tore2)
+    {
+        int tore1 = 0;
+        int tore2 =
         String daten = nation1 + ":" + nation2 + "-" + tore1 + ":" + tore2;
         String datenSpieler = nation1 + ":" + nation2;
         String datenSpielerRück = nation2 + ":" + nation1;
@@ -155,5 +165,5 @@ public class Turnier
             else{System.out.println("Das Ergebnis wurde bereits eingegeben!");}
         }
         else{System.out.println("Die Nationen sind nicht in einer Gruppe!");}
-    }*/
+    }
 }

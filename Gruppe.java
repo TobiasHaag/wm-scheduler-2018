@@ -102,6 +102,14 @@ public class Gruppe
     /**
      *
      */
+    public String gibName()
+    {
+        return gruppenname;
+    }
+    
+    /**
+     *
+     */
     public void erstelleNation(String name)
     {
         Nation nation = new Nation(name, 0, 0);
