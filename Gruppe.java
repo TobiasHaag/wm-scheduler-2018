@@ -2,8 +2,11 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 /**
+ * Klasse Gruppe:
+ * 
+ * 
  * @author Tobias Haag | HfG | IoT3
- * @version 19.06.2018
+ * @version 22.06.2018
  */
 public class Gruppe
 {

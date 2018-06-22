@@ -2,8 +2,11 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 /**
+ * Klasse Turnier:
+ * 
+ * 
  * @author Tobias Haag | HfG | IoT3
- * @version 19.06.2018
+ * @version 22.06.2018
  */
 public class Turnier
 {
@@ -97,6 +100,16 @@ public class Turnier
         return gruppe.gibAlleNationen();
     }
     
+    
+    /**
+     * 
+     */
+    private String großSchreibung(String eingabe)
+    {
+        String ausgabe = eingabe.substring(0, 1).toUpperCase() + eingabe.substring(1);
+        return ausgabe;
+    }
+    
     /**
      * 
      *
@@ -110,12 +123,14 @@ public class Turnier
     
     /**
      * 
-    public String[] gibDatenSpielergebnis(String nation, int tore, int punkte)
+     */
+    public String gibDatenSpielergebnis(String nation, int tore, int punkte)
     {
         Gruppe gruppe = gibGruppe(nation);
-        return gruppe.gibVeränderteDetailsNation(nation, tore, punkte);
+        String daten = gruppe.gibVeränderteDetailsNation(nation, tore, punkte);
+        return daten;
     }
-    */
+    
     
     /**
      * 
@@ -132,7 +147,7 @@ public class Turnier
         if(tore1 == tore2){
             punkte[0] = 1; punkte[1] = 1;
         }
-        return punkte; // muss noch fertig
+        return punkte;
     }
     
     /**
@@ -140,8 +155,21 @@ public class Turnier
      */
     public void updateSpielergebnis(String nation1, int tore1, String nation2, int tore2)
     {
-        int tore1 = 0;
-        int tore2 =
+        int punkte1 = 0;
+        int punkte2 = 0;
+        String nationA = großSchreibung(nation1);
+        String nationB = großSchreibung(nation2);
+        
+        if(tore1 > tore2){
+            punkte1 = 3;
+        }
+        if(tore1 < tore2){
+            punkte2 = 3;
+        }
+        if(tore1 == tore2){
+            punkte1 = 1; punkte2 = 1;
+        }
+        
         String daten = nation1 + ":" + nation2 + "-" + tore1 + ":" + tore2;
         String datenSpieler = nation1 + ":" + nation2;
         String datenSpielerRück = nation2 + ":" + nation1;
@@ -149,9 +177,8 @@ public class Turnier
 
         if(prüfeNationenInGruppe(nation1, nation2) != null){
             Gruppe gruppeEins = gruppen.get(gruppe);
-            if(gruppeEins.gibDaten("Gruppen", gruppe).contains(datenSpieler) == false
-                && gruppeEins.gibDaten("Gruppen", gruppe).contains(datenSpielerRück) == false){
-
+            if(gruppeEins.gibDetailsNation(gruppe).contains(datenSpieler) == false
+                && gruppeEins.gibDetailsNation(gruppe).contains(datenSpielerRück) == false){
                 if(speichereNation(nation1, tore1, punkte1) && speichereNation(nation2, tore2, punkte2)== true){
                     try{
                         rw.hinzufügenGruppe(gruppe, daten);
