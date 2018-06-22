@@ -3,31 +3,31 @@ import java.util.ArrayList;
 import java.util.Arrays;
 /**
  * Klasse Gruppe:
- * 
+ * Die Klasse Gruppe 
  * 
  * @author Tobias Haag | HfG | IoT3
  * @version 22.06.2018
  */
 public class Gruppe
 {
-    private HashMap<String, Nation>nationen;
-    private int anzahlNationen;
     private String gruppenname;
+    private int anzahlNationen;
+    private HashMap<String, Nation>nationen;
     private HashMap<String, String>spielphasen;
     private ArrayList <String> elemente;
     private ArrayList <String> alleNationen;
     /**
-     * 
+     * Konstruktor für Objekte der Klasse Gruppe.
      */
     public Gruppe(String name)
     {
-        this.gruppenname = name;
+        erstelleNationenMap(); //Erzeugung der Hashmap mit den vorhandenen Nationen-Objekten.
+        this.gruppenname = name; // Der Wert des Übergabeparameters name wird dem Attribut gruppenname zu gewiesen.
+        anzahlNationen = 4; // Setzt die Anzahl der Nationen in einer Gruppe statisch auf vier. Könnte auch dynamisch durch eine Variable definiert werden, anhand der Anzahl der Gruppen.
         nationen = new HashMap<>();
         spielphasen = new HashMap<>();
-        erstelleNationenMap();
         elemente = new ArrayList<>();
         alleNationen = new ArrayList<>();
-        anzahlNationen = 4;
     }
 
     /**
@@ -94,16 +94,8 @@ public class Gruppe
     }
 
     /**
-     *
-     */
-    public int anzahlNationen()
-    {
-        anzahlNationen = nationen.size();
-        return anzahlNationen;
-    }
-    
-    /**
-     *
+     * Liefere den Namen der Gruppe.
+     * @return der Gruppenname.
      */
     public String gibName()
     {
@@ -111,7 +103,18 @@ public class Gruppe
     }
     
     /**
-     *
+     * Liefere die Anzahl der Nationen, die sich in der HashMap nationen befinden.
+     * @return die Anzahl der Nationen als Integer-Wert.
+     */
+    public int anzahlNationen()
+    {
+        anzahlNationen = nationen.size(); // size - Wird verwendet, um die Anzhal der Schlüssel/Wert-Zuordnung in der Map zurückzugeben.
+        return anzahlNationen;
+    }
+    
+    /**
+     * Set-Methode, die .
+     * @return die Anzahl der Nationen als Integer-Wert.
      */
     public void erstelleNation(String name)
     {
