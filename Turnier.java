@@ -152,7 +152,6 @@ public class Turnier
     
     /**
      * 
-     */
     public void updateSpielergebnis(String nation1, int tore1, String nation2, int tore2)
     {
         int punkte1 = 0;
@@ -192,5 +191,5 @@ public class Turnier
             else{System.out.println("Das Ergebnis wurde bereits eingegeben!");}
         }
         else{System.out.println("Die Nationen sind nicht in einer Gruppe!");}
-    }
+    }*/
 }

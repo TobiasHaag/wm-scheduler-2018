@@ -12,10 +12,10 @@ public class Gruppe
 {
     private String gruppenname;
     private int anzahlNationen;
-    private HashMap<String, Nation>nationen; // HashMap mit String als key und Nationen-Objekten als Value
+    private HashMap<String, Nation>nationen; // HashMap mit String als key und Nationen-Objekten als Value.
     private HashMap<String, String>spielphasen;
-    private ArrayList <String> elemente;
-    private ArrayList <String> alleNationen;
+    private ArrayList <String> elemente; // Globale ArrayList für die Ermittlung der SpielPaarungen.
+    private ArrayList <String> alleNationen; // Globale ArrayList für das Ausgeben aller Nationen in der HashMap.
     /**
      * Konstruktor für Objekte der Klasse Gruppe.
      */
@@ -41,7 +41,6 @@ public class Gruppe
             nationen.put("Saudi-Arabien", new Nation("Saudi-Arabien", 0, 0));
             nationen.put("Ägypten", new Nation("Ägypten", 0, 0));
             nationen.put("Uruguay", new Nation("Uruguay", 0, 0));
-            System.out.println("Die Nationen der Gruppe " + gruppenname + " wurde hinzugefügt!");
         }
         //Gruppe B
         if (gruppenname == "B"){
@@ -49,7 +48,6 @@ public class Gruppe
             nationen.put("Iran", new Nation("Iran", 0, 0));
             nationen.put("Portugal", new Nation("Portugal", 0, 0));
             nationen.put("Spanien", new Nation("Spanien", 0, 0));
-            System.out.println("Die Nationen der Gruppe " + gruppenname + " wurde hinzugefügt!");
         }
         //Gruppe C
         if (gruppenname == "C"){
@@ -57,7 +55,6 @@ public class Gruppe
             nationen.put("Australien", new Nation("Australien", 0, 0));
             nationen.put("Peru", new Nation("Peru", 0, 0));
             nationen.put("Dänemark", new Nation("Dänemark", 0, 0));
-            System.out.println("Die Nationen der Gruppe " + gruppenname + " wurde hinzugefügt!");
         }
         //Gruppe D
         if (gruppenname == "D"){
@@ -65,7 +62,6 @@ public class Gruppe
             nationen.put("Island", new Nation("Island", 0, 0));
             nationen.put("Kroatien", new Nation("Kroatien", 0, 0));
             nationen.put("Nigeria", new Nation("Nigeria", 0, 0));
-            System.out.println("Die Nationen der Gruppe " + gruppenname + " wurde hinzugefügt!");
         }
         //Gruppe E
         if (gruppenname == "E"){
@@ -73,7 +69,6 @@ public class Gruppe
             nationen.put("Serbien", new Nation("Serbien", 0, 0));
             nationen.put("Brasilien", new Nation("Brasilien", 0, 0));
             nationen.put("Schweiz", new Nation("Schweiz", 0, 0));
-            System.out.println("Die Nationen der Gruppe " + gruppenname + " wurde hinzugefügt!");
         }
         //Gruppe F
         if (gruppenname == "F") {
@@ -81,7 +76,6 @@ public class Gruppe
             nationen.put("Mexiko", new Nation("Mexiko", 0, 0));
             nationen.put("Schweden", new Nation("Schweden", 0, 0));
             nationen.put("Südkorea", new Nation("Südkorea", 0, 0));
-            System.out.println("Die Nationen der Gruppe " + gruppenname + " wurde hinzugefügt!");
         }
         //Gruppe G
         if (gruppenname == "G") {
@@ -89,7 +83,6 @@ public class Gruppe
             nationen.put("Panama", new Nation("Panama", 0, 0));
             nationen.put("Tunesien", new Nation("Tunesien", 0, 0));
             nationen.put("England", new Nation("England", 0, 0));
-            System.out.println("Die Nationen der Gruppe " + gruppenname + " wurde hinzugefügt!");
         }
         //Gruppe H
         if (gruppenname == "H") {
@@ -97,13 +90,8 @@ public class Gruppe
             nationen.put("Senegal", new Nation("Senegal", 0, 0));
             nationen.put("Kolumbien", new Nation("Kolumbien", 0, 0));
             nationen.put("Japan", new Nation("Japan", 0, 0));
-            System.out.println("Die Nationen der Gruppe " + gruppenname + " wurde hinzugefügt!");
         }
-        
-        if (gruppenname != "A"){
-            System.out.println("Die erstellte Gruppe" + "" + "beinhaltet keine Nationen.");
-            System.out.println("Um eine Gruppe mit Nationen zu laden, gebe eines dieser Gruppen: A, B, C, D, E, F, G, H ein.");
-        }
+        System.out.println("Die Nationen der Gruppe " + gruppenname + " wurden hinzugefügt!");
     }
 
     /**
@@ -160,24 +148,31 @@ public class Gruppe
     }
     
     /**
-     * 
+     * Über eine lokale ArrayList werden die Keys der in der HashMap befindlichen Nationen ausgegeben.
      */
     public ArrayList<String> gibNationen()
     {
-        ArrayList <String> daten = new ArrayList<>();
+        ArrayList <String> elementdaten = new ArrayList<>(); // Erzeugen der lokalen ArrayList mit Strings
+        // Iteration mit for-each Schleife durch die Nation-Objekte um die Menge an Keys zu erhalten.
+        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
         for (String key : nationen.keySet()) {
-            daten.add(key);
+            elementdaten.add(key);
         }
-        return daten;
+        return elementdaten; // Die Keys werden als Strings in der ArrayList zurückgegeben.
     }
     
     /**
-     *
+     * Ermitteln der Spiel-Paarungen durch zwei Array-Listen und zwei verschachtelten for-Schleifen.
      */
-    public void paarungen()
+    public void ermittleSpielPaarungen()
     {
+        // Lokale ArrayList speichert über die Methode gibNationen() die Keys der Nationen-Objekte.
         ArrayList <String> schlüssel = gibNationen();
+        // Erzeugen einer globalen Array-List von Strings
         ArrayList <String> elemente = new ArrayList<String>();
+        // Erste for-Schleie: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
+        // Zweite for-Schleife: Der neuen Zählvaribale wird der Startwert der Ersten dazu addiert, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
+        // Die berechneten Integer-Werte der Schleife werden durch die in der Array-List befindlichen Strings ersetzt und am Ende auf der Konsole ausgegebn.
         for (int i = 0; i < anzahlNationen; i++) {
             for (int j = i+1; j < anzahlNationen; j++) {
                 elemente.add((schlüssel.get(i)) + " gegen " + (schlüssel.get(j)));
@@ -187,7 +182,7 @@ public class Gruppe
     }
     
     /**
-     *
+     * Globale ArrayList - gleich wie "public ArrayList<String> gibNationen()"
      */
     public ArrayList<String> gibAlleNationen()
     {
@@ -199,19 +194,23 @@ public class Gruppe
     }
     
     /**
-     *
+     * Liefere die Details der Nationen, die sich in der HashMap nationen befinden.
+     * @return die Werte der Nation als String.
      */
     public String gibDetailsNation(String name)
     {
+        // get - Wird verwendet, um den Wert (Strings Nationen-Objekt) zurückzugeben, dem der angegebene Schlüssel (name Nation) zugeordnet wurde.
         Nation nation = nationen.get(name);
         return nation.gibDetails();
     }
     
     /**
-     *
+     * Verändere die Details der Nationen, die sich in der HashMap nationen befinden.
+     * @return die veränderten Werte der Nation als String.
      */
     public String gibVeränderteDetailsNation(String name, int tore, int punkte)
     {
+        // get - Wird verwendet, um den Wert (Strings Nationen-Objekt) zurückzugeben, dem der angegebene Schlüssel (name Nation) zugeordnet wurde.
         Nation nation = nationen.get(name);
         return nation.gibVeränderteDetails(tore, punkte);
     }
