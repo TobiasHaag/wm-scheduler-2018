@@ -33,9 +33,9 @@ public class Nation
      */
     public void setzeDetails (String name, int tore, int punkte)
     {
-        this.name = name;
-        this.tore = tore;
-        this.punkte = punkte;
+        this.name = name; // Der Wert des Übergabeparameters name wird dem Attribut name zu gewiesen.
+        this.tore = tore; // Der Wert des Übergabeparameters tore wird dem Attribut tore zu gewiesen.
+        this.punkte = punkte; // Der Wert des Übergabeparameters punkte wird dem Attribut punkte zu gewiesen.
     }
 
     /**
@@ -83,9 +83,9 @@ public class Nation
      */
     public String gibVeränderteDetails (int tore, int punkte)
     {
-        // this - Schlüsselwort wird als Übergabeparameter verwendet um die Details zu überschreiben.
-        this.tore = tore;
-        this.punkte = punkte;
+        // this - Schlüsselwort wird als Übergabeparameter verwendet um die Details wie Tore und Punkte zu überschreiben.
+        this.tore += tore; // Addiert zu den vorhandenen Tore neue hinzu.
+        this.punkte += punkte; // Addiert zu den vorhandenen Punkten neue hinzu.
         return gibDetails();
     }
 
