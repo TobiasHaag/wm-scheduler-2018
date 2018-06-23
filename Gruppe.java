@@ -161,19 +161,6 @@ public class Gruppe
         return elementdaten; // Die Keys werden als Strings in der ArrayList zurückgegeben.
     }
     
-    public String gibSpielergebnisDaten()
-    {
-        ladeGruppeninfo(nameGruppe);
-        String daten = "";
-        for (String key : spiele.keySet()) {
-            daten += (key + "-" + spiele.get(key) + "<br>");
-        }
-        if(daten.isEmpty() == true){
-            daten += "-------------";
-        }
-        return daten;
-    }
-    
     /**
      * Ermitteln der Spiel-Paarungen durch zwei Array-Listen und zwei verschachtelten for-Schleifen.
      */
@@ -205,6 +192,17 @@ public class Gruppe
         }
         return alleNationen;
     }
+    
+    /**
+     * Globale ArrayList - gleich wie "public ArrayList<String> gibNationen()"
+     */
+    public int gibTore(String name)
+    {
+        Nation nation = nationen.get(name);
+        return nation.gibTore();
+    }
+    
+    
     
     /**
      * Liefere die Details der Nationen, die sich in der HashMap nationen befinden.
