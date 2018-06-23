@@ -42,6 +42,18 @@ public class Turnier
     }
     
     /**
+     * Hier wird eine Übersicht von allen Nationen erstellt.
+     */
+    public void zeigeNationen(){
+        //ArrayList <String> alleNationen = gruppe.gibNationen();
+        for (String key : gruppen.keySet()) {
+            String name = key;
+            Gruppe gruppe = gruppen.get(key);
+            ArrayList <String> alleNationen = gruppe.gibNationen();
+        }
+    }
+    
+    /**
      * 
      */
     public ArrayList<String> gibGruppen()
@@ -68,16 +80,6 @@ public class Turnier
     /**
      * 
      */
-    public void zeigeNationen()
-    {
-        ArrayList <String> elementdaten = new ArrayList<>();
-        Gruppe gruppe = gibGruppeÜberNation(nation);
-        System.out.println(elementdaten);
-    }
-    
-    /**
-     * 
-     */
     public Gruppe gibGruppeÜberNation (String nation)
     {
         for (String key : gruppen.keySet()) {
@@ -89,7 +91,7 @@ public class Turnier
     /**
      * 
      */
-    public Gruppe gibGruppeÜberNation (String nation)
+    public Gruppe gibGruppe (String nation)
     {
         for (String key : gruppen.keySet()) {
             Gruppe gruppe = gruppen.get(key);

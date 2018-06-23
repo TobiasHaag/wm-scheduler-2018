@@ -161,6 +161,19 @@ public class Gruppe
         return elementdaten; // Die Keys werden als Strings in der ArrayList zurückgegeben.
     }
     
+    public String gibSpielergebnisDaten()
+    {
+        ladeGruppeninfo(nameGruppe);
+        String daten = "";
+        for (String key : spiele.keySet()) {
+            daten += (key + "-" + spiele.get(key) + "<br>");
+        }
+        if(daten.isEmpty() == true){
+            daten += "-------------";
+        }
+        return daten;
+    }
+    
     /**
      * Ermitteln der Spiel-Paarungen durch zwei Array-Listen und zwei verschachtelten for-Schleifen.
      */
