@@ -194,15 +194,22 @@ public class Gruppe
     }
     
     /**
-     * Globale ArrayList - gleich wie "public ArrayList<String> gibNationen()"
+     * 
      */
-    public int gibTore(String name)
+    public int gibNationTore(String name)
     {
         Nation nation = nationen.get(name);
         return nation.gibTore();
     }
     
-    
+    /**
+     * 
+     */
+    public int gibNationPunkte(String name)
+    {
+        Nation nation = nationen.get(name);
+        return nation.gibPunkte();
+    }
     
     /**
      * Liefere die Details der Nationen, die sich in der HashMap nationen befinden.

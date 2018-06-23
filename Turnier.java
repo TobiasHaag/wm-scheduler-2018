@@ -155,15 +155,28 @@ public class Turnier
     /**
      * 
      */
-    public void zeigeAlleNationen ()
+    public void zeigeAlleNationen1 ()
     {
         ArrayList elemente = new ArrayList<String> ();
         char[] firstLetter = new char[gruppenanzahl];
         for(int i = 0; i < gruppenanzahl; i++){
            firstLetter[i] = (char)(65 + i);
            Gruppe gruppe = gruppen.get(String.valueOf(firstLetter[i]));
-           //System.out.println (gruppe.gibTore().toString());
+           //System.out.println (gruppe.gibNationTore().toString());
         }
+    }
+    
+    /**
+     * Hier wird eine Übersicht von allen Nationen erstellt.
+     */
+    public void zeigeAlleNationen2(){
+        ArrayList elemente = new ArrayList<String> ();
+        for(int i = 0; i < gruppenanzahl; i++){
+            // gruppen[i].getNationen();
+            elemente.add (gruppe.gibAlleNationen());
+            System.out.println(gruppen.getNation());
+        }
+
     }
     
     /**
@@ -172,27 +185,7 @@ public class Turnier
     public void zeigeAlleNationenTore ()
     {
            Gruppe gruppe = gruppen.get("F");
-           System.out.println (gruppe.gibTore("Deutschland"));
-    }
-    
-    /**
-     * Ermitteln der Spiel-Paarungen durch zwei Array-Listen und zwei verschachtelten for-Schleifen.
-     */
-    public void ermittleSpielPaarungen()
-    {
-        // Lokale ArrayList speichert über die Methode gibNationen() die Keys der Nationen-Objekte.
-        ArrayList <String> schlüssel = gibNationen();
-        // Erzeugen einer globalen Array-List von Strings
-        ArrayList <String> elemente = new ArrayList<String>();
-        // Erste for-Schleie: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
-        // Zweite for-Schleife: Der neuen Zählvaribale wird der Startwert der Ersten dazu addiert, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
-        // Die berechneten Integer-Werte der Schleife werden durch die in der Array-List befindlichen Strings ersetzt und am Ende auf der Konsole ausgegebn.
-        for (int i = 0; i < anzahlNationen; i++) {
-            for (int j = i+1; j < anzahlNationen; j++) {
-                elemente.add((schlüssel.get(i)) + " gegen " + (gruppe.get(j)));
-            }
-        }
-        System.out.println(elemente);
+           System.out.println (gruppe.gibNationTore("Deutschland"));
     }
     
     /**
@@ -208,7 +201,6 @@ public class Turnier
            System.out.println (gruppe.gibAlleNationen().toString());
         }
     }
-    
     
     /**
      * 
