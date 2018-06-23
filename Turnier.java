@@ -12,23 +12,24 @@ public class Turnier
 {
     private HashMap<String, Gruppe> gruppen;
     private HashMap<String, Nation> nationen;
-    private ArrayList<Gruppe> alleGruppen;
-    private ArrayList<Nation> alleNationen;
+    //private ArrayList<Gruppe> alleGruppen;
+    //private ArrayList<Nation> alleNationen;
+    private ArrayList<String> alleNationen;
     /**
      * 
      */
     public Turnier()
     {
         gruppen = new HashMap<>();
-        alleGruppen = new ArrayList<>();
         alleNationen = new ArrayList<>();
+        //alleNationen = new ArrayList<>();
         erstelleGruppenMap();
     }
-
+    
     /**
      *
      */
-    private void erstelleGruppenMap()
+    public void erstelleGruppenMap()
     {
         gruppen.put("A", new Gruppe("A"));
         gruppen.put("B", new Gruppe("B"));
@@ -45,17 +46,50 @@ public class Turnier
      */
     public ArrayList<String> gibGruppen()
     {
-        ArrayList <String> daten = new ArrayList<>();
+        ArrayList <String> elementdaten = new ArrayList<>();
         for (String key : gruppen.keySet()) {
-            daten.add(key);
+            elementdaten.add(key);
         }
-        return daten;
+        return elementdaten;
     }
     
     /**
      * 
      */
-    public Gruppe gibGruppe (String nation)
+    public void zeigeGruppen()
+    {
+        ArrayList <String> elementdaten = new ArrayList<>();
+        for (String key : gruppen.keySet()) {
+            elementdaten.add(key);
+        }
+        System.out.println(elementdaten);
+    }
+    
+    /**
+     * 
+     */
+    public void zeigeNationen()
+    {
+        ArrayList <String> elementdaten = new ArrayList<>();
+        Gruppe gruppe = gibGruppeÜberNation(nation);
+        System.out.println(elementdaten);
+    }
+    
+    /**
+     * 
+     */
+    public Gruppe gibGruppeÜberNation (String nation)
+    {
+        for (String key : gruppen.keySet()) {
+            Gruppe gruppe = gruppen.get(key);
+        }
+        return null;
+    }
+    
+    /**
+     * 
+     */
+    public Gruppe gibGruppeÜberNation (String nation)
     {
         for (String key : gruppen.keySet()) {
             Gruppe gruppe = gruppen.get(key);
@@ -100,16 +134,6 @@ public class Turnier
         return gruppe.gibAlleNationen();
     }
     
-    
-    /**
-     * 
-     */
-    private String großSchreibung(String eingabe)
-    {
-        String ausgabe = eingabe.substring(0, 1).toUpperCase() + eingabe.substring(1);
-        return ausgabe;
-    }
-    
     /**
      * 
      *
@@ -126,7 +150,7 @@ public class Turnier
      */
     public String gibDatenSpielergebnis(String nation, int tore, int punkte)
     {
-        Gruppe gruppe = gibGruppe(nation);
+        Gruppe gruppe = gibGruppeÜberNation(nation);
         String daten = gruppe.gibVeränderteDetailsNation(nation, tore, punkte);
         return daten;
     }

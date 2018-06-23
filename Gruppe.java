@@ -216,11 +216,11 @@ public class Gruppe
     }
     
     /**
-     * 
+     * Entfernt alle Spielphasen in der HashMap.
      */
     public void entferneSpielphasen()
     {
-        spielphasen.clear();
+        spielphasen.clear(); // clear - Wird verwendet, um alle Zuordnungen der Nationen-Objekte zu entfernen.
     }
     
     /**
@@ -229,6 +229,6 @@ public class Gruppe
     public void entferneNationen()
     {
         nationen.clear(); // clear - Wird verwendet, um alle Zuordnungen der Nationen-Objekte zu entfernen.
-        anzahlNationen();
+        anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap
     }
 }
