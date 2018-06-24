@@ -50,7 +50,7 @@ public class Turnier
         for (String key : gruppen.keySet()) {
             String name = key;
             Gruppe gruppe = gruppen.get(key);
-            ArrayList <String> alleNationen = gruppe.gibNationen();
+            ArrayList <String> alleNationen = gruppe.gibAlleNationen();
         }
     }
     
@@ -168,7 +168,7 @@ public class Turnier
     
     /**
      * Hier wird eine Übersicht von allen Nationen erstellt.
-     */
+    
     public void zeigeAlleNationen2(){
         ArrayList elemente = new ArrayList<String> ();
         for(int i = 0; i < gruppenanzahl; i++){
@@ -178,6 +178,7 @@ public class Turnier
         }
 
     }
+    */
     
     /**
      * 

@@ -1,37 +1,35 @@
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap; // Import-Anweisung um die Bibliotheksklasse HashMap in dieser Klasse verfügbar zu machen.
+import java.util.ArrayList; // Import-Anweisung um die Bibliotheksklasse ArrayList in dieser Klasse verfügbar zu machen.
 /**
  * Klasse Gruppe:
- * Die Klasse Gruppe 
+ * Die Klasse Gruppe enthält eine HashMap 
+ * Die Getter-Methoden lieferen die Details aus den initalisierten Nationen-Variablen zurück.
  * 
  * @author Tobias Haag | HfG | IoT3
- * @version 22.06.2018
+ * @version 24.06.2018
  */
 public class Gruppe
 {
-    private String gruppenname;
-    private int anzahlNationen;
+    private String gruppenname; // Gruppenname als String.
+    private int anzahlNationen; // Anzahl der Nationen als Integer.
     private HashMap<String, Nation>nationen; // HashMap mit String als key und Nationen-Objekten als Value.
-    private HashMap<String, String>spielphasen;
-    private ArrayList <String> elemente; // Globale ArrayList für die Ermittlung der SpielPaarungen.
     private ArrayList <String> alleNationen; // Globale ArrayList für das Ausgeben aller Nationen in der HashMap.
     /**
      * Konstruktor für Objekte der Klasse Gruppe.
+     * Erzeugt werden die HashMap mit Nationen-Objekten, die ArrayList mit allen Strings der Nationen und 
+     * eine Methode um die Hashmap mit Schlüssel/Wert-Paaren der Nation zu füllen.
      */
     public Gruppe(String name)
     {
         this.gruppenname = name; // Der Wert des Übergabeparameters name wird dem Attribut gruppenname zu gewiesen.
         nationen = new HashMap<>(); // Erzeugen der HashMap mit Nationen-Objekten.
         erstelleNationenMap(); // Methodenaufruf, um die darin befindlichen Nationeninformationen der HashMap nationen zu übergeben.
-        anzahlNationen = nationen.size(); // Setzt die Anzahl der Nationen in einer Gruppe auf die Anzahl der befindlichen Objekte in der Hashmap.
-        spielphasen = new HashMap<>();
-        elemente = new ArrayList<>();
-        alleNationen = new ArrayList<>();
+        anzahlNationen = nationen.size(); // Setzt die Anzahl der Nationen in einer Gruppe auf die Anzahl der befindlichen Objekte in der Hashmap. 
+        alleNationen = new ArrayList<>(); // Erzeugen der globalen ArrayList.
     }
 
     /**
-     * Die Methode 
+     * Die Methode erstellt die Gruppen 
      */
     private void erstelleNationenMap()
     {
@@ -120,7 +118,7 @@ public class Gruppe
     {
         Nation nation = new Nation(name, 0, 0); // new - Über den Konstruktor der Klasse Nation wird ein neues Nationen-Objekt erzeugt.
         nationen.put(name, nation); // put - Fügt in die HashMap ein neues Objekt hinzu.
-        anzahlNationen();
+        anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
     }
 
     /**
@@ -129,7 +127,7 @@ public class Gruppe
     public void fügeNationInGruppe(String name, int tore, int punkte)
     {
         nationen.put(name, new Nation(name, tore, punkte)); //  Über den Konstruktor der Klasse Nation wird ein neues Nationen-Objekt erzeugt.
-        anzahlNationen();
+        anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
     }
     
     /**
@@ -148,27 +146,13 @@ public class Gruppe
     }
     
     /**
-     * Über eine lokale ArrayList werden die Keys der in der HashMap befindlichen Nationen ausgegeben.
-     */
-    public ArrayList<String> gibNationen()
-    {
-        ArrayList <String> elementdaten = new ArrayList<>(); // Erzeugen der lokalen ArrayList mit Strings
-        // Iteration mit for-each Schleife durch die Nation-Objekte um die Menge an Keys zu erhalten.
-        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
-        for (String key : nationen.keySet()) {
-            elementdaten.add(key);
-        }
-        return elementdaten; // Die Keys werden als Strings in der ArrayList zurückgegeben.
-    }
-    
-    /**
      * Ermitteln der Spiel-Paarungen durch zwei Array-Listen und zwei verschachtelten for-Schleifen.
      */
     public void ermittleSpielPaarungen()
     {
-        // Lokale ArrayList speichert über die Methode gibNationen() die Keys der Nationen-Objekte.
-        ArrayList <String> schlüssel = gibNationen();
-        // Erzeugen einer globalen Array-List von Strings
+        // ArrayList speichert über die Methode gibNationen() die Keys der Nationen-Objekte als Strings.
+        ArrayList <String> schlüssel = gibAlleNationen();
+        // Erzeugen einer lokalen ArrayList von Strings. Kann nur innerhalb dieser Methode verwendet werden.
         ArrayList <String> elemente = new ArrayList<String>();
         // Erste for-Schleie: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
         // Zweite for-Schleife: Der neuen Zählvaribale wird der Startwert der Ersten dazu addiert, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
@@ -178,23 +162,27 @@ public class Gruppe
                 elemente.add((schlüssel.get(i)) + " gegen " + (schlüssel.get(j)));
             }
         }
-        System.out.println(elemente);
+        System.out.println(elemente); // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
     }
     
     /**
-     * Globale ArrayList - gleich wie "public ArrayList<String> gibNationen()"
+     * Über eine globale ArrayList werden die Keys der in der HashMap befindlichen Nationen ausgegeben.
+     * In dieser Klasse wird die ArrayList für die Ermittlung der Spielpaarungen verwendet.
+     * Da die ArrayList global deklariert ist kann man über die Methoden der Klasse Turnier darauf zugreifen.
      */
     public ArrayList<String> gibAlleNationen()
     {
-        for (String key : nationen.keySet())
-        {
-            alleNationen.add(key);
+        // Iteration mit for-each Schleife durch die Nation-Objekte um die Menge an Keys zu erhalten.
+        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
+        for (String key : nationen.keySet()) {
+            alleNationen.add(key); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
         }
-        return alleNationen;
+        return alleNationen; // Die Keys werden als Strings in der ArrayList zurückgegeben.
     }
     
     /**
-     * 
+     * String Methode, die den eingegebenen Namen mit den Namen der Klasse Nation abgleicht.
+     * Stimmt der Name überein dann gibt die Methode die Tore der Nation zurück.
      */
     public int gibNationTore(String name)
     {
@@ -203,7 +191,8 @@ public class Gruppe
     }
     
     /**
-     * 
+     * String Methode, die den eingegebenen Namen mit den Namen der Klasse Nation abgleicht.
+     * Stimmt der Name überein dann gibt die Methode die Punkte der Nation zurück.
      */
     public int gibNationPunkte(String name)
     {
@@ -234,19 +223,11 @@ public class Gruppe
     }
     
     /**
-     * Entfernt alle Spielphasen in der HashMap.
-     */
-    public void entferneSpielphasen()
-    {
-        spielphasen.clear(); // clear - Wird verwendet, um alle Zuordnungen der Nationen-Objekte zu entfernen.
-    }
-    
-    /**
      * Entfernt alle Nationen in der HashMap.
      */
     public void entferneNationen()
     {
         nationen.clear(); // clear - Wird verwendet, um alle Zuordnungen der Nationen-Objekte zu entfernen.
-        anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap
+        anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
     }
 }
