@@ -37,7 +37,7 @@ public class Gruppe
     {
         // If Bedinung die beim anlegen des Objekts prüft ob der eingegebene Name mit den Gruppenname übereinstimmt.
         // Ist dies der Fall dann werden die Schlüssel/Wert-Paare in die HashMap eingefügt.
-        
+
         //GruppeA
         if (gruppenname == "A"){
             // put - Fügt in die HashMap ein neues Objekt der Klasse Nation hinzu.
@@ -110,7 +110,7 @@ public class Gruppe
     {
         return gruppenname;
     }
-    
+
     /**
      * Liefere die Anzahl der Nationen, die sich in der HashMap nationen befinden.
      * @return die Anzahl der Nationen als Integer-Wert.
@@ -120,7 +120,7 @@ public class Gruppe
         anzahlNationen = nationen.size(); // size - Wird verwendet, um die Anzahl der Schlüssel/Wert-Zuordnung in der Map zurückzugeben.
         return anzahlNationen;
     }
-    
+
     /**
      * Erstelle ein neues Objekt vom Typ Nation, speichere es in die HashMap nationen und aktualisiere die Nationenanzahl.
      */
@@ -139,7 +139,7 @@ public class Gruppe
         nationen.put(name, new Nation(name, tore, punkte)); //  Über den Konstruktor der Klasse Nation wird ein neues Nationen-Objekt erzeugt.
         anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
     }
-    
+
     /**
      * Methode mit einer Boolean-Abfrage, die Nationen in der HashMap nach Namen überprüft.
      * Dabei wird der Key (Name der Nation als String) mit der Eingabe verglichen.
@@ -154,7 +154,7 @@ public class Gruppe
             return false; // Namen stimmen nicht überein - Nation befindet sich noch nicht in der Hashmap.
         }
     }
-    
+
     /**
      * Ermitteln der Spiel-Paarungen durch zwei Array-Listen und zwei verschachtelten for-Schleifen.
      */
@@ -163,18 +163,18 @@ public class Gruppe
         // ArrayList speichert über die Methode gibNationen() die Keys der Nationen-Objekte als Strings.
         ArrayList <String> schlüssel = gibAlleNationen();
         // Erzeugen einer lokalen ArrayList von Strings. Kann nur innerhalb dieser Methode verwendet werden.
-        ArrayList <String> elemente = new ArrayList<String>();
+        ArrayList <String> elementdaten = new ArrayList<String>();
         // Erste for-Schleie: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
         // Zweite for-Schleife: Der neuen Zählvaribale wird der Startwert der Ersten dazu addiert, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
         // Die berechneten Integer-Werte der Schleife werden durch die in der Array-List befindlichen Strings ersetzt und am Ende auf der Konsole ausgegebn.
         for (int i = 0; i < anzahlNationen; i++) {
             for (int j = i+1; j < anzahlNationen; j++) {
-                elemente.add((schlüssel.get(i)) + " gegen " + (schlüssel.get(j)));
+                elementdaten.add((schlüssel.get(i)) + " gegen " + (schlüssel.get(j)));
             }
         }
-        System.out.println(elemente); // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
+        System.out.println(elementdaten); // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
     }
-    
+
     /**
      * Über eine globale ArrayList werden die Keys der in der HashMap befindlichen Nationen ausgegeben.
      * In dieser Klasse wird die ArrayList für die Ermittlung der Spielpaarungen verwendet.
@@ -190,7 +190,7 @@ public class Gruppe
         }
         return alleNationen; 
     }
-    
+
     /**
      * String Methode, die den eingegebenen Namen mit den Namen der Klasse Nation abgleicht.
      * Stimmt der Name überein dann gibt die Nation-Methode die Tore der Nation zurück.
@@ -202,7 +202,7 @@ public class Gruppe
         Nation nation = nationen.get(name); 
         return nation.gibTore();
     }
-    
+
     /**
      * String Methode, die den eingegebenen Namen mit den Namen der Klasse Nation abgleicht.
      * Stimmt der Name überein dann gibt die Nation-Methode die Punkte der Nation zurück.
@@ -214,7 +214,7 @@ public class Gruppe
         Nation nation = nationen.get(name);
         return nation.gibPunkte();
     }
-    
+
     /**
      * String Methode, die den eingegebenen Namen mit den Namen der Klasse Nation abgleicht.
      * Stimmt der Name überein dann gibt die Nation-Methode die Details der Nation zurück.
@@ -226,7 +226,7 @@ public class Gruppe
         Nation nation = nationen.get(name);
         return nation.gibDetails();
     }
-    
+
     /**
      * Verändere die Details der Nationen, die sich in der HashMap nationen befinden.
      * @return die veränderten Werte der Nation als String.
@@ -237,7 +237,7 @@ public class Gruppe
         Nation nation = nationen.get(name);
         return nation.gibVeränderteDetails(tore, punkte);
     }
-    
+
     /**
      * Entfernt alle Nationen in der HashMap.
      */
@@ -246,6 +246,30 @@ public class Gruppe
         nationen.clear(); // clear - Wird verwendet, um alle Zuordnungen der Nationen-Objekte zu entfernen.
         anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
     }
+
+    /**
+     * OK
+     */
+    public void zeigeNationen(){   
+        ArrayList <String> elementdaten = new ArrayList<>();
+        for (String key : nationen.keySet()) {
+            elementdaten.add(key);
+        }
+        System.out.println(elementdaten);
+    }
     
+    /**
+     * 
+     */
+    public void zeigeAlleNationen(){   
+        ArrayList <Nation> elementdaten = new ArrayList<>();
+        for (String key : nationen.keySet()) {
+            elementdaten.add(nationen.get(key));
+        }
+        for (int i = 0; i <elementdaten.size(); i++) {
+            Nation nation = elementdaten.get(i);
+            System.out.println(nation.gibDetails());
+        }
+    }
     
 }
