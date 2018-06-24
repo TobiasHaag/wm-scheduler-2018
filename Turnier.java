@@ -1,12 +1,12 @@
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap; // Import-Anweisung um die Bibliotheksklasse HashMap in dieser Klasse verfügbar zu machen.
+import java.util.ArrayList; // Import-Anweisung um die Bibliotheksklasse ArrayList in dieser Klasse verfügbar zu machen.
+import java.util.Arrays; // Import-Anweisung um die Bibliotheksklasse Arrays in dieser Klasse verfügbar zu machen.
 /**
  * Klasse Turnier:
  * 
  * 
  * @author Tobias Haag | HfG | IoT3
- * @version 22.06.2018
+ * @version 24.06.2018
  */
 public class Turnier
 {
@@ -186,7 +186,7 @@ public class Turnier
     public void zeigeAlleNationenTore ()
     {
            Gruppe gruppe = gruppen.get("F");
-           System.out.println (gruppe.gibNationTore("Deutschland"));
+           System.out.println (gruppe.gibToreNation("Deutschland"));
     }
     
     /**

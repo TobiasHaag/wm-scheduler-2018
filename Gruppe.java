@@ -3,7 +3,7 @@ import java.util.ArrayList; // Import-Anweisung um die Bibliotheksklasse ArrayLi
 /**
  * Klasse Gruppe:
  * Die Klasse Gruppe enthält eine HashMap 
- * Die Getter-Methoden lieferen die Details aus den initalisierten Nationen-Variablen zurück.
+ * 
  * 
  * @author Tobias Haag | HfG | IoT3
  * @version 24.06.2018
@@ -169,6 +169,7 @@ public class Gruppe
      * Über eine globale ArrayList werden die Keys der in der HashMap befindlichen Nationen ausgegeben.
      * In dieser Klasse wird die ArrayList für die Ermittlung der Spielpaarungen verwendet.
      * Da die ArrayList global deklariert ist kann man über die Methoden der Klasse Turnier darauf zugreifen.
+     * @ return die Keys werden als Strings in der ArrayList zurückgegeben.
      */
     public ArrayList<String> gibAlleNationen()
     {
@@ -177,31 +178,36 @@ public class Gruppe
         for (String key : nationen.keySet()) {
             alleNationen.add(key); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
         }
-        return alleNationen; // Die Keys werden als Strings in der ArrayList zurückgegeben.
+        return alleNationen; 
     }
     
     /**
      * String Methode, die den eingegebenen Namen mit den Namen der Klasse Nation abgleicht.
-     * Stimmt der Name überein dann gibt die Methode die Tore der Nation zurück.
+     * Stimmt der Name überein dann gibt die Nation-Methode die Tore der Nation zurück.
+     * @return die Tore der Nation als Integer.
      */
-    public int gibNationTore(String name)
+    public int gibToreNation(String name)
     {
-        Nation nation = nationen.get(name);
+        // get - Wird verwendet, um den Wert (Strings Nationen-Objekt) zurückzugeben, dem der angegebene Schlüssel (name Nation) zugeordnet wurde.
+        Nation nation = nationen.get(name); 
         return nation.gibTore();
     }
     
     /**
      * String Methode, die den eingegebenen Namen mit den Namen der Klasse Nation abgleicht.
-     * Stimmt der Name überein dann gibt die Methode die Punkte der Nation zurück.
+     * Stimmt der Name überein dann gibt die Nation-Methode die Punkte der Nation zurück.
+     * @return die Punkte der Nation als Integer.
      */
-    public int gibNationPunkte(String name)
+    public int gibPunkteNation(String name)
     {
+        // get - Wird verwendet, um den Wert (Strings Nationen-Objekt) zurückzugeben, dem der angegebene Schlüssel (name Nation) zugeordnet wurde.
         Nation nation = nationen.get(name);
         return nation.gibPunkte();
     }
     
     /**
-     * Liefere die Details der Nationen, die sich in der HashMap nationen befinden.
+     * String Methode, die den eingegebenen Namen mit den Namen der Klasse Nation abgleicht.
+     * Stimmt der Name überein dann gibt die Nation-Methode die Details der Nation zurück.
      * @return die Werte der Nation als String.
      */
     public String gibDetailsNation(String name)
