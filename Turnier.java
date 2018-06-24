@@ -13,7 +13,6 @@ public class Turnier
     private HashMap<String, Gruppe> gruppen; // HashMap mit String als key und Gruppen-Objekten als Value.
     private HashMap<String, Nation> nationen;
     private ArrayList<String> alleNationen;
-    private int gruppenanzahl = 8;
     /**
      * 
      */
@@ -46,7 +45,7 @@ public class Turnier
     /**
      * OK
      */
-    public void zeigeAlleNationen(){   
+    public void zeigeAlleNationenSchlüssel(){   
         ArrayList <Gruppe> elementdaten = new ArrayList<>();
         for (String key : gruppen.keySet()) {
             elementdaten.add(gruppen.get(key));
@@ -60,7 +59,7 @@ public class Turnier
     /**
      * OK
      */
-    public void zeigeAlleNationenValue(){   
+    public void zeigeAlleNationenWerte(){   
         ArrayList <Gruppe> elementdaten = new ArrayList<>();
         for (String key : gruppen.keySet()) {
             elementdaten.add(gruppen.get(key));
@@ -71,23 +70,8 @@ public class Turnier
         }
     }
     
-    
-    
-    
     /**
-     * Hier wird eine Übersicht von allen Nationen erstellt.
-     */
-    public void zeigeNationen(){
-        //ArrayList <String> alleNationen = gruppe.gibNationen();
-        for (String key : gruppen.keySet()) {
-            String name = key;
-            Gruppe gruppe = gruppen.get(key);
-            ArrayList <String> alleNationen = gruppe.gibAlleNationen();
-        }
-    }
-    
-    /**
-     * 
+     * OK
      */
     public ArrayList<String> gibGruppen()
     {
@@ -99,9 +83,9 @@ public class Turnier
     }
     
     /**
-     * 
+     * OK
      */
-    public void zeigeGruppen()
+    public void zeigeAlleGruppen()
     {
         ArrayList <String> elementdaten = new ArrayList<>();
         for (String key : gruppen.keySet()) {
@@ -111,20 +95,9 @@ public class Turnier
     }
     
     /**
-     * 
+     * OK
      */
     public Gruppe gibGruppeÜberNation (String nation)
-    {
-        for (String key : gruppen.keySet()) {
-            Gruppe gruppe = gruppen.get(key);
-        }
-        return null;
-    }
-    
-    /**
-     * 
-     */
-    public Gruppe gibGruppe (String nation)
     {
         for (String key : gruppen.keySet()) {
             Gruppe gruppe = gruppen.get(key);
@@ -136,7 +109,7 @@ public class Turnier
     }
     
     /**
-     * 
+     * OK
      */
     public String prüfeNationenInGruppe(String nation1, String nation2)
     {
@@ -151,7 +124,6 @@ public class Turnier
                 gruppe2 = key;
             }
         }
-
         if(gruppe1 == gruppe2){
             return gruppe1;
         }
@@ -161,59 +133,7 @@ public class Turnier
     }
     
     /**
-     * 
-     */
-    public ArrayList<String> gibAlleNationenSchlüssel (String name)
-    {
-        Gruppe gruppe = gruppen.get(name);
-        return gruppe.gibAlleNationen();
-    }
-    
-    /**
-     * 
-     */
-    public ArrayList<String> gibAlleNationen ()
-    {
-        ArrayList elemente = new ArrayList<String> ();
-        char[] firstLetter = new char[gruppenanzahl];
-        for(int i = 0; i < gruppenanzahl; i++){
-           firstLetter[i] = (char)(65 + i);
-           Gruppe gruppe = gruppen.get(String.valueOf(firstLetter[i]));
-           elemente.add (gruppe.gibAlleNationen());
-        }
-        return elemente;
-    }
-    
-    /**
-     * 
-     */
-    public void zeigeAlleNationen1 ()
-    {
-        ArrayList elemente = new ArrayList<String> ();
-        char[] firstLetter = new char[gruppenanzahl];
-        for(int i = 0; i < gruppenanzahl; i++){
-           firstLetter[i] = (char)(65 + i);
-           Gruppe gruppe = gruppen.get(String.valueOf(firstLetter[i]));
-           //System.out.println (gruppe.gibNationTore().toString());
-        }
-    }
-    
-    /**
-     * Hier wird eine Übersicht von allen Nationen erstellt.
-    
-    public void zeigeAlleNationen2(){
-        ArrayList elemente = new ArrayList<String> ();
-        for(int i = 0; i < gruppenanzahl; i++){
-            // gruppen[i].getNationen();
-            elemente.add (gruppe.gibAlleNationen());
-            System.out.println(gruppen.getNation());
-        }
-
-    }
-    */
-    
-    /**
-     * 
+     * Falsch
      */
     public void zeigeAlleNationenTore ()
     {
@@ -222,21 +142,7 @@ public class Turnier
     }
     
     /**
-     * 
-     */
-    public void zeigeAlleNationenWerte()
-    {
-        ArrayList elemente = new ArrayList<String> ();
-        char[] firstLetter = new char[gruppenanzahl];
-        for(int i = 0; i < gruppenanzahl; i++){
-           firstLetter[i] = (char)(65 + i);
-           Gruppe gruppe = gruppen.get("A");
-           System.out.println (gruppe.gibAlleNationen().toString());
-        }
-    }
-    
-    /**
-     * 
+     * OK
      */
     public String gibDatenSpielergebnis(String nation, int tore, int punkte)
     {
@@ -245,9 +151,8 @@ public class Turnier
         return daten;
     }
     
-    
     /**
-     * 
+     * OK
      */
     public int[] berechnePunkte(int tore1, int tore2)
     {
@@ -263,47 +168,4 @@ public class Turnier
         }
         return punkte;
     }
-    
-    /**
-     * 
-    public void updateSpielergebnis(String nation1, int tore1, String nation2, int tore2)
-    {
-        int punkte1 = 0;
-        int punkte2 = 0;
-        String nationA = großSchreibung(nation1);
-        String nationB = großSchreibung(nation2);
-        
-        if(tore1 > tore2){
-            punkte1 = 3;
-        }
-        if(tore1 < tore2){
-            punkte2 = 3;
-        }
-        if(tore1 == tore2){
-            punkte1 = 1; punkte2 = 1;
-        }
-        
-        String daten = nation1 + ":" + nation2 + "-" + tore1 + ":" + tore2;
-        String datenSpieler = nation1 + ":" + nation2;
-        String datenSpielerRück = nation2 + ":" + nation1;
-        String gruppe = prüfeNationenInGruppe(nation1, nation2);
-
-        if(prüfeNationenInGruppe(nation1, nation2) != null){
-            Gruppe gruppeEins = gruppen.get(gruppe);
-            if(gruppeEins.gibDetailsNation(gruppe).contains(datenSpieler) == false
-                && gruppeEins.gibDetailsNation(gruppe).contains(datenSpielerRück) == false){
-                if(speichereNation(nation1, tore1, punkte1) && speichereNation(nation2, tore2, punkte2)== true){
-                    try{
-                        rw.hinzufügenGruppe(gruppe, daten);
-                    }
-                    catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    gruppeEins.ladeGruppeninfo(gruppe);
-                }
-            }
-            else{System.out.println("Das Ergebnis wurde bereits eingegeben!");}
-        }
-        else{System.out.println("Die Nationen sind nicht in einer Gruppe!");}
-    }*/
 }
