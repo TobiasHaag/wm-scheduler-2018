@@ -226,7 +226,7 @@ public class Gruppe
         Nation nation = nationen.get(name);
         return nation.gibDetails();
     }
-
+    
     /**
      * Verändere die Details der Nationen, die sich in der HashMap nationen befinden.
      * @return die veränderten Werte der Nation als String.
@@ -261,15 +261,33 @@ public class Gruppe
     /**
      * OK
      */
-    public void zeigeDetailsNationen(){   
+    public String zeigeDetailsNationen(){   
         ArrayList <Nation> elementdaten = new ArrayList<>();
+        String ausgabe = "";
         for (String key : nationen.keySet()) {
             elementdaten.add(nationen.get(key));
         }
         for (int i = 0; i <elementdaten.size(); i++) {
             Nation nation = elementdaten.get(i);
-            System.out.println(nation.gibDetails());
+            ausgabe = nation.gibDetails();
         }
+        return ausgabe;
+    }
+    
+    /**
+     * OK
+     */
+    public ArrayList <String> gibAlleWerte(){   
+        ArrayList <Nation> elementdaten = new ArrayList<>();
+        ArrayList <String> details = new ArrayList<>();
+        for (String key : nationen.keySet()) {
+            elementdaten.add(nationen.get(key));
+        }
+        for (int i = 0; i <elementdaten.size(); i++) {
+            Nation nation = elementdaten.get(i);
+            details.add(nation.gibDetails());
+        }
+        return details;
     }
     
 }

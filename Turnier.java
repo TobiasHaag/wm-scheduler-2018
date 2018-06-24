@@ -12,8 +12,6 @@ public class Turnier
 {
     private HashMap<String, Gruppe> gruppen; // HashMap mit String als key und Gruppen-Objekten als Value.
     private HashMap<String, Nation> nationen;
-    //private ArrayList<Gruppe> alleGruppen;
-    //private ArrayList<Nation> alleNationen;
     private ArrayList<String> alleNationen;
     private int gruppenanzahl = 8;
     /**
@@ -23,7 +21,6 @@ public class Turnier
     {
         gruppen = new HashMap<>(); // Erzeugen der HashMap mit Gruppen-Objekten.
         alleNationen = new ArrayList<>();
-        //alleNationen = new ArrayList<>();
         erstelleGruppenMap(); // Methodenaufruf, um die darin befindlichen Gruppeninformationen der HashMap gruppen zu übergeben.
     }
     
@@ -45,6 +42,37 @@ public class Turnier
         gruppen.put("G", new Gruppe("G"));
         gruppen.put("H", new Gruppe("H"));
     }
+    
+    /**
+     * OK
+     */
+    public void zeigeAlleNationen(){   
+        ArrayList <Gruppe> elementdaten = new ArrayList<>();
+        for (String key : gruppen.keySet()) {
+            elementdaten.add(gruppen.get(key));
+        }
+        for (int i = 0; i <elementdaten.size(); i++) {
+            Gruppe gruppe = elementdaten.get(i);
+            System.out.println(gruppe.gibAlleNationen());
+        }
+    }
+    
+    /**
+     * OK
+     */
+    public void zeigeAlleNationenValue(){   
+        ArrayList <Gruppe> elementdaten = new ArrayList<>();
+        for (String key : gruppen.keySet()) {
+            elementdaten.add(gruppen.get(key));
+        }
+        for (int i = 0; i <elementdaten.size(); i++) {
+            Gruppe gruppe = elementdaten.get(i);
+            System.out.println(gruppe.gibAlleWerte());
+        }
+    }
+    
+    
+    
     
     /**
      * Hier wird eine Übersicht von allen Nationen erstellt.
