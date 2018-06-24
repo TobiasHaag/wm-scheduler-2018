@@ -10,16 +10,14 @@ import java.util.Arrays; // Import-Anweisung um die Bibliotheksklasse Arrays in 
  */
 public class Turnier
 {
-    private HashMap<String, Gruppe> gruppen; // HashMap mit String als key und Gruppen-Objekten als Value.
+    private HashMap<String, Gruppe> gruppen; // HashMap mit String als Key und Gruppen-Objekten als Value.
     private HashMap<String, Nation> nationen;
-    private ArrayList<String> alleNationen;
     /**
      * 
      */
     public Turnier()
     {
         gruppen = new HashMap<>(); // Erzeugen der HashMap mit Gruppen-Objekten.
-        alleNationen = new ArrayList<>();
         erstelleGruppenMap(); // Methodenaufruf, um die darin befindlichen Gruppeninformationen der HashMap gruppen zu übergeben.
     }
     
