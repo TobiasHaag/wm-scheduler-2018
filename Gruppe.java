@@ -259,9 +259,9 @@ public class Gruppe
     }
     
     /**
-     * 
+     * OK
      */
-    public void zeigeAlleNationen(){   
+    public void zeigeDetailsNationen(){   
         ArrayList <Nation> elementdaten = new ArrayList<>();
         for (String key : nationen.keySet()) {
             elementdaten.add(nationen.get(key));
