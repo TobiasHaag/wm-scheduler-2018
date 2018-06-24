@@ -2,8 +2,8 @@ import java.util.HashMap; // Import-Anweisung um die Bibliotheksklasse HashMap i
 import java.util.ArrayList; // Import-Anweisung um die Bibliotheksklasse ArrayList in dieser Klasse verfügbar zu machen.
 /**
  * Klasse Gruppe:
- * Die Klasse Gruppe enthält eine HashMap 
- * 
+ * Die Klasse Gruppe enthält eine HashMap mt 8 Gruppen-Objekten, die jeweils 4 Nationen-Objekte als Value beinhalten.
+ * Außerdem wurde eine globale ArrayList angelegt, die die Spielpaarungen der Nationen ermittelt und ausgibt.
  * 
  * @author Tobias Haag | HfG | IoT3
  * @version 24.06.2018
@@ -29,12 +29,21 @@ public class Gruppe
     }
 
     /**
-     * Die Methode erstellt die Gruppen 
+     * Die Methode fügt anhand der eingegebenen bzw. übereinstimmenden Gruppennamen die Schlüssel/Wert-Paare der Klasse Nation in die HashMap.
+     * Dabei wird für jede Gruppe ein Objekt mit einer Hashmap angelegt und die dazugehörigen Nationen eingefügt.
+     * Somit ergeben sich für 8 Objekt-Gruppen (A-H) jeweils 32 Nationen-Objekte. Dabei muss jedes Gruppen-Objekt einzeln angelegt werden.
      */
     private void erstelleNationenMap()
     {
+        // If Bedinung die beim anlegen des Objekts prüft ob der eingegebene Name mit den Gruppenname übereinstimmt.
+        // Ist dies der Fall dann werden die Schlüssel/Wert-Paare in die HashMap eingefügt.
+        
         //GruppeA
         if (gruppenname == "A"){
+            // put - Fügt in die HashMap ein neues Objekt der Klasse Nation hinzu.
+            // Der Key vom Typ String und ist gleich der Name der Nation.
+            // Für den Value wird ein neues Nationen-Objekt angelegt, das den Namen der Nation beinhaltet und 
+            // die Tore bzw. Punkte werden standardmäßig auf die Werte 0 gesetzt.
             nationen.put("Russland", new Nation("Russland", 0, 0));
             nationen.put("Saudi-Arabien", new Nation("Saudi-Arabien", 0, 0));
             nationen.put("Ägypten", new Nation("Ägypten", 0, 0));
@@ -89,6 +98,7 @@ public class Gruppe
             nationen.put("Kolumbien", new Nation("Kolumbien", 0, 0));
             nationen.put("Japan", new Nation("Japan", 0, 0));
         }
+        // Damit der User auch ein Feedback bekommt das alle Gruppen erstellt wurden.
         System.out.println("Die Nationen der Gruppe " + gruppenname + " wurden hinzugefügt!");
     }
 

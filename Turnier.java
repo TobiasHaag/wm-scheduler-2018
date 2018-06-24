@@ -10,7 +10,7 @@ import java.util.Arrays; // Import-Anweisung um die Bibliotheksklasse Arrays in 
  */
 public class Turnier
 {
-    private HashMap<String, Gruppe> gruppen;
+    private HashMap<String, Gruppe> gruppen; // HashMap mit String als key und Gruppen-Objekten als Value.
     private HashMap<String, Nation> nationen;
     //private ArrayList<Gruppe> alleGruppen;
     //private ArrayList<Nation> alleNationen;
@@ -21,17 +21,21 @@ public class Turnier
      */
     public Turnier()
     {
-        gruppen = new HashMap<>();
+        gruppen = new HashMap<>(); // Erzeugen der HashMap mit Gruppen-Objekten.
         alleNationen = new ArrayList<>();
         //alleNationen = new ArrayList<>();
-        erstelleGruppenMap();
+        erstelleGruppenMap(); // Methodenaufruf, um die darin befindlichen Gruppeninformationen der HashMap gruppen zu übergeben.
     }
     
     /**
-     *
+     * Die Methode erzeugt eine HashMap in der sich wiederum alle HashMaps der Klasse Gruppen befinden.
+     * Der Key in der Hashmap fügt alle Gruppen hinzu die mit dem String (z.B. "A") übereinstimmen.
+     * Stimmt der Key überein dann wird der HashMap ein neues Objekt der Klasse Gruppe und die darin liegenden Nationen-Objekte übergeben.
+     * Somit wird eine große HashMap mit 8 Gruppen-HashMaps angelegt, die 32 Nationen-Objekte beinhalten.
      */
     public void erstelleGruppenMap()
     {
+        // Über den Key String werden alle 8 Gruppen-HashMaps auf ein Mal erstellt, da diese in der Klasse Gruppe angelegt wurden.
         gruppen.put("A", new Gruppe("A"));
         gruppen.put("B", new Gruppe("B"));
         gruppen.put("C", new Gruppe("C"));
