@@ -236,4 +236,6 @@ public class Gruppe
         nationen.clear(); // clear - Wird verwendet, um alle Zuordnungen der Nationen-Objekte zu entfernen.
         anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
     }
+    
+    
 }
