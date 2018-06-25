@@ -2,9 +2,8 @@ import java.util.HashMap; // Import-Anweisung um die Bibliotheksklasse HashMap i
 import java.util.ArrayList; // Import-Anweisung um die Bibliotheksklasse ArrayList in dieser Klasse verfügbar zu machen.
 import java.util.Arrays; // Import-Anweisung um die Bibliotheksklasse Arrays in dieser Klasse verfügbar zu machen.
 /**
- * Klasse Turnier:
- * 
  * Rainer.Hoenle@hs-aalen.de
+ * Klasse Turnier:
  * 
  * @author Tobias Haag | HfG | IoT3
  * @version 25.06.2018
@@ -183,7 +182,7 @@ public class Turnier
     /**
      * OK
      */
-    public String gibDatenSpielergebnis(String nation, int tore, int punkte)
+    public String gibDetailsSpielergebnis(String nation, int tore, int punkte)
     {
         Gruppe gruppe = gibGruppeÜberNation(nation);
         String daten = gruppe.gibVeränderteDetailsNation(nation, tore, punkte);
@@ -256,10 +255,21 @@ public class Turnier
     /**
      * OK
      */
-    public void fügeNationInGruppeHinzu(String gruppenname, String nationname)
+    public void fügeNeueNationInGruppeHinzu(String gruppenname, String nationname)
     {
-           gruppen.put(gruppenname, new Gruppe(gruppenname));
-           
+        gruppen.put(gruppenname, new Gruppe(gruppenname));
+        Gruppe gruppe = gruppen.get(gruppenname);
+        System.out.println (gruppe.erstelleNeueNation(nationname));
+    }
+    
+    /**
+     * OK
+     */
+    public void fügeNationMitWertenInGruppeHinzu(String gruppenname, String nationname, int nationtore, int nationpunkte)
+    {
+        gruppen.put(gruppenname, new Gruppe(gruppenname));
+        Gruppe gruppe = gruppen.get(gruppenname);
+        System.out.println (gruppe.erstelleNationMitWerten(nationname, nationtore, nationpunkte));
     }
     
 }

@@ -120,22 +120,26 @@ public class Gruppe
     /**
      * Erstelle ein neues Objekt vom Typ Nation, speichere es in die HashMap nationen und aktualisiere die Nationenanzahl.
      */
-    public void erstelleNeueNation(String name)
+    public ArrayList<String> erstelleNeueNation(String name)
     {
+        ArrayList <String> elementdaten = new ArrayList<>();
         Nation nation = new Nation(name, 0, 0); // new - Über den Konstruktor der Klasse Nation wird ein neues Nationen-Objekt erzeugt.
         nationen.put(name, nation); // put - Fügt in die HashMap ein neues Objekt hinzu.
         anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
+        return elementdaten;
     }
 
     /**
      * In die HashMap wird ein neues Objekt Nation mit Name, Tore und Punkte hinzugefügt.
      */
-    public void fügeNationInGruppe(String name, int tore, int punkte)
+    public ArrayList <String> erstelleNationMitWerten(String name, int tore, int punkte)
     {
+        ArrayList <String> elementdaten = new ArrayList<>();
         nationen.put(name, new Nation(name, tore, punkte)); //  Über den Konstruktor der Klasse Nation wird ein neues Nationen-Objekt erzeugt.
         anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
+        return elementdaten;
     }
-
+    
     /**
      * Methode mit einer Boolean-Abfrage, die Nationen in der HashMap nach Namen überprüft.
      * Dabei wird der Key (Name der Nation als String) mit der Eingabe verglichen.
