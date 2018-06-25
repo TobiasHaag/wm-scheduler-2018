@@ -177,7 +177,7 @@ public class Gruppe
         // Erzeugen einer lokalen ArrayList von Strings. Kann nur innerhalb dieser Methode verwendet werden.
         ArrayList <String> elementdaten = new ArrayList<String>();
         // Erste for-Schleie: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
-        // Zweite for-Schleife: Der neuen Zählvaribale wird der Startwert der Ersten dazu addiert, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
+        // Zweite for-Schleife: Der neuen Zählvariable wird der Startwert der Ersten dazu addiert, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
         // Die berechneten Integer-Werte der Schleife werden durch die in der Array-List befindlichen Strings ersetzt und am Ende auf der Konsole ausgegebn.
         for (int i = 0; i < anzahlNationen; i++) {
             for (int j = i+1; j < anzahlNationen; j++) {
@@ -249,6 +249,7 @@ public class Gruppe
      * Die gefundenen Keys werden in die ArrayList übergeben und auf der Konsole ausgegeben.
      */
     public void zeigeNationen(){   
+        // Erzeugen einer lokalen ArrayList von Strings. Kann nur innerhalb dieser Methode verwendet werden.
         ArrayList <String> elementdaten = new ArrayList<>();
         // Iteration mit for-each Schleife durch die Nation-Objekte um die Menge an Keys zu erhalten.
         // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
@@ -260,29 +261,56 @@ public class Gruppe
     
     /**
      * 
+     * Zeigt nur eine Nation an!
+     * 
+     * Void-Methode, in der eine ArrayList mit Nationen-Objekte angelegt wird.
+     * In der HashMap findet eine Iteration der Nationen-Keys durch eine for-each Schleife statt.
+     * Die gefundenen Nationen-Keys vom Typ String durchlaufen danach eine for-Schleife mit der Schrittweite gleich der Anzahl der Keys.
+     * Die Zählvariable verweist auf die Methode gibDetails() in der Klasse Nation und übergibt die Strings der Variable details.
+     * @ return die Strings der Methode gibDetails() der Klasse Nation.
      */
-    public String zeigeDetailsNationen(){   
+    public String gibDetailsNationenString(){   
+        // Erzeugen einer lokalen ArrayList von Nationen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
         ArrayList <Nation> elementdaten = new ArrayList<>();
-        String ausgabe = "";
+        // Deklaration einer String Variable mit leerer Zeichenkette.   
+        String details = "";
+        // Iteration mit for-each Schleife durch die Nation-Objekte um die Menge an Nationen-Keys zu erhalten.
+        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
+        // get - Wird verwendet, um den Wert (Strings Nationen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
         for (String key : nationen.keySet()) {
             elementdaten.add(nationen.get(key));
         }
+        // for-Schleife: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen-Keys (Strings), Zählvariable um eins hochzählen.
+        // In der Schleife findet über die Zählvariable eine Objekt-Referenz statt.
+        // Dabei wird für jede Zählvariable in die Klasse Nation gegangen und die Methode gibDetails() aufgerufen und der Variablen details die Strings übergeben.
         for (int i = 0; i <elementdaten.size(); i++) {
             Nation nation = elementdaten.get(i);
-            ausgabe = nation.gibDetails();
+            details = nation.gibDetails();
         }
-        return ausgabe;
+        return details;
     }
     
     /**
-     * OK
+     * Void-Methode, in der die erste ArrayList mit Nationen-Objekten und die Zweite mit Strings angelegt wird.
+     * In der HashMap findet eine Iteration der Nationen-Keys durch eine for-each Schleife statt.
+     * Die gefundenen Nationen-Keys vom Typ String durchlaufen danach eine for-Schleife mit der Schrittweite gleich der Anzahl der Keys.
+     * Die Zählvariable verweist auf die Methode gibDetails() in der Klasse Nation und übergibt die Strings der Variable details.
+     * @ return die Strings der Methode gibDetails() der Klasse Nation übergeben in die ArrayList details.
      */
-    public ArrayList <String> gibAlleWerte(){   
+    public ArrayList <String> gibDetailsNationenArrayList(){   
+        // Erzeugen einer lokalen ArrayList von Nationen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
         ArrayList <Nation> elementdaten = new ArrayList<>();
+        // Erzeugen einer lokalen ArrayList von Strings. Kann nur innerhalb dieser Methode verwendet werden.
         ArrayList <String> details = new ArrayList<>();
+        // Iteration mit for-each Schleife durch die Nation-Objekte um die Menge an Nationen-Keys zu erhalten.
+        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
+        // get - Wird verwendet, um den Wert (Strings Nationen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
         for (String key : nationen.keySet()) {
             elementdaten.add(nationen.get(key));
         }
+        // for-Schleife: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen-Keys (Strings), Zählvariable um eins hochzählen.
+        // In der Schleife findet über die Zählvariable eine Objekt-Referenz statt.
+        // Dabei wird für jede Zählvariable in die Klasse Nation gegangen und die Methode gibDetails() aufgerufen und der Variablen details die Strings übergeben.
         for (int i = 0; i <elementdaten.size(); i++) {
             Nation nation = elementdaten.get(i);
             details.add(nation.gibDetails());

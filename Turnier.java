@@ -64,7 +64,7 @@ public class Turnier
         }
         for (int i = 0; i <elementdaten.size(); i++) {
             Gruppe gruppe = elementdaten.get(i);
-            System.out.println(gruppe.gibAlleWerte());
+            System.out.println(gruppe.gibDetailsNationenArrayList());
         }
     }
     
