@@ -6,14 +6,14 @@ import java.util.Arrays; // Import-Anweisung um die Bibliotheksklasse Arrays in 
  * 
  * 
  * @author Tobias Haag | HfG | IoT3
- * @version 24.06.2018
+ * @version 25.06.2018
  */
 public class Turnier
 {
     private HashMap<String, Gruppe> gruppen; // HashMap mit String als Key und Gruppen-Objekten als Value.
-    private HashMap<String, Nation> nationen;
     /**
-     * 
+     * Konstruktor für Objekte der Klasse Turnier.
+     * Erzeugt werden die HashMap mit Gruppen-Objekten und eine Methode um die Hashmap mit Schlüssel/Wert-Paaren der Gruppen zu füllen.
      */
     public Turnier()
     {
@@ -41,13 +41,20 @@ public class Turnier
     }
     
     /**
-     * OK
+     * 
      */
     public void zeigeAlleNationenSchlüssel(){   
+        // Erzeugen einer lokalen ArrayList von Gruppen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
         ArrayList <Gruppe> elementdaten = new ArrayList<>();
+        // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.
+        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
+        // get - Wird verwendet, um den Wert (Strings Gruppen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
         for (String key : gruppen.keySet()) {
             elementdaten.add(gruppen.get(key));
         }
+        // for-Schleife: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Gruppe-Keys (Strings), Zählvariable um eins hochzählen.
+        // In der Schleife findet über die Zählvariable eine Objekt-Referenz statt.
+        // Dabei wird für jede Zählvariable in die Klasse Gruppe gegangen und die Methode gibAlleNationen() aufgerufen und in der Konsole ausgegeben.
         for (int i = 0; i <elementdaten.size(); i++) {
             Gruppe gruppe = elementdaten.get(i);
             System.out.println(gruppe.gibAlleNationen());
@@ -58,13 +65,20 @@ public class Turnier
      * OK
      */
     public void zeigeAlleNationenWerte(){   
+        // Erzeugen einer lokalen ArrayList von Gruppen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
         ArrayList <Gruppe> elementdaten = new ArrayList<>();
+        // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.
+        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
+        // get - Wird verwendet, um den Wert (Strings Gruppen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
         for (String key : gruppen.keySet()) {
             elementdaten.add(gruppen.get(key));
         }
+        // for-Schleife: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Gruppe-Keys (Strings), Zählvariable um eins hochzählen.
+        // In der Schleife findet über die Zählvariable eine Objekt-Referenz statt.
+        // Dabei wird für jede Zählvariable in die Klasse Gruppe gegangen und die Methode gibDetailsNationen() aufgerufen und in der Konsole ausgegeben.
         for (int i = 0; i <elementdaten.size(); i++) {
             Gruppe gruppe = elementdaten.get(i);
-            System.out.println(gruppe.gibDetailsNationenArrayList());
+            System.out.println(gruppe.gibDetailsNationen());
         }
     }
     
@@ -73,7 +87,11 @@ public class Turnier
      */
     public ArrayList<String> gibGruppen()
     {
+        // Erzeugen einer lokalen ArrayList von Gruppen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
         ArrayList <String> elementdaten = new ArrayList<>();
+        // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.
+        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
+        // get - Wird verwendet, um den Wert (Strings Gruppen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
         for (String key : gruppen.keySet()) {
             elementdaten.add(key);
         }
@@ -85,7 +103,11 @@ public class Turnier
      */
     public void zeigeAlleGruppen()
     {
+        // Erzeugen einer lokalen ArrayList von Gruppen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
         ArrayList <String> elementdaten = new ArrayList<>();
+        // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.
+        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
+        // get - Wird verwendet, um den Wert (Strings Gruppen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
         for (String key : gruppen.keySet()) {
             elementdaten.add(key);
         }
