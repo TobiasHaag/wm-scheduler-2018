@@ -239,6 +239,17 @@ public class Gruppe
     }
 
     /**
+     * Verändere die Details der Nationen, die sich in der HashMap nationen befinden.
+     * @return die veränderten Werte der Nation als String.
+     */
+    public String[] gibVeränderteDetailsNation1(String name, int tore, int punkte)
+    {
+        // get - Wird verwendet, um den Wert (Strings Nationen-Objekt) zurückzugeben, dem der angegebene Schlüssel (name Nation) zugeordnet wurde.
+        Nation nation = nationen.get(name);
+        return nation.gibVeränderteDetails1(tore, punkte);
+    }
+    
+    /**
      * Entfernt alle Nationen in der HashMap.
      */
     public void entferneNationen()

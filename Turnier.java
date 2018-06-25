@@ -272,4 +272,46 @@ public class Turnier
         System.out.println (gruppe.erstelleNationMitWerten(nationname, nationtore, nationpunkte));
     }
     
+    /**
+     * OK
+     */
+    public void Spielergebnis (String gruppenname, String nation1, int tore1, String nation2, int tore2)
+    {
+        String[] nation1Ergebnis = {"", "", ""};
+        String[] nation2Ergebnis = {"", "", ""};
+        int punkte1 = 0;
+        int punkte2 = 0;
+        if(tore1 > tore2){
+            punkte1 = 3;
+        }
+        if(tore1 < tore2){
+            punkte2 = 3;
+        }
+        if(tore1 == tore2){
+            punkte1 = 1;
+            punkte2 = 1;
+        }
+        Gruppe gruppe = gruppen.get(gruppenname);
+        nation1Ergebnis = gruppe.gibVeränderteDetailsNation1(nation1, tore1, punkte1);
+        nation2Ergebnis = gruppe.gibVeränderteDetailsNation1(nation2, tore2, punkte2);
+        
+        System.out.println(nation1 + "bekommt" + punkte1 + " Punkte.");
+        System.out.println(nation2 + "bekommt" + punkte2 + " Punkte.");
+        
+        for(int i=0; i<nation1Ergebnis.length; i++) {
+            System.out.println(nation1Ergebnis[i]);
+        }
+        for(int i=0; i<nation1Ergebnis.length; i++) {
+            System.out.println(nation2Ergebnis[i]);
+        }
+    }
+    
+    /**
+     * OK
+     */
+    private String schreibeGroßBuchstaben(String eingabe)
+    {
+        String ausgabe = eingabe.substring(0, 1).toUpperCase() + eingabe.substring(1);
+        return ausgabe;
+    }
 }
