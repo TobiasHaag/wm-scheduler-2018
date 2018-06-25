@@ -4,6 +4,7 @@ import java.util.Arrays; // Import-Anweisung um die Bibliotheksklasse Arrays in 
 /**
  * Klasse Turnier:
  * 
+ * Rainer.Hoenle@hs-aalen.de
  * 
  * @author Tobias Haag | HfG | IoT3
  * @version 25.06.2018
@@ -41,7 +42,7 @@ public class Turnier
     }
     
     /**
-     * 
+     * OK
      */
     public void zeigeAlleNationenSchlüssel(){   
         // Erzeugen einer lokalen ArrayList von Gruppen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
@@ -117,7 +118,7 @@ public class Turnier
     /**
      * OK
      */
-    public Gruppe gibGruppeÜberNation (String nation)
+    public Gruppe gibGruppeÜberNation(String nation)
     {
         for (String key : gruppen.keySet()) {
             Gruppe gruppe = gruppen.get(key);
@@ -153,12 +154,30 @@ public class Turnier
     }
     
     /**
-     * Falsch
+     * OK
      */
-    public void zeigeAlleNationenTore ()
+    public void zeigeNationTore(String gruppenname, String nationname)
     {
-           Gruppe gruppe = gruppen.get("F");
-           System.out.println (gruppe.gibToreNation("Deutschland"));
+           Gruppe gruppe = gruppen.get(gruppenname);
+           System.out.println (gruppe.gibToreNation(nationname));
+    }
+    
+    /**
+     * OK
+     */
+    public void zeigeNationPunkte(String gruppenname, String nationname)
+    {
+           Gruppe gruppe = gruppen.get(gruppenname);
+           System.out.println (gruppe.gibPunkteNation(nationname));
+    }
+    
+    /**
+     * OK
+     */
+    public void zeigeNationDetails(String gruppenname, String nationname)
+    {
+           Gruppe gruppe = gruppen.get(gruppenname);
+           System.out.println (gruppe.gibDetailsNation(nationname));
     }
     
     /**
@@ -169,6 +188,43 @@ public class Turnier
         Gruppe gruppe = gibGruppeÜberNation(nation);
         String daten = gruppe.gibVeränderteDetailsNation(nation, tore, punkte);
         return daten;
+    }
+    
+    /**
+     * OK
+     */
+    public void zeigeAlleTurnierPaarungen(){   
+        // Erzeugen einer lokalen ArrayList von Gruppen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
+        ArrayList <Gruppe> elementdaten = new ArrayList<>();
+        // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.
+        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
+        // get - Wird verwendet, um den Wert (Strings Gruppen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
+        for (String key : gruppen.keySet()) {
+            elementdaten.add(gruppen.get(key));
+        }
+        // for-Schleife: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Gruppe-Keys (Strings), Zählvariable um eins hochzählen.
+        // In der Schleife findet über die Zählvariable eine Objekt-Referenz statt.
+        // Dabei wird für jede Zählvariable in die Klasse Gruppe gegangen und die Methode gibDetailsNationen() aufgerufen und in der Konsole ausgegeben.
+        for (int i = 0; i <elementdaten.size(); i++) {
+            Gruppe gruppe = elementdaten.get(i);
+            System.out.println(gruppe.gibSpielPaarungen());
+        }
+    }
+    
+    /**
+     * OK
+     */
+    public void zeigeTurnierPaarungen(String gruppenname){   
+        // Erzeugen einer lokalen ArrayList von Gruppen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
+        ArrayList <Gruppe> elementdaten = new ArrayList<>();
+        // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.
+        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
+        // get - Wird verwendet, um den Wert (Strings Gruppen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
+        for (String key : gruppen.keySet()) {
+            elementdaten.add(gruppen.get(key));
+        }
+        Gruppe gruppe = gruppen.get(gruppenname);
+        System.out.println (gruppe.gibSpielPaarungen());
     }
     
     /**
@@ -188,4 +244,22 @@ public class Turnier
         }
         return punkte;
     }
+    
+    /**
+     * OK
+     */
+    public void fügeGruppeHinzu(String gruppenname)
+    {
+           gruppen.put(gruppenname, new Gruppe(gruppenname));
+    }
+    
+    /**
+     * OK
+     */
+    public void fügeNationInGruppeHinzu(String gruppenname, String nationname)
+    {
+           gruppen.put(gruppenname, new Gruppe(gruppenname));
+           
+    }
+    
 }

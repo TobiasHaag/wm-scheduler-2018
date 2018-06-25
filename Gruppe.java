@@ -170,7 +170,7 @@ public class Gruppe
     /**
      * Ermitteln der Spiel-Paarungen durch zwei Array-Listen und zwei verschachtelten for-Schleifen.
      */
-    public void ermittleSpielPaarungen()
+    public ArrayList <String> gibSpielPaarungen()
     {
         // ArrayList speichert über die Methode gibNationen() die Keys der Nationen-Objekte als Strings.
         ArrayList <String> schlüssel = gibAlleNationen();
@@ -184,7 +184,7 @@ public class Gruppe
                 elementdaten.add((schlüssel.get(i)) + " gegen " + (schlüssel.get(j)));
             }
         }
-        System.out.println(elementdaten); // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
+        return elementdaten; // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
     }
     
     /**
