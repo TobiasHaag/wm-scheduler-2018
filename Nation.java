@@ -14,8 +14,6 @@ public class Nation
     private int tore;
     // Die erreichten Punkte.
     private int punkte;
-    
-    private String [] nationDetails;
     /**
      * Konstruktor für Objekte der Klasse Nation.
      * @param name der Name der Nation.
@@ -25,7 +23,6 @@ public class Nation
     public Nation(String name, int tore, int punkte)
     {
         setzeDetails(name, tore, punkte);
-        nationDetails = new String[3];
     }
 
     /**
@@ -79,6 +76,15 @@ public class Nation
         return name + "|" + String.valueOf(this.tore) + "|" + String.valueOf(this.punkte);
     }
 
+    public String[] gibDetailsArray ()
+    {
+        String[] nationDetails = {"", "",""};
+        nationDetails[0]=this.name;
+        nationDetails[1]=Integer.toString(this.tore);
+        nationDetails[2]=Integer.toString(this.punkte);
+        return nationDetails;
+    }
+    
     /**
      * Verändere die Variablen Tore und Punkte der Nation.
      * Keine void Methode verwendet, da sonst keine Rückgabeparameter.
@@ -91,25 +97,6 @@ public class Nation
         this.punkte += punkte; // Addiert zu den vorhandenen Punkten neue hinzu.
         return gibDetails();
     }
-
-    public String[] gibDetailsArray ()
-    {
-        nationDetails[0]=this.name;
-        nationDetails[1]=Integer.toString(this.tore);
-        nationDetails[2]=Integer.toString(this.punkte);
-        return nationDetails;
-    }
     
-    /**
-     * Verändere die Variablen Tore und Punkte der Nation.
-     * Keine void Methode verwendet, da sonst keine Rückgabeparameter.
-     * @return rufe die Methode gibDetails() auf um die veränderten Nationen-Details zurückzugeben.
-     */
-    public String[] gibVeränderteDetails1 (int tore, int punkte)
-    {
-        // this - Schlüsselwort wird als Übergabeparameter verwendet um die Details wie Tore und Punkte zu überschreiben.
-        this.tore += tore; // Addiert zu den vorhandenen Tore neue hinzu.
-        this.punkte += punkte; // Addiert zu den vorhandenen Punkten neue hinzu.
-        return gibDetailsArray();
-    }
+    
 }

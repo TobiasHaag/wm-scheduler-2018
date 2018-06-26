@@ -118,35 +118,6 @@ public class Gruppe
     }
 
     /**
-     * Erstelle ein neues Objekt vom Typ Nation, speichere es in die HashMap nationen und aktualisiere die Nationenanzahl.
-     */
-    public ArrayList<String> erstelleNeueNation(String name)
-    {
-        ArrayList <String> elementdaten = new ArrayList<>();
-        Nation nation = new Nation(name, 0, 0); // new - Über den Konstruktor der Klasse Nation wird ein neues Nationen-Objekt erzeugt.
-        nationen.put(name, nation); // put - Fügt in die HashMap ein neues Objekt hinzu.
-        elementdaten.add(name);
-        elementdaten.add(Integer.toString(0));
-        elementdaten.add(Integer.toString(0));
-        anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
-        return elementdaten;
-    }
-
-    /**
-     * In die HashMap wird ein neues Objekt Nation mit Name, Tore und Punkte hinzugefügt.
-     */
-    public ArrayList <String> erstelleNationMitWerten(String name, int tore, int punkte)
-    {
-        ArrayList <String> elementdaten = new ArrayList<>();
-        nationen.put(name, new Nation(name, tore, punkte)); //  Über den Konstruktor der Klasse Nation wird ein neues Nationen-Objekt erzeugt.
-        elementdaten.add(name);
-        elementdaten.add(Integer.toString(tore));
-        elementdaten.add(Integer.toString(punkte));
-        anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
-        return elementdaten;
-    }
-    
-    /**
      * Methode mit einer Boolean-Abfrage, die Nationen in der HashMap nach Namen überprüft.
      * Dabei wird der Key (Name der Nation als String) mit der Eingabe verglichen.
      */
@@ -162,81 +133,6 @@ public class Gruppe
     }
 
     /**
-     * Über eine lokale ArrayList werden die Keys der in der HashMap befindlichen Nationen ausgegeben.
-     * In dieser Klasse wird die ArrayList für die Ermittlung der Spielpaarungen verwendet.
-     * @ return die Keys werden als Strings in der ArrayList zurückgegeben.
-     */
-    public ArrayList<String> gibAlleNationen()
-    {
-        ArrayList <String> elementdaten = new ArrayList<>();
-        // Iteration mit for-each Schleife durch die Nation-Objekte um die Menge an Keys zu erhalten.
-        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
-        for (String key : nationen.keySet()) {
-            elementdaten.add(key); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
-        }
-        return elementdaten; 
-    }
-    
-    /**
-     * OK
-     */
-    public ArrayList<Nation> gibAlleNationen1()
-    {
-        ArrayList <Nation> elementdaten = new ArrayList<>();
-        // Iteration mit for-each Schleife durch die Nation-Objekte um die Menge an Keys zu erhalten.
-        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
-        for (String key : nationen.keySet()) {
-            elementdaten.add(nationen.get(key)); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
-        }
-        return elementdaten; 
-    }
-    
-    /**
-     * Ermitteln der Spiel-Paarungen durch zwei Array-Listen und zwei verschachtelten for-Schleifen.
-     */
-    public ArrayList <String> gibSpielPaarungen()
-    {
-        // ArrayList speichert über die Methode gibNationen() die Keys der Nationen-Objekte als Strings.
-        ArrayList <String> schlüssel = gibAlleNationen();
-        // Erzeugen einer lokalen ArrayList von Strings. Kann nur innerhalb dieser Methode verwendet werden.
-        ArrayList <String> elementdaten = new ArrayList<String>();
-        // Erste for-Schleie: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
-        // Zweite for-Schleife: Der neuen Zählvariable wird der Startwert der Ersten dazu addiert, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
-        // Die berechneten Integer-Werte der Schleife werden durch die in der Array-List befindlichen Strings ersetzt und am Ende auf der Konsole ausgegebn.
-        ArrayList <Nation> nation = gibAlleNationen1();
-        for (int i = 0; i < anzahlNationen; i++) {
-            for (int j = i+1; j < anzahlNationen; j++) {
-                elementdaten.add((schlüssel.get(i)) + " - " + nation.get(i).gibTore() + " : "+ nation.get(j).gibTore() + " - " + schlüssel.get(j));
-            }
-        }
-        return elementdaten; // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
-    }
-    
-    /**
-     * String Methode, die den eingegebenen Namen mit den Namen der Klasse Nation abgleicht.
-     * Stimmt der Name überein dann gibt die Nation-Methode die Tore der Nation zurück.
-     * @return die Tore der Nation als Integer.
-     */
-    public int gibToreNation(String name)
-    {
-        // get - Wird verwendet, um den Wert (Strings Nationen-Objekt) zurückzugeben, dem der angegebene Schlüssel (name Nation) zugeordnet wurde.
-        Nation nation = nationen.get(name); 
-        return nation.gibTore();
-    }
-
-    /**
-     * String Methode, die den eingegebenen Namen mit den Namen der Klasse Nation abgleicht.
-     * Stimmt der Name überein dann gibt die Nation-Methode die Punkte der Nation zurück.
-     * @return die Punkte der Nation als Integer.
-     */
-    public int gibPunkteNation(String name)
-    {
-        // get - Wird verwendet, um den Wert (Strings Nationen-Objekt) zurückzugeben, dem der angegebene Schlüssel (name Nation) zugeordnet wurde.
-        Nation nation = nationen.get(name);
-        return nation.gibPunkte();
-    }
-
-    /**
      * String Methode, die den eingegebenen Namen mit den Namen der Klasse Nation abgleicht.
      * Stimmt der Name überein dann gibt die Nation-Methode die Details der Nation zurück.
      * @return die Werte der Nation als String.
@@ -244,10 +140,32 @@ public class Gruppe
     public String gibDetailsNation(String name)
     {
         // get - Wird verwendet, um den Wert (Strings Nationen-Objekt) zurückzugeben, dem der angegebene Schlüssel (name Nation) zugeordnet wurde.
-        Nation nation = nationen.get(name);
-        return nation.gibDetails();
+        if (prüfeNation (name) == true) {
+            Nation nation = nationen.get(name);
+            return nation.gibDetails();
+        }
+        return null;
     }
-    
+
+    /**
+     * Erstelle ein neues Objekt vom Typ Nation, speichere es in die HashMap nationen und aktualisiere die Nationenanzahl.
+     */
+    public int erstelleNeueNation(String name)
+    {
+        Nation nation = new Nation(name, 0, 0); // new - Über den Konstruktor der Klasse Nation wird ein neues Nationen-Objekt erzeugt.
+        nationen.put(name, nation); // put - Fügt in die HashMap ein neues Objekt hinzu.
+        return anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
+    }
+
+    /**
+     * In die HashMap wird ein neues Objekt Nation mit Name, Tore und Punkte hinzugefügt.
+     */
+    public int erstelleNationMitWerten(String name, int tore, int punkte)
+    {
+        nationen.put(name, new Nation(name, tore, punkte)); //  Über den Konstruktor der Klasse Nation wird ein neues Nationen-Objekt erzeugt.
+        return anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
+    }
+
     /**
      * Verändere die Details der Nationen, die sich in der HashMap nationen befinden.
      * @return die veränderten Werte der Nation als String.
@@ -259,40 +177,64 @@ public class Gruppe
         return nation.gibVeränderteDetails(tore, punkte);
     }
 
-    /**
-     * Verändere die Details der Nationen, die sich in der HashMap nationen befinden.
-     * @return die veränderten Werte der Nation als String.
-     */
-    public String[] gibVeränderteDetailsNation1(String name, int tore, int punkte)
-    {
-        // get - Wird verwendet, um den Wert (Strings Nationen-Objekt) zurückzugeben, dem der angegebene Schlüssel (name Nation) zugeordnet wurde.
-        Nation nation = nationen.get(name);
-        return nation.gibVeränderteDetails1(tore, punkte);
-    }
-    
-    /**
-     * Entfernt alle Nationen in der HashMap.
-     */
-    public void entferneNationen()
-    {
-        nationen.clear(); // clear - Wird verwendet, um alle Zuordnungen der Nationen-Objekte zu entfernen.
-        anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
+    public ArrayList <Nation> gibAlleNationen(){
+        ArrayList <Nation> nation = new ArrayList<>();
+        for (String key : nationen.keySet()) {
+            nation.add(nationen.get(key)); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
+        }
+        return nation;
     }
 
     /**
-     * Methode ohne Rückgabewerte, in der eine ArrayList mit Strings angelegt wird.
-     * In der HashMap findet eine Iteration der Nationen-Keys durch eine for-each Schleife statt.
-     * Die gefundenen Keys werden in die ArrayList übergeben und auf der Konsole ausgegeben.
+     * Ermitteln der Spiel-Paarungen durch zwei Array-Listen und zwei verschachtelten for-Schleifen.
      */
-    public void zeigeNationen(){   
+    public ArrayList <String> gibSpielPaarungen()
+    {
         // Erzeugen einer lokalen ArrayList von Strings. Kann nur innerhalb dieser Methode verwendet werden.
+        ArrayList <String> schlüssel = new ArrayList<>();
+        ArrayList <Nation> nation = new ArrayList<>();
         ArrayList <String> elementdaten = new ArrayList<>();
-        // Iteration mit for-each Schleife durch die Nation-Objekte um die Menge an Keys zu erhalten.
-        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
         for (String key : nationen.keySet()) {
-            elementdaten.add(key); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
+            schlüssel.add(key); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
         }
-        System.out.println(elementdaten); // Ausgabe der Nationen-Keys auf der Konsole.
+        for (String key : nationen.keySet()) {
+            nation.add(nationen.get(key)); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
+        }
+        // Erste for-Schleie: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
+        // Zweite for-Schleife: Der neuen Zählvariable wird der Startwert der Ersten dazu addiert, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
+        // Die berechneten Integer-Werte der Schleife werden durch die in der Array-List befindlichen Strings ersetzt und am Ende auf der Konsole ausgegebn.
+        for (int i = 0; i < anzahlNationen; i++) {
+            for (int j = i+1; j < anzahlNationen; j++) {
+                elementdaten.add((schlüssel.get(i)) + " - " + nation.get(i).gibTore() + " : "+ nation.get(j).gibTore() + " - " + schlüssel.get(j));
+            }
+        }
+        return elementdaten; // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
+    }
+
+    /**
+     * Ermitteln der Spiel-Paarungen durch zwei Array-Listen und zwei verschachtelten for-Schleifen.
+     */
+    public ArrayList <String> gibSpiel()
+    {
+        // Erzeugen einer lokalen ArrayList von Strings. Kann nur innerhalb dieser Methode verwendet werden.
+        ArrayList <String> schlüssel = new ArrayList<>();
+        ArrayList <Nation> nation = new ArrayList<>();
+        ArrayList <String> elementdaten = new ArrayList<>();
+        for (String key : nationen.keySet()) {
+            schlüssel.add(key); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
+        }
+        for (String key : nationen.keySet()) {
+            nation.add(nationen.get(key)); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
+        }
+        // Erste for-Schleie: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
+        // Zweite for-Schleife: Der neuen Zählvariable wird der Startwert der Ersten dazu addiert, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
+        // Die berechneten Integer-Werte der Schleife werden durch die in der Array-List befindlichen Strings ersetzt und am Ende auf der Konsole ausgegebn.
+        for (int i = 0; i < anzahlNationen; i++) {
+            for (int j = i+1; j < anzahlNationen; j++) {
+                elementdaten.add((schlüssel.get(i)) + " - " + nation.get(i).gibTore() + " : "+ nation.get(j).gibTore() + " - " + schlüssel.get(j));
+            }
+        }
+        return elementdaten; // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
     }
     
     /**
@@ -322,5 +264,46 @@ public class Gruppe
         }
         return details;
     }
-    
+
+    /**
+     * String Methode, die den eingegebenen Namen mit den Namen der Klasse Nation abgleicht.
+     * Stimmt der Name überein dann gibt die Nation-Methode die Tore der Nation zurück.
+     * @return die Tore der Nation als Integer.
+     */
+    public int gibToreNation(String name)
+    {
+        // get - Wird verwendet, um den Wert (Strings Nationen-Objekt) zurückzugeben, dem der angegebene Schlüssel (name Nation) zugeordnet wurde.
+        Nation nation = nationen.get(name); 
+        return nation.gibTore();
+    }
+
+    /**
+     * String Methode, die den eingegebenen Namen mit den Namen der Klasse Nation abgleicht.
+     * Stimmt der Name überein dann gibt die Nation-Methode die Punkte der Nation zurück.
+     * @return die Punkte der Nation als Integer.
+     */
+    public int gibPunkteNation(String name)
+    {
+        // get - Wird verwendet, um den Wert (Strings Nationen-Objekt) zurückzugeben, dem der angegebene Schlüssel (name Nation) zugeordnet wurde.
+        Nation nation = nationen.get(name);
+        return nation.gibPunkte();
+    }
+
+    /**
+     * Entfernt alle Nationen in der HashMap.
+     */
+    public int entferneAlleNationen()
+    {
+        nationen.clear(); // clear - Wird verwendet, um alle Zuordnungen der Nationen-Objekte zu entfernen.
+        return anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
+    }
+
+    /**
+     * Entfernt alle Nationen in der HashMap.
+     */
+    public int entferneNation(String name)
+    {
+        nationen.remove(name); // clear - Wird verwendet, um alle Zuordnungen der Nationen-Objekte zu entfernen.
+        return anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
+    }
 }

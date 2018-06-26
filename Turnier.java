@@ -1,6 +1,5 @@
 import java.util.HashMap; // Import-Anweisung um die Bibliotheksklasse HashMap in dieser Klasse verfügbar zu machen.
 import java.util.ArrayList; // Import-Anweisung um die Bibliotheksklasse ArrayList in dieser Klasse verfügbar zu machen.
-import java.util.Arrays; // Import-Anweisung um die Bibliotheksklasse Arrays in dieser Klasse verfügbar zu machen.
 /**
  * Rainer.Hoenle@hs-aalen.de
  * Klasse Turnier:
@@ -19,6 +18,7 @@ public class Turnier
     {
         gruppen = new HashMap<>(); // Erzeugen der HashMap mit Gruppen-Objekten.
         erstelleGruppenMap(); // Methodenaufruf, um die darin befindlichen Gruppeninformationen der HashMap gruppen zu übergeben.
+        zeigeAlleTurnierPaarungen();
     }
     
     /**
@@ -38,6 +38,37 @@ public class Turnier
         gruppen.put("F", new Gruppe("F"));
         gruppen.put("G", new Gruppe("G"));
         gruppen.put("H", new Gruppe("H"));
+    }
+    
+    /**
+     * Methode mit einer Boolean-Abfrage, die Nationen in der HashMap nach Namen überprüft.
+     * Dabei wird der Key (Name der Nation als String) mit der Eingabe verglichen.
+     */
+    public boolean prüfeNation(String name)
+    {
+        // containsKey - Überprüft, die Zuordnung für den angegebenen Schlüssel.
+        if(gruppen.containsKey(name)){
+            return true; // Namen stimmen überein - Nation befindet sich bereits in der Hashmap.
+        }
+        else{
+            return false; // Namen stimmen nicht überein - Nation befindet sich noch nicht in der Hashmap.
+        }
+    }
+    
+    /**
+     * OK
+     */
+    public ArrayList<String> gibGruppen()
+    {
+        // Erzeugen einer lokalen ArrayList von Gruppen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
+        ArrayList <String> elementdaten = new ArrayList<>();
+        // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.
+        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
+        // get - Wird verwendet, um den Wert (Strings Gruppen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
+        for (String key : gruppen.keySet()) {
+            elementdaten.add(key);
+        }
+        return elementdaten;
     }
     
     /**
@@ -80,22 +111,6 @@ public class Turnier
             Gruppe gruppe = elementdaten.get(i);
             System.out.println(gruppe.gibDetailsNationen());
         }
-    }
-    
-    /**
-     * OK
-     */
-    public ArrayList<String> gibGruppen()
-    {
-        // Erzeugen einer lokalen ArrayList von Gruppen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
-        ArrayList <String> elementdaten = new ArrayList<>();
-        // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.
-        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
-        // get - Wird verwendet, um den Wert (Strings Gruppen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
-        for (String key : gruppen.keySet()) {
-            elementdaten.add(key);
-        }
-        return elementdaten;
     }
     
     /**
@@ -259,10 +274,10 @@ public class Turnier
      */
     public void Spielergebnis (String gruppenname, String nation1, int tore1, String nation2, int tore2)
     {
-        String[] nation1Ergebnis = {"", "", ""};
-        String[] nation2Ergebnis = {"", "", ""};
         int punkte1 = 0;
         int punkte2 = 0;
+        ArrayList<String> nation1Ergebnis = new ArrayList <>();
+        ArrayList<String> nation2Ergebnis = new ArrayList <>();
         if(tore1 > tore2){
             punkte1 = 3;
         }
@@ -274,18 +289,7 @@ public class Turnier
             punkte2 = 1;
         }
         Gruppe gruppe = gruppen.get(gruppenname);
-        nation1Ergebnis = gruppe.gibVeränderteDetailsNation1(nation1, tore1, punkte1);
-        nation2Ergebnis = gruppe.gibVeränderteDetailsNation1(nation2, tore2, punkte2);
-        
-        System.out.println(nation1 + "bekommt" + punkte1 + " Punkte.");
-        System.out.println(nation2 + "bekommt" + punkte2 + " Punkte.");
-        
-        for(int i=0; i<nation1Ergebnis.length; i++) {
-            System.out.println(nation1Ergebnis[i]);
-        }
-        for(int i=0; i<nation1Ergebnis.length; i++) {
-            System.out.println(nation2Ergebnis[i]);
-        }
+        n
     }
     
     /**
