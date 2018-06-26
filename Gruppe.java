@@ -125,6 +125,9 @@ public class Gruppe
         ArrayList <String> elementdaten = new ArrayList<>();
         Nation nation = new Nation(name, 0, 0); // new - Über den Konstruktor der Klasse Nation wird ein neues Nationen-Objekt erzeugt.
         nationen.put(name, nation); // put - Fügt in die HashMap ein neues Objekt hinzu.
+        elementdaten.add(name);
+        elementdaten.add(Integer.toString(0));
+        elementdaten.add(Integer.toString(0));
         anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
         return elementdaten;
     }
@@ -136,6 +139,9 @@ public class Gruppe
     {
         ArrayList <String> elementdaten = new ArrayList<>();
         nationen.put(name, new Nation(name, tore, punkte)); //  Über den Konstruktor der Klasse Nation wird ein neues Nationen-Objekt erzeugt.
+        elementdaten.add(name);
+        elementdaten.add(Integer.toString(tore));
+        elementdaten.add(Integer.toString(punkte));
         anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
         return elementdaten;
     }

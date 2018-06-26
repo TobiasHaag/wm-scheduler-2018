@@ -229,24 +229,6 @@ public class Turnier
     /**
      * OK
      */
-    public int[] berechnePunkte(int tore1, int tore2)
-    {
-        int[] punkte = {0, 0};
-        if(tore1 > tore2){
-            punkte[0] = 3;
-        }
-        if(tore1 < tore2){
-            punkte[1] = 3;
-        }
-        if(tore1 == tore2){
-            punkte[0] = 1; punkte[1] = 1;
-        }
-        return punkte;
-    }
-    
-    /**
-     * OK
-     */
     public void fügeGruppeHinzu(String gruppenname)
     {
            gruppen.put(gruppenname, new Gruppe(gruppenname));
