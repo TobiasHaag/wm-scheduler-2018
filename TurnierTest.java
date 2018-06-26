@@ -101,7 +101,7 @@ public class TurnierTest
     public void zeigeTurnierPaarungengruppenname()
     {
         Turnier turnier1 = new Turnier();
-        turnier1.zeigeTurnierPaarungen("A");
+        turnier1.zeigeTurnierPaarungenFürGruppe("A");
     }
 
     @Test

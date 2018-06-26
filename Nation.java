@@ -14,6 +14,7 @@ public class Nation
     private int tore;
     // Die erreichten Punkte.
     private int punkte;
+    
     private String [] nationDetails;
     /**
      * Konstruktor für Objekte der Klasse Nation.

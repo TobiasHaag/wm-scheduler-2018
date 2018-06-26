@@ -213,7 +213,7 @@ public class Turnier
     /**
      * OK
      */
-    public void zeigeTurnierPaarungen(String gruppenname){   
+    public void zeigeTurnierPaarungenFürGruppe(String gruppenname){   
         // Erzeugen einer lokalen ArrayList von Gruppen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
         ArrayList <Gruppe> elementdaten = new ArrayList<>();
         // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.

@@ -178,6 +178,20 @@ public class Gruppe
     }
     
     /**
+     * OK
+     */
+    public ArrayList<Nation> gibAlleNationen1()
+    {
+        ArrayList <Nation> elementdaten = new ArrayList<>();
+        // Iteration mit for-each Schleife durch die Nation-Objekte um die Menge an Keys zu erhalten.
+        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
+        for (String key : nationen.keySet()) {
+            elementdaten.add(nationen.get(key)); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
+        }
+        return elementdaten; 
+    }
+    
+    /**
      * Ermitteln der Spiel-Paarungen durch zwei Array-Listen und zwei verschachtelten for-Schleifen.
      */
     public ArrayList <String> gibSpielPaarungen()
@@ -189,9 +203,10 @@ public class Gruppe
         // Erste for-Schleie: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
         // Zweite for-Schleife: Der neuen Zählvariable wird der Startwert der Ersten dazu addiert, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
         // Die berechneten Integer-Werte der Schleife werden durch die in der Array-List befindlichen Strings ersetzt und am Ende auf der Konsole ausgegebn.
+        ArrayList <Nation> nation = gibAlleNationen1();
         for (int i = 0; i < anzahlNationen; i++) {
             for (int j = i+1; j < anzahlNationen; j++) {
-                elementdaten.add((schlüssel.get(i)) + " gegen " + (schlüssel.get(j)));
+                elementdaten.add((schlüssel.get(i)) + " - " + nation.get(i).gibTore() + " : "+ nation.get(j).gibTore() + " - " + schlüssel.get(j));
             }
         }
         return elementdaten; // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
