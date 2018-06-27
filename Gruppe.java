@@ -11,7 +11,8 @@ public class Gruppe
 {
     private String gruppenname; // Gruppenname als String.
     private int anzahlNationen; // Anzahl der Nationen als Integer.
-    private HashMap<String, Nation>nationen; // HashMap mit String als key und Nationen-Objekten als Value.
+    private HashMap<String, Nation>nationen; // HashMap mit String als Key und Nationen-Objekten als Value.
+    private ArrayList spielelemente;
     /**
      * Konstruktor für Objekte der Klasse Gruppe.
      * Erzeugt werden die HashMap mit Nationen-Objekten und eine Methode um die Hashmap mit Schlüssel/Wert-Paaren der Nation zu füllen.
@@ -22,6 +23,7 @@ public class Gruppe
         nationen = new HashMap<>(); // Erzeugen der HashMap mit Nationen-Objekten.
         erstelleNationenMap(); // Methodenaufruf, um die darin befindlichen Nationeninformationen der HashMap nationen zu übergeben.
         anzahlNationen = nationen.size(); // Setzt die Anzahl der Nationen in einer Gruppe auf die Anzahl der befindlichen Objekte in der Hashmap. 
+        spielelemente = new ArrayList();
     }
 
     /**
@@ -97,7 +99,7 @@ public class Gruppe
         // Damit der User auch ein Feedback bekommt das alle Gruppen erstellt wurden.
         System.out.println("Die Nationen der Gruppe " + gruppenname + " wurden hinzugefügt!");
     }
-
+    
     /**
      * Liefere den Namen der Gruppe.
      * @return der Gruppenname.
@@ -176,7 +178,7 @@ public class Gruppe
         Nation nation = nationen.get(name);
         return nation.gibVeränderteDetails(tore, punkte);
     }
-
+    
     public ArrayList <Nation> gibAlleNationen(){
         ArrayList <Nation> nation = new ArrayList<>();
         for (String key : nationen.keySet()) {
@@ -193,7 +195,6 @@ public class Gruppe
         // Erzeugen einer lokalen ArrayList von Strings. Kann nur innerhalb dieser Methode verwendet werden.
         ArrayList <String> schlüssel = new ArrayList<>();
         ArrayList <Nation> nation = new ArrayList<>();
-        ArrayList <String> elementdaten = new ArrayList<>();
         for (String key : nationen.keySet()) {
             schlüssel.add(key); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
         }
@@ -205,36 +206,10 @@ public class Gruppe
         // Die berechneten Integer-Werte der Schleife werden durch die in der Array-List befindlichen Strings ersetzt und am Ende auf der Konsole ausgegebn.
         for (int i = 0; i < anzahlNationen; i++) {
             for (int j = i+1; j < anzahlNationen; j++) {
-                elementdaten.add((schlüssel.get(i)) + " - " + nation.get(i).gibTore() + " : "+ nation.get(j).gibTore() + " - " + schlüssel.get(j));
+                spielelemente.add((schlüssel.get(i)) + " : " + schlüssel.get(j));
             }
         }
-        return elementdaten; // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
-    }
-
-    /**
-     * Ermitteln der Spiel-Paarungen durch zwei Array-Listen und zwei verschachtelten for-Schleifen.
-     */
-    public ArrayList <String> gibSpiel()
-    {
-        // Erzeugen einer lokalen ArrayList von Strings. Kann nur innerhalb dieser Methode verwendet werden.
-        ArrayList <String> schlüssel = new ArrayList<>();
-        ArrayList <Nation> nation = new ArrayList<>();
-        ArrayList <String> elementdaten = new ArrayList<>();
-        for (String key : nationen.keySet()) {
-            schlüssel.add(key); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
-        }
-        for (String key : nationen.keySet()) {
-            nation.add(nationen.get(key)); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
-        }
-        // Erste for-Schleie: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
-        // Zweite for-Schleife: Der neuen Zählvariable wird der Startwert der Ersten dazu addiert, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
-        // Die berechneten Integer-Werte der Schleife werden durch die in der Array-List befindlichen Strings ersetzt und am Ende auf der Konsole ausgegebn.
-        for (int i = 0; i < anzahlNationen; i++) {
-            for (int j = i+1; j < anzahlNationen; j++) {
-                elementdaten.add((schlüssel.get(i)) + " - " + nation.get(i).gibTore() + " : "+ nation.get(j).gibTore() + " - " + schlüssel.get(j));
-            }
-        }
-        return elementdaten; // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
+        return spielelemente; // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
     }
     
     /**

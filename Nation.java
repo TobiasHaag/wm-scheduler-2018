@@ -97,6 +97,4 @@ public class Nation
         this.punkte += punkte; // Addiert zu den vorhandenen Punkten neue hinzu.
         return gibDetails();
     }
-    
-    
 }
