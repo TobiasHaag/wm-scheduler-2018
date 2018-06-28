@@ -11,8 +11,7 @@ public class Gruppe
 {
     private String gruppenname; // Gruppenname als String.
     private int anzahlNationen; // Anzahl der Nationen als Integer.
-    private HashMap<String, Nation>nationen; // HashMap mit String als Key und Nationen-Objekten als Value.
-    private ArrayList spielelemente;
+    private HashMap<String, Nation> nationen; // HashMap mit String als Key und Nationen-Objekten als Value.
     /**
      * Konstruktor für Objekte der Klasse Gruppe.
      * Erzeugt werden die HashMap mit Nationen-Objekten und eine Methode um die Hashmap mit Schlüssel/Wert-Paaren der Nation zu füllen.
@@ -23,7 +22,6 @@ public class Gruppe
         nationen = new HashMap<>(); // Erzeugen der HashMap mit Nationen-Objekten.
         erstelleNationenMap(); // Methodenaufruf, um die darin befindlichen Nationeninformationen der HashMap nationen zu übergeben.
         anzahlNationen = nationen.size(); // Setzt die Anzahl der Nationen in einer Gruppe auf die Anzahl der befindlichen Objekte in der Hashmap. 
-        spielelemente = new ArrayList();
     }
 
     /**
@@ -195,6 +193,7 @@ public class Gruppe
         // Erzeugen einer lokalen ArrayList von Strings. Kann nur innerhalb dieser Methode verwendet werden.
         ArrayList <String> schlüssel = new ArrayList<>();
         ArrayList <Nation> nation = new ArrayList<>();
+        ArrayList <String> elementdaten = new ArrayList<>();
         for (String key : nationen.keySet()) {
             schlüssel.add(key); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
         }
@@ -206,10 +205,10 @@ public class Gruppe
         // Die berechneten Integer-Werte der Schleife werden durch die in der Array-List befindlichen Strings ersetzt und am Ende auf der Konsole ausgegebn.
         for (int i = 0; i < anzahlNationen; i++) {
             for (int j = i+1; j < anzahlNationen; j++) {
-                spielelemente.add((schlüssel.get(i)) + " : " + schlüssel.get(j));
+                elementdaten.add((schlüssel.get(i)) + " - " + nation.get(i).gibTore() + " : "+ nation.get(j).gibTore() + " - " + schlüssel.get(j)); 
             }
         }
-        return spielelemente; // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
+        return elementdaten; // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
     }
     
     /**

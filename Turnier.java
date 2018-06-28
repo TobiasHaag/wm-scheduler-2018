@@ -244,15 +244,6 @@ public class Turnier
     /**
      * OK
      */
-    public void zeigeTurnierPaarungenFürGruppe(String nation1, String nation2){   
-        ArrayList <Gruppe> spielelemente = new ArrayList<>();
-        String spielVor = nation1 + ":" + nation2;
-        String spielRück = nation2 + ":" + nation1;
-    }
-    
-    /**
-     * OK
-     */
     public void fügeGruppeHinzu(String gruppenname)
     {
            gruppen.put(gruppenname, new Gruppe(gruppenname));
@@ -301,15 +292,4 @@ public class Turnier
         nation1Ergebnis.add(gruppe.gibVeränderteDetailsNation(nation1, tore1, punkte1));
         nation2Ergebnis.add(gruppe.gibVeränderteDetailsNation(nation2, tore2, punkte2));
     } 
-    
-    
-    
-    /**
-     * OK
-     */
-    private String schreibeGroßBuchstaben(String eingabe)
-    {
-        String ausgabe = eingabe.substring(0, 1).toUpperCase() + eingabe.substring(1);
-        return ausgabe;
-    }
 }
