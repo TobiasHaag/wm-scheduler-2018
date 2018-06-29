@@ -59,9 +59,31 @@ public class Turnier
     }
     
     /**
-     * OK
+     * Methode um auf der Konsole alle Gruppennamen des Turniers anzuzeigen.
+     * Dazu wird durch alle Keys in der HashMap Gruppe iteriert, die Keys in eine ArrayList überführt und ausgegeben. 
      */
-    public void zeigeAlleNationenSchlüssel(){   
+    public void zeigeAlleGruppen()
+    {
+        // Erzeugen einer lokalen ArrayList von Strings.
+        ArrayList <String> elementdaten = new ArrayList<>();
+        // Iteration mit for-each Schleife durch die Gruppen um die Keys zu erhalten.
+        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
+        for (String key : gruppen.keySet()) {
+            elementdaten.add(key); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
+        }
+        System.out.println();
+        System.out.println("Die Gruppen des Turniers:");
+        System.out.println(elementdaten);
+    }
+    
+    /**
+     * Es werden alle Nationen die bei diesem Turnier beteiligt sind dargestellt.
+     * Anhand der Iteration der Keys der Gruppe und einer for-Schleife die auf die Methode gibAlleNationen
+     * in der Klasse Gruppe zugreift werden alle Nationen in der Konsole angezeigt.
+     * 
+     */
+    public void zeigeAlleNationenSchlüssel()
+    {   
         // Erzeugen einer lokalen ArrayList von Gruppen-Objekten.
         ArrayList <Gruppe> elementdaten = new ArrayList<>();
         // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.
@@ -80,7 +102,10 @@ public class Turnier
     }
     
     /**
-     * OK
+     * Diese Methode wird im Konstruktor 
+     * Es werden alle Nationen die bei diesem Turnier beteiligt sind dargestellt.
+     * Anhand der Iteration der Keys der Gruppe und einer for-Schleife die auf die Methode gibAlleNationen
+     * in der Klasse Gruppe zugreift werden alle Nationen in der Konsole angezeigt.
      */
     public void zeigeAlleNationenWerte(){   
         // Erzeugen einer lokalen ArrayList von Gruppen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
@@ -99,22 +124,6 @@ public class Turnier
             Gruppe gruppe = elementdaten.get(i);
             System.out.println(gruppe.gibDetailsNationen());
         }
-    }
-    
-    /**
-     * OK
-     */
-    public void zeigeAlleGruppen()
-    {
-        // Erzeugen einer lokalen ArrayList von Gruppen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
-        ArrayList <String> elementdaten = new ArrayList<>();
-        // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.
-        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
-        // get - Wird verwendet, um den Wert (Strings Gruppen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
-        for (String key : gruppen.keySet()) {
-            elementdaten.add(key);
-        }
-        System.out.println(elementdaten);
     }
     
     /**

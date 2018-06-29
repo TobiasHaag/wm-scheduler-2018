@@ -176,21 +176,21 @@ public class Gruppe
         Nation nation = nationen.get(name);
         return nation.gibVeränderteDetails(tore, punkte);
     }
-    
-    /**
-     * Die Methode legt eine lokale ArrayList mit Nationen-Objekte an.
-     * In diese Liste werden alle Nationen-Keys eingefügt die bei der Iteration durch die Gruppe gefunden wurden.
-     * @return alle Nationen-Objekte anhand der Keys in der Gruppe.
-     */
-    public ArrayList <Nation> gibAlleNationen(){
-        // Erzeugen einer lokalen ArrayList von Nationen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
-        ArrayList <Nation> nation = new ArrayList<>();
-        for (String key : nationen.keySet()) {
-            nation.add(nationen.get(key)); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
-        }
-        return nation;
-    }
 
+    /**
+     * Die Methode legt eine lokale ArrayList mit Strings an.
+     * In diese Liste werden alle Nationen-Keys als Strings eingefügt die bei der Iteration durch die Gruppe gefunden wurden.
+     * @return alle Nationen Keys vom Typ String in der Gruppe.
+     */
+    public ArrayList <String> gibAlleNationen(){
+        // Erzeugen einer lokalen ArrayList von Strings. Kann nur innerhalb dieser Methode verwendet werden.
+        ArrayList <String> elementdaten = new ArrayList<>();
+        for (String key : nationen.keySet()) {
+            elementdaten.add(key); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
+        }
+        return elementdaten;
+    }
+    
     /**
      * Methode, in der die erste ArrayList mit Nationen-Objekten und die Zweite mit Strings angelegt wird.
      * In der HashMap findet eine Iteration der Nationen-Keys durch eine for-each Schleife statt.
@@ -207,7 +207,7 @@ public class Gruppe
         // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
         // get - Wird verwendet, um den Wert (Strings Nationen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
         for (String key : nationen.keySet()) {
-            elementdaten.add(nationen.get(key));
+            elementdaten.add(nationen.get(key)); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
         }
         // for-Schleife: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen-Keys (Strings), Zählvariable um eins hochzählen.
         // In der Schleife findet über die Zählvariable eine Objekt-Referenz statt.
