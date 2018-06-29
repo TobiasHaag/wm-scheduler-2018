@@ -4,7 +4,7 @@
  * Die Getter-Methoden lieferen die Details aus den initalisierten Nationen-Variablen zurück.
  *
  * @author Tobias Haag | HfG | IoT3
- * @version 25.06.2018
+ * @version 30.06.2018
  */
 public class Nation
 {
@@ -76,12 +76,17 @@ public class Nation
         return name + "|" + String.valueOf(this.tore) + "|" + String.valueOf(this.punkte);
     }
 
+    /**
+     * Liefere Details über die Nation als Array mit Strings: Name, Tore und Punkte.
+     * @return die Nationen-Details als Strings.
+     */
     public String[] gibDetailsArray ()
     {
-        String[] nationDetails = {"", "",""};
-        nationDetails[0]=this.name;
-        nationDetails[1]=Integer.toString(this.tore);
-        nationDetails[2]=Integer.toString(this.punkte);
+        String[] nationDetails = {"", "",""}; // Erzeugen eines lokalen Arrays mit drei leeren Zeichenketten.
+        nationDetails[0] = this.name; // Der Wert des Übergabeparameters name wird dem ersten Array zugewiesen.
+        // toString - Primitiver Datentyp z.B. Integer wird als String-Objekt zurückgegeben.
+        nationDetails[1] = Integer.toString(this.tore); // Der Wert des Übergabeparameters tore wird dem zweiten Array zugewiesen.
+        nationDetails[2] = Integer.toString(this.punkte); // Der Wert des Übergabeparameters punkte wird dem dritten Array zugewiesen.
         return nationDetails;
     }
     

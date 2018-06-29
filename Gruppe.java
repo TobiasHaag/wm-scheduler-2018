@@ -5,7 +5,7 @@ import java.util.ArrayList; // Import-Anweisung um die Bibliotheksklasse ArrayLi
  * Die Klasse Gruppe enthält eine HashMap mt 8 Gruppen-Objekten, die jeweils 4 Nationen-Objekte als Value beinhalten.
  * 
  * @author Tobias Haag | HfG | IoT3
- * @version 25.06.2018
+ * @version 30.06.2018
  */
 public class Gruppe
 {
@@ -37,7 +37,7 @@ public class Gruppe
         // GruppeA
         if (gruppenname == "A"){
             // put - Fügt in die HashMap ein neues Objekt der Klasse Nation hinzu.
-            // Der Key vom Typ String und ist gleich der Name der Nation.
+            // Der Key vom Typ String ist gleich der Name der Nation.
             // Für den Value wird ein neues Nationen-Objekt angelegt, das den Namen der Nation beinhaltet 
             // und die Tore bzw. Punkte werden standardmäßig auf die Werte 0 gesetzt.
             nationen.put("Russland", new Nation("Russland", 0, 0));
@@ -177,6 +177,9 @@ public class Gruppe
         return nation.gibVeränderteDetails(tore, punkte);
     }
     
+    /**
+     * OK
+     */
     public ArrayList <Nation> gibAlleNationen(){
         ArrayList <Nation> nation = new ArrayList<>();
         for (String key : nationen.keySet()) {

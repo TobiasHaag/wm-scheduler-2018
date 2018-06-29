@@ -5,7 +5,7 @@ import java.util.ArrayList; // Import-Anweisung um die Bibliotheksklasse ArrayLi
  * Klasse Turnier:
  * 
  * @author Tobias Haag | HfG | IoT3
- * @version 25.06.2018
+ * @version 30.06.2018
  */
 public class Turnier
 {
