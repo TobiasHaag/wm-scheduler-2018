@@ -28,6 +28,7 @@ public class Gruppe
      * Die Methode fügt anhand der eingegebenen bzw. übereinstimmenden Gruppennamen die Schlüssel/Wert-Paare der Klasse Nation in die HashMap.
      * Dabei wird für jede Gruppe ein Objekt mit einer Hashmap angelegt und die dazugehörigen Nationen eingefügt.
      * Somit ergeben sich für 8 Objekt-Gruppen (A-H) jeweils 32 Nationen-Objekte. Dabei muss jedes Gruppen-Objekt einzeln angelegt werden.
+     * Die Methode ist private deklariert, da keine Klasse von außerhalb auf diese Methode Zugriff haben sollte.
      */
     private void erstelleNationenMap()
     {

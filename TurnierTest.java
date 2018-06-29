@@ -50,7 +50,6 @@ public class TurnierTest
     {
         Turnier turnier1 = new Turnier();
         turnier1.zeigeAlleNationenWerte();
-        turnier1.zeigeAlleNationenWerte();
     }
 
     @Test
