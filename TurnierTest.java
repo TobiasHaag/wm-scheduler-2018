@@ -131,13 +131,6 @@ public class TurnierTest
     }
 
     @Test
-    public void gibGruppen()
-    {
-        Turnier turnier1 = new Turnier();
-        assertNotNull(turnier1.gibGruppen());
-    }
-
-    @Test
     public void gibGruppeÜberNation()
     {
         Turnier turnier1 = new Turnier();

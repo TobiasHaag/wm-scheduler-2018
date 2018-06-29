@@ -1,8 +1,9 @@
 import java.util.HashMap; // Import-Anweisung um die Bibliotheksklasse HashMap in dieser Klasse verfügbar zu machen.
 import java.util.ArrayList; // Import-Anweisung um die Bibliotheksklasse ArrayList in dieser Klasse verfügbar zu machen.
 /**
- * Rainer.Hoenle@hs-aalen.de
  * Klasse Turnier:
+ * Die Klasse Turnier ist für das Anlegen der 8 Gruppen mit jeweils 4 Nationen zuständig.
+ * Des Weiteren wird d
  * 
  * @author Tobias Haag | HfG | IoT3
  * @version 30.06.2018
@@ -18,7 +19,7 @@ public class Turnier
     {
         gruppen = new HashMap<>(); // Erzeugen der HashMap mit Gruppen-Objekten.
         erstelleGruppenMap(); // Methodenaufruf, um die darin befindlichen Gruppeninformationen der HashMap gruppen zu übergeben.
-        zeigeAlleTurnierPaarungen();
+        zeigeAlleNationenWerte(); // Methodenaufruf, um alle Nationen mit Toren und Punkten anzuzeigen.
     }
     
     /**
@@ -30,6 +31,7 @@ public class Turnier
     public void erstelleGruppenMap()
     {
         // Über den Key String werden alle 8 Gruppen-HashMaps auf ein Mal erstellt, da diese in der Klasse Gruppe angelegt wurden.
+        System.out.println("Speicherung der Gruppen:");
         gruppen.put("A", new Gruppe("A"));
         gruppen.put("B", new Gruppe("B"));
         gruppen.put("C", new Gruppe("C"));
@@ -38,6 +40,7 @@ public class Turnier
         gruppen.put("F", new Gruppe("F"));
         gruppen.put("G", new Gruppe("G"));
         gruppen.put("H", new Gruppe("H"));
+        System.out.println();
     }
     
     /**
@@ -58,24 +61,8 @@ public class Turnier
     /**
      * OK
      */
-    public ArrayList<String> gibGruppen()
-    {
-        // Erzeugen einer lokalen ArrayList von Gruppen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
-        ArrayList <String> elementdaten = new ArrayList<>();
-        // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.
-        // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
-        // get - Wird verwendet, um den Wert (Strings Gruppen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
-        for (String key : gruppen.keySet()) {
-            elementdaten.add(key);
-        }
-        return elementdaten;
-    }
-    
-    /**
-     * OK
-     */
     public void zeigeAlleNationenSchlüssel(){   
-        // Erzeugen einer lokalen ArrayList von Gruppen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
+        // Erzeugen einer lokalen ArrayList von Gruppen-Objekten.
         ArrayList <Gruppe> elementdaten = new ArrayList<>();
         // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.
         // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
@@ -107,6 +94,7 @@ public class Turnier
         // for-Schleife: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Gruppe-Keys (Strings), Zählvariable um eins hochzählen.
         // In der Schleife findet über die Zählvariable eine Objekt-Referenz statt.
         // Dabei wird für jede Zählvariable in die Klasse Gruppe gegangen und die Methode gibDetailsNationen() aufgerufen und in der Konsole ausgegeben.
+        System.out.println("Der aktuelle Spielplan mit allen Nationen, Toren & Punkten:");
         for (int i = 0; i <elementdaten.size(); i++) {
             Gruppe gruppe = elementdaten.get(i);
             System.out.println(gruppe.gibDetailsNationen());
@@ -219,6 +207,7 @@ public class Turnier
         // for-Schleife: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Gruppe-Keys (Strings), Zählvariable um eins hochzählen.
         // In der Schleife findet über die Zählvariable eine Objekt-Referenz statt.
         // Dabei wird für jede Zählvariable in die Klasse Gruppe gegangen und die Methode gibDetailsNationen() aufgerufen und in der Konsole ausgegeben.
+        System.out.println("Alle Spielpaarungen im Überblick:");
         for (int i = 0; i <elementdaten.size(); i++) {
             Gruppe gruppe = elementdaten.get(i);
             System.out.println(gruppe.gibSpielPaarungen());
@@ -234,6 +223,8 @@ public class Turnier
         // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.
         // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
         // get - Wird verwendet, um den Wert (Strings Gruppen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
+        System.out.println();
+        System.out.println("Spielpaarung der Gruppe " + gruppenname +  " im Überblick:");
         for (String key : gruppen.keySet()) {
             elementdaten.add(gruppen.get(key));
         }

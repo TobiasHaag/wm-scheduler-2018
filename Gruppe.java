@@ -2,7 +2,7 @@ import java.util.HashMap; // Import-Anweisung um die Bibliotheksklasse HashMap i
 import java.util.ArrayList; // Import-Anweisung um die Bibliotheksklasse ArrayList in dieser Klasse verfügbar zu machen.
 /**
  * Klasse Gruppe:
- * Die Klasse Gruppe enthält eine HashMap mt 8 Gruppen-Objekten, die jeweils 4 Nationen-Objekte als Value beinhalten.
+ * Die Klasse Gruppe enthält eine HashMap mit 8 Gruppen-Objekten, die jeweils 4 Nationen-Objekte als Value beinhalten.
  * 
  * @author Tobias Haag | HfG | IoT3
  * @version 30.06.2018
@@ -31,7 +31,7 @@ public class Gruppe
      */
     private void erstelleNationenMap()
     {
-        // If Bedinung die beim anlegen des Objekts prüft ob der eingegebene Name mit den Gruppenname übereinstimmt.
+        // If Bedinung die beim Anlegen des Objekts prüft ob der eingegebene Name mit dem Gruppenname übereinstimmt.
         // Ist dies der Fall dann werden die Schlüssel/Wert-Paare in die HashMap eingefügt.
 
         // GruppeA
@@ -178,9 +178,12 @@ public class Gruppe
     }
     
     /**
-     * OK
+     * Die Methode legt eine lokale ArrayList mit Nationen-Objekte an.
+     * In diese Liste werden alle Nationen-Keys eingefügt die bei der Iteration durch die Gruppe gefunden wurden.
+     * @return alle Nationen-Objekte anhand der Keys in der Gruppe.
      */
     public ArrayList <Nation> gibAlleNationen(){
+        // Erzeugen einer lokalen ArrayList von Nationen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
         ArrayList <Nation> nation = new ArrayList<>();
         for (String key : nationen.keySet()) {
             nation.add(nationen.get(key)); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
@@ -189,32 +192,6 @@ public class Gruppe
     }
 
     /**
-     * Ermitteln der Spiel-Paarungen durch zwei Array-Listen und zwei verschachtelten for-Schleifen.
-     */
-    public ArrayList <String> gibSpielPaarungen()
-    {
-        // Erzeugen einer lokalen ArrayList von Strings. Kann nur innerhalb dieser Methode verwendet werden.
-        ArrayList <String> schlüssel = new ArrayList<>();
-        ArrayList <Nation> nation = new ArrayList<>();
-        ArrayList <String> elementdaten = new ArrayList<>();
-        for (String key : nationen.keySet()) {
-            schlüssel.add(key); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
-        }
-        for (String key : nationen.keySet()) {
-            nation.add(nationen.get(key)); // add - Der ArrayList elementdaten werden alle Keys zugeordnet.
-        }
-        // Erste for-Schleie: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
-        // Zweite for-Schleife: Der neuen Zählvariable wird der Startwert der Ersten dazu addiert, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
-        // Die berechneten Integer-Werte der Schleife werden durch die in der Array-List befindlichen Strings ersetzt und am Ende auf der Konsole ausgegebn.
-        for (int i = 0; i < anzahlNationen; i++) {
-            for (int j = i+1; j < anzahlNationen; j++) {
-                elementdaten.add((schlüssel.get(i)) + " - " + nation.get(i).gibTore() + " : "+ nation.get(j).gibTore() + " - " + schlüssel.get(j)); 
-            }
-        }
-        return elementdaten; // Die Strings der Spielpaarungen werden auf der Konsole ausgegeben.
-    }
-    
-    /**
      * Methode, in der die erste ArrayList mit Nationen-Objekten und die Zweite mit Strings angelegt wird.
      * In der HashMap findet eine Iteration der Nationen-Keys durch eine for-each Schleife statt.
      * Die gefundenen Nationen-Keys vom Typ String durchlaufen danach eine for-Schleife mit der Schrittweite gleich der Anzahl der Keys.
@@ -222,9 +199,9 @@ public class Gruppe
      * @ return die Strings der Methode gibDetails() der Klasse Nation übergeben in die ArrayList details.
      */
     public ArrayList <String> gibDetailsNationen(){   
-        // Erzeugen einer lokalen ArrayList von Nationen-Objekten. Kann nur innerhalb dieser Methode verwendet werden.
+        // Erzeugen einer lokalen ArrayList von Nationen-Objekten.
         ArrayList <Nation> elementdaten = new ArrayList<>();
-        // Erzeugen einer lokalen ArrayList von Strings. Kann nur innerhalb dieser Methode verwendet werden.
+        // Erzeugen einer lokalen ArrayList von Strings.
         ArrayList <String> details = new ArrayList<>();
         // Iteration mit for-each Schleife durch die Nation-Objekte um die Menge an Nationen-Keys zu erhalten.
         // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
@@ -240,6 +217,41 @@ public class Gruppe
             details.add(nation.gibDetails());
         }
         return details;
+    }
+    
+    /**
+     * Ermitteln der Spiel-Paarungen durch drei Array-Listen und zwei verschachtelten for-Schleifen.
+     * In der HashMap findet die Iteration der Nationen-Keys mit dem Typ String und Typ Nation durch eine for-each Schleife statt.
+     * Es findet eine for-Schleife mit der Anzahl der Nationen statt und in dieser eine weitere for-Schleife.
+     * Die gefundenen Nationen-Keys vom Typ String/Nation durchlaufen danach die zweite for-Schleife mit der Schrittweite i+1.
+     * Die Zählvariable verweist über get auf die Keys der Nationen bzw. auf die Methode gibTore() in der Klasse Nation und 
+     * übergibt die Strings bzw. Integer Tore der Variablen elementdaten.
+     * @ return die Strings der Nationen-Keys bzw. der Methode gibTore() der Klasse Nation übergeben in die ArrayList elementdaten.
+     */
+    public ArrayList <String> gibSpielPaarungen()
+    {
+        // Erzeugen einer lokalen ArrayList von Strings.
+        ArrayList <String> schlüssel = new ArrayList<>();
+        // Erzeugen einer lokalen ArrayList von Nation-Objekten.
+        ArrayList <Nation> nation = new ArrayList<>();
+        // Erzeugen einer lokalen ArrayList von Strings.
+        ArrayList <String> elementdaten = new ArrayList<>();
+        for (String key : nationen.keySet()) {
+            schlüssel.add(key); // add - Der ArrayList schlüssel werden alle Keys vom Typ String zugeordnet.
+        }
+        for (String key : nationen.keySet()) {
+            nation.add(nationen.get(key)); // add - Der ArrayList nation werden alle Keys vom Typ Nation zugeordnet.
+        }
+        // Erste for-Schleie: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
+        // Zweite for-Schleife: Der neuen Zählvariable wird der Startwert der Ersten dazu addiert, Druchlaufbedinung kleiner Anzahl der Nationen, Zählvariable um eins hochzählen.
+        // Die berechneten Integer-Werte der Schleife werden durch die in der Array-List befindlichen Strings ersetzt.
+        // Außerdem wird über die Methode gibTore() zu der jeweiligen Nation die Tore zurückgegeben.
+        for (int i = 0; i < anzahlNationen; i++) {
+            for (int j = i+1; j < anzahlNationen; j++) {
+                elementdaten.add((schlüssel.get(i)) + " - " + nation.get(i).gibTore() + " : "+ nation.get(j).gibTore() + " - " + schlüssel.get(j)); 
+            }
+        }
+        return elementdaten;
     }
 
     /**
@@ -267,6 +279,15 @@ public class Gruppe
     }
 
     /**
+     * Entfernt eine Nationen in der HashMap.
+     */
+    public int entferneNation(String name)
+    {
+        nationen.remove(name); // remove - Wird verwendet, um eine Zuordnung der Nationen-Objekte zu entfernen.
+        return anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
+    }
+    
+    /**
      * Entfernt alle Nationen in der HashMap.
      */
     public int entferneAlleNationen()
@@ -275,12 +296,4 @@ public class Gruppe
         return anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
     }
 
-    /**
-     * Entfernt alle Nationen in der HashMap.
-     */
-    public int entferneNation(String name)
-    {
-        nationen.remove(name); // clear - Wird verwendet, um alle Zuordnungen der Nationen-Objekte zu entfernen.
-        return anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
-    }
 }
