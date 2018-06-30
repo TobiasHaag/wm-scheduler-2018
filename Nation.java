@@ -3,6 +3,7 @@
  * Die Klasse Nation enthält die Variablen name, tore & punkte um eine Nation zu implementieren.
  * Die Getter-Methoden lieferen die Details aus den initalisierten Nationen-Variablen zurück.
  *
+ * Prüfung Programmiersprachen2
  * @author Tobias Haag | HfG | IoT3
  * @version 30.06.2018
  */

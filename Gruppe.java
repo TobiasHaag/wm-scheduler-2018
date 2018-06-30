@@ -4,6 +4,7 @@ import java.util.ArrayList; // Import-Anweisung um die Bibliotheksklasse ArrayLi
  * Klasse Gruppe:
  * Die Klasse Gruppe enthält eine HashMap mit 8 Gruppen-Objekten, die jeweils 4 Nationen-Objekte als Value beinhalten.
  * 
+ * Prüfung Programmiersprachen2
  * @author Tobias Haag | HfG | IoT3
  * @version 30.06.2018
  */
@@ -95,8 +96,6 @@ public class Gruppe
             nationen.put("Kolumbien", new Nation("Kolumbien", 0, 0));
             nationen.put("Japan", new Nation("Japan", 0, 0));
         }
-        // Damit der User auch ein Feedback bekommt das alle Gruppen erstellt wurden.
-        System.out.println("Die Nationen der Gruppe " + gruppenname + " wurden hinzugefügt!");
     }
     
     /**
@@ -296,5 +295,4 @@ public class Gruppe
         nationen.clear(); // clear - Wird verwendet, um alle Zuordnungen der Nationen-Objekte zu entfernen.
         return anzahlNationen(); // Aktualisiert die Anzahl der Nationen in der HashMap.
     }
-
 }

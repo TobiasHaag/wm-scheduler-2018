@@ -6,8 +6,9 @@ import org.junit.Test;
 /**
  * Die Test-Klasse TurnierTest.
  *
- * @author  (Ihr Name)
- * @version (eine Versionsnummer oder ein Datum)
+ * Prüfung Programmiersprachen2
+ * @author Tobias Haag | HfG | IoT3
+ * @version 30.06.2018
  */
 public class TurnierTest
 {
@@ -39,6 +40,34 @@ public class TurnierTest
     }
 
     @Test
+    public void fügeGruppeHinzu()
+    {
+        Turnier turnier1 = new Turnier();
+        turnier1.fügeGruppeHinzu("I");
+    }
+
+    @Test
+    public void fügeNationMitWertenInGruppeHinzu()
+    {
+        Turnier turnier1 = new Turnier();
+        turnier1.fügeNationMitWertenInGruppeHinzu("A", "China", 3, 4);
+    }
+
+    @Test
+    public void fügeNeueNationInGruppeHinzu()
+    {
+        Turnier turnier1 = new Turnier();
+        turnier1.fügeNeueNationInGruppeHinzu("I", "Australien");
+    }
+
+    @Test
+    public void zeigeAlleGruppen()
+    {
+        Turnier turnier1 = new Turnier();
+        turnier1.zeigeAlleGruppen();
+    }
+
+    @Test
     public void zeigeAlleNationenSchlüssel()
     {
         Turnier turnier1 = new Turnier();
@@ -53,31 +82,10 @@ public class TurnierTest
     }
 
     @Test
-    public void zeigeAlleGruppen()
+    public void zeigeAlleTurnierPaarungen()
     {
         Turnier turnier1 = new Turnier();
-        turnier1.zeigeAlleGruppen();
-    }
-
-    @Test
-    public void prüfeNationenInGruppe()
-    {
-        Turnier turnier1 = new Turnier();
-        assertEquals("F", turnier1.prüfeNationenInGruppe("Deutschland", "Mexiko"));
-    }
-
-    @Test
-    public void zeigeNationTore()
-    {
-        Turnier turnier1 = new Turnier();
-        turnier1.zeigeNationTore("A", "Russland");
-    }
-
-    @Test
-    public void zeigeNationPunkte()
-    {
-        Turnier turnier1 = new Turnier();
-        turnier1.zeigeNationPunkte("A", "Russland");
+        turnier1.zeigeAlleTurnierPaarungen();
     }
 
     @Test
@@ -88,55 +96,33 @@ public class TurnierTest
     }
 
     @Test
-    public void zeigeAlleTurnierPaarungen()
+    public void zeigeNationPunkte()
     {
         Turnier turnier1 = new Turnier();
-        turnier1.zeigeAlleTurnierPaarungen();
+        turnier1.zeigeNationPunkte("F", "Deutschland");
     }
 
     @Test
-    public void zeigeTurnierPaarungengruppenname()
+    public void zeigeNationTore()
+    {
+        Turnier turnier1 = new Turnier();
+        turnier1.zeigeNationTore("F", "Deutschland");
+    }
+
+    @Test
+    public void zeigeTurnierPaarungenfürGruppe()
     {
         Turnier turnier1 = new Turnier();
         turnier1.zeigeTurnierPaarungenFürGruppe("A");
     }
 
     @Test
-    public void fügeGruppeHinzu()
-    {
-        Turnier turnier1 = new Turnier();
-        turnier1.fügeGruppeHinzu("I");
-    }
-
-    @Test
-    public void fügeNeueNationInGruppeHinzu()
-    {
-        Turnier turnier1 = new Turnier();
-        turnier1.fügeNeueNationInGruppeHinzu("A", "China");
-    }
-
-    @Test
-    public void fügeNationMitWertenInGruppeHinzu()
-    {
-        Turnier turnier1 = new Turnier();
-        turnier1.fügeNationMitWertenInGruppeHinzu("F", "Australien", 3, 3);
-    }
-
-    @Test
     public void Spielergebnis()
     {
-        Turnier turnier2 = new Turnier();
-        turnier2.Spielergebnis("F", "Deutschland", 2, "Schweden", 1);
-    }
-
-    @Test
-    public void gibGruppeÜberNation()
-    {
         Turnier turnier1 = new Turnier();
-        assertNotNull(turnier1.gibGruppeÜberNation("Russland"));
+        turnier1.Spielergebnis("F", "Deutschland", 2, "Schweden", 0);
     }
 }
-
 
 
 

@@ -3,8 +3,11 @@ import java.util.ArrayList; // Import-Anweisung um die Bibliotheksklasse ArrayLi
 /**
  * Klasse Turnier:
  * Die Klasse Turnier ist für das Anlegen der 8 Gruppen mit jeweils 4 Nationen zuständig.
- * Des Weiteren wird d
+ * Des Weiteren befinden sich in der Klasse Methoden um Informationen der Gruppe bzw. der Nation zu bekommen.
+ * Ebenfalls kann der Nutzer die Spielpaarungen neue Gruppen und Nationen zum Tunier anlegen.
+ * Die Spielpaarungen bzw. die Spielergebnisse lassen sich außerdem für den Benutzer anzeigen.
  * 
+ * Prüfung Programmiersprachen2
  * @author Tobias Haag | HfG | IoT3
  * @version 30.06.2018
  */
@@ -19,7 +22,6 @@ public class Turnier
     {
         gruppen = new HashMap<>(); // Erzeugen der HashMap mit Gruppen-Objekten.
         erstelleGruppenMap(); // Methodenaufruf, um die darin befindlichen Gruppeninformationen der HashMap gruppen zu übergeben.
-        zeigeAlleNationenWerte(); // Methodenaufruf, um alle Nationen mit Toren und Punkten anzuzeigen.
     }
 
     /**
@@ -31,7 +33,6 @@ public class Turnier
     public void erstelleGruppenMap()
     {
         // Über den Key String werden alle 8 Gruppen-HashMaps auf ein Mal erstellt, da diese in der Klasse Gruppe angelegt wurden.
-        System.out.println("Speicherung der Gruppen:");
         gruppen.put("A", new Gruppe("A"));
         gruppen.put("B", new Gruppe("B"));
         gruppen.put("C", new Gruppe("C"));
@@ -40,7 +41,6 @@ public class Turnier
         gruppen.put("F", new Gruppe("F"));
         gruppen.put("G", new Gruppe("G"));
         gruppen.put("H", new Gruppe("H"));
-        System.out.println();
     }
 
     /**
@@ -95,6 +95,7 @@ public class Turnier
         // for-Schleife: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Gruppe-Keys (Strings), Zählvariable um eins hochzählen.
         // In der Schleife findet über die Zählvariable eine Objekt-Referenz statt.
         // Dabei wird für jede Zählvariable in die Klasse Gruppe gegangen und die Methode gibAlleNationen() aufgerufen und in der Konsole ausgegeben.
+        System.out.println();
         System.out.println("Alle beteiligten Nationen des Turniers:");
         for (int i = 0; i <elementdaten.size(); i++) {
             Gruppe gruppe = elementdaten.get(i);
@@ -120,6 +121,7 @@ public class Turnier
         // for-Schleife: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Gruppe-Keys (Strings), Zählvariable um eins hochzählen.
         // In der Schleife findet über die Zählvariable eine Objekt-Referenz statt.
         // Dabei wird für jede Zählvariable in die Klasse Gruppe gegangen und die Methode gibDetailsNationen() aufgerufen und in der Konsole ausgegeben.
+        System.out.println();
         System.out.println("Der aktuelle Spielplan mit allen Nationen, Toren & Punkten:");
         for (int i = 0; i <elementdaten.size(); i++) {
             Gruppe gruppe = elementdaten.get(i);
@@ -191,7 +193,9 @@ public class Turnier
     {
         // get - Wird verwendet, um den Wert (Gruppen-Objekt) zurückzugeben, dem der angegebene Gruppenname zugeordnet wurde.
         Gruppe gruppe = gruppen.get(gruppenname);
-        // In der Klasse Gruppe wird die Methode gibToreNation mit dem Parameter nationname aufgerufen. 
+        // In der Klasse Gruppe wird die Methode gibToreNation mit dem Parameter nationname aufgerufen.
+        System.out.println ();
+        System.out.println ("Die geschossenen Tore der Nation: " + nationname);
         System.out.println (gruppe.gibToreNation(nationname));
     }
 
@@ -203,6 +207,8 @@ public class Turnier
         // get - Wird verwendet, um den Wert (Gruppen-Objekt) zurückzugeben, dem der angegebene Gruppenname zugeordnet wurde.   
         Gruppe gruppe = gruppen.get(gruppenname);
         // In der Klasse Gruppe wird die Methode gibPunkteNation mit dem Parameter nationname aufgerufen. 
+        System.out.println ();
+        System.out.println ("Die erzielten Punkte der Nation: " + nationname);
         System.out.println (gruppe.gibPunkteNation(nationname));
     }
 
@@ -214,6 +220,8 @@ public class Turnier
         // get - Wird verwendet, um den Wert (Gruppen-Objekt) zurückzugeben, dem der angegebene Gruppenname zugeordnet wurde. 
         Gruppe gruppe = gruppen.get(gruppenname);
         // In der Klasse Gruppe wird die Methode gibDetailsNation mit dem Parameter nationname aufgerufen.
+        System.out.println ();
+        System.out.println ("Informationen zu der Nation: " + nationname);
         System.out.println (gruppe.gibDetailsNation(nationname));
     }
 
@@ -250,6 +258,7 @@ public class Turnier
         // for-Schleife: Start der Zählvariablen 0, Druchlaufbedinung kleiner Anzahl der Gruppe-Keys (Strings), Zählvariable um eins hochzählen.
         // In der Schleife findet über die Zählvariable eine Objekt-Referenz statt.
         // Dabei wird für jede Zählvariable in die Klasse Gruppe gegangen und die Methode gibDetailsNationen() aufgerufen und in der Konsole ausgegeben.
+        System.out.println();
         System.out.println("Alle Spielpaarungen im Überblick:");
         for (int i = 0; i <elementdaten.size(); i++) {
             Gruppe gruppe = elementdaten.get(i);
@@ -267,7 +276,6 @@ public class Turnier
         ArrayList <Gruppe> elementdaten = new ArrayList<>();
         // Iteration mit for-each Schleife durch die Gruppen-Objekte um die Menge an Gruppen-Keys zu erhalten.
         // keySet - Wird verwendet, um in der Map die enthaltenen Schlüssel zu erhalten.
-        // get - Wird verwendet, um den Wert (Strings Gruppen-Objekt) zurückzugeben, dem der angegebene Schlüssel zugeordnet wurde.
         System.out.println();
         System.out.println("Spielpaarung der Gruppe " + gruppenname +  " im Überblick:");
         for (String key : gruppen.keySet()) {
@@ -288,6 +296,8 @@ public class Turnier
         // put - Fügt in die HashMap ein neues Objekt der Klasse Gruppe hinzu.
         // Der Key vom Typ String ist gleich der Name der Gruppe.
         // Für den Value wird ein neues Gruppen-Objekt angelegt, das den Namen der Gruppe beinhaltet.
+        System.out.println();
+        System.out.println("Die Gruppe " + gruppenname + " wurde hinzugefügt.");
         gruppen.put(gruppenname, new Gruppe(gruppenname));
     }
 
@@ -304,6 +314,9 @@ public class Turnier
         // get - Wird verwendet, um den Wert (Gruppen-Objekt) zurückzugeben, dem der angegebene Gruppenname zugeordnet wurde.
         Gruppe gruppe = gruppen.get(gruppenname);
         // In der Klasse Gruppe wird die Methode erstelleNeueNation mit dem Parameter nationname aufgerufen.
+        System.out.println();
+        System.out.println("Die neue Nation " + nationname + " wurde der Gruppe " + gruppenname + " hinzugefügt.");
+        System.out.println ("Anzahl der befindlichen Nationen in der Gruppe:");
         System.out.println (gruppe.erstelleNeueNation(nationname));
     }
 
@@ -320,18 +333,26 @@ public class Turnier
         // get - Wird verwendet, um den Wert (Gruppen-Objekt) zurückzugeben, dem der angegebene Gruppenname zugeordnet wurde.
         Gruppe gruppe = gruppen.get(gruppenname);
         // In der Klasse Gruppe wird die Methode erstelleNationMitWerten mit dem Parameter nationname, nationtore, nationpunkte aufgerufen.
+        System.out.println();
+        System.out.println("Die neue Nation " + nationname + " wurde mit Werten in der Gruppe " + gruppenname + " hinzugefügt.");
+        System.out.println ("Anzahl der befindlichen Nationen in der Gruppe:");
         System.out.println (gruppe.erstelleNationMitWerten(nationname, nationtore, nationpunkte));
     }
 
     /**
-     * In der Methode werden die Spielergebnisse 
+     * In der Methode werden die Punkte pro Nation anhand der geschossenen Tore berechnet. 
+     * Über eine Tore zu Punkteberechnung werden am Ende der Methode die Ergebnisse der 
+     * Nationen geändert und in die ArrayListen hinzugefügt.
      */
     public void Spielergebnis (String gruppenname, String nation1, int tore1, String nation2, int tore2)
     {
+        // Deklaration der Variablen Punkte mit dem Wert 0.
         int punkte1 = 0;
         int punkte2 = 0;
+        // Erzeugen von zwei lokalen ArrayListen von Strings.
         ArrayList<String> nation1Ergebnis = new ArrayList <>();
         ArrayList<String> nation2Ergebnis = new ArrayList <>();
+        // Berechnung der Punkte über die Tore der zwei Nationen.
         if(tore1 > tore2){
             punkte1 = 3;
         }
@@ -342,8 +363,14 @@ public class Turnier
             punkte1 = 1;
             punkte2 = 1;
         }
+        // get - Wird verwendet, um den Wert (Gruppen-Objekt) zurückzugeben, dem der angegebene Gruppenname zugeordnet wurde.
         Gruppe gruppe = gruppen.get(gruppenname);
+        // In der Klasse Gruppe wird die Methdode gibVeränderteDetailsNation mit den Parametern nation, tore & punkte aufgerufen und der Variablen der ArrayList hinzugefügt.
+        System.out.println();
+        System.out.println("Das Spielergebnis:");
         nation1Ergebnis.add(gruppe.gibVeränderteDetailsNation(nation1, tore1, punkte1));
+        System.out.println("Die Nation " + nation1 + " hat " + tore1 + " Tore geschossen und " + punkte1 + " Punkte erzielt.");
         nation2Ergebnis.add(gruppe.gibVeränderteDetailsNation(nation2, tore2, punkte2));
+        System.out.println("Die Nation " + nation2 + " hat " + tore2 + " Tore geschossen und " + punkte2 + " Punkte erzielt.");
     } 
 }
